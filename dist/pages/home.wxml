@@ -1,0 +1,48 @@
+
+    <view>
+        
+    <view class="weui-navbar _8d9347b">
+        <block  wx:for="{{$vNavbar$alldata}}" wx:key="{{index}}" class="_8d9347b">
+            <view id="{{index}}" class="weui-navbar__item _8d9347b {{$vNavbar$activeIndex == index ? 'weui-bar__item_on' : ''}}"  bindtap="$vNavbar$tabClick">
+                <image src="{{$vNavbar$activeIndex != index ? item.iconPath : item.selectedIconPath }}" class="_8d9347b"/>
+                <view class="weui-navbar__title _8d9347b">{{item.title}}</view>
+            </view>
+        </block>
+        <view class="weui-navbar__slider _8d9347b" style="left: {{$vNavbar$sliderLeft}}px; transform: translateX({{$vNavbar$sliderOffset}}px); -webkit-transform: translateX({{$vNavbar$sliderOffset}}px);"/>
+    </view>
+        
+    <swiper class="swiper" indicator-dots="{{$vSwper$swiperConfig.indicatorDots}}" autoplay="{{$vSwper$swiperConfig.autoplay}}" interval="{{$vSwper$swiperConfig.interval}}" duration="{{$vSwper$swiperConfig.duration}}">
+        <block  wx:for="{{$vSwper$alldata}}" wx:key="id">
+            <swiper-item>
+                <image src="{{item.image}}" style="width: 100%; height=100%;" mode="aspectFill" data-id="{{item.id}}" bindtap="$vSwper$tap"/>
+            </swiper-item>
+        </block>
+    </swiper>
+
+        
+    <view class="title _911ca71">{{$vTitle$title}}</view>
+        
+    <view class="list _595bb2f categories">
+        <block  wx:for="{{$vHScroll$alldata}}" wx:key="{{index}}" class="_595bb2f">
+            <view class="item _595bb2f" data-id="{{item.id}}" bindtap="$vHScroll$tap">
+                <image class="cover _595bb2f" src="{{item.cover}}" mode="aspectFill"/>
+                <text class="title _595bb2f">{{item.title}}</text>
+            </view>
+        </block>
+    </view>
+        
+    <view class="title _911ca71">{{$vTitle$title}}</view>
+        
+    <view class="list _ea8b76e list">
+        <block class="_ea8b76e" wx:for="{{$vList$list}}" wx:for-index="$vList$index" wx:for-item="$vList$item" wx:key="$vList$index">
+            
+    <view class="recommend _2b3a784 _ea8b76e" data-id="{{$vList$item.id}}" bindtap="$vList$vItem$recommendItemClick" data-com-index="{{$vList$index}}">
+        <view class="cover _2b3a784">
+            <image class="cover-img _2b3a784" src="{{$vList$item.cover}}" mode="aspectFill"/>
+            <text class="recomment-title _2b3a784">{{$vList$item.title}}</text>
+            <text class="tag _2b3a784">{{$vList$item.tag}}</text>
+        </view>
+    </view>
+        </block>
+    </view>
+    </view>

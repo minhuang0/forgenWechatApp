@@ -1,0 +1,48 @@
+<template>
+    <view>
+        <v-navbar :alldata='tabs' :activeIndex.sync='activeIndex' :sliderWidth='sliderWidth' @changeActiveIndex.user='changeActiveIndex'></v-navbar>
+        <v-recommend></v-recommend>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    import navbarComponent from '@/components/navbar'
+    import recommendComponent from './recommend'
+
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: '森林风'
+        }
+
+        components = {
+            'v-navbar': navbarComponent,
+            'v-recommend': recommendComponent
+        }
+
+        data = {
+            /* 顶部分类 */
+            tabs: [{
+                title: '推荐'
+            }, {
+                title: '达人馆'
+            }, {
+                title: '圈子'
+            }, {
+                title: '活动'
+            }],
+            activeIndex: 0,
+            sliderWidth: 93.75
+        }
+
+        methods = {
+            changeActiveIndex(activeIndex) {
+                this.activeIndex = activeIndex
+            }
+        }
+    }
+</script>
+
+<style lang='scss'>
+    @import '../../libs/weui.wxss';
+</style>

@@ -1,0 +1,4 @@
+@import "./../../components/list.wxss";
+@import "./../../components/horizontal-scroll.wxss";
+@import "./../../components/title.wxss";
+.categories._7bc4d89,.list._7bc4d89{background-color:#f8f8f8}

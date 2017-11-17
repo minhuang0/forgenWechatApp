@@ -1,0 +1,24 @@
+<template>
+    <view class="list">
+        <repeat for="{{list}}" key="index" index="index" item="item">
+            <v-item :item="item"></v-item>
+        </repeat>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    import item from './item'
+
+    export default class Index extends wepy.component {
+        props = {
+            list: {}
+        }
+        components = {
+            'v-item': item
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+</style>

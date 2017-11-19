@@ -1,12 +1,5 @@
 <style lang="scss">
-    .container {
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      box-sizing: border-box;
-    }
+    @import './modules/styles/index.scss';
 </style>
 
 <script>
@@ -17,6 +10,11 @@
         config = {
             pages: [
                 'pages/home/index',
+                'pages/recommend/index',
+                'pages/list/index',
+                'pages/activity/index',
+                'pages/publish/index',
+                'pages/me/index',
                 'pages/index'
             ],
             window: {
@@ -38,13 +36,13 @@
                         text: '首页'
                     },
                     {
-                        pagePath: 'pages/index',
+                        pagePath: 'pages/publish/index',
                         iconPath: 'modules/images/camera.png',
                         selectedIconPath: 'modules/images/camera_fill.png',
                         text: '上传'
                     },
                     {
-                        pagePath: 'pages/index',
+                        pagePath: 'pages/me/index',
                         iconPath: 'modules/images/mine.png',
                         selectedIconPath: 'modules/images/mine_fill.png',
                         text: '我的'

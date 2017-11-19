@@ -1,7 +1,7 @@
 
-    <view>
+    <view class="_719bfc2">
         
-    <view class="weui-navbar _8d9347b">
+    <view class="weui-navbar _8d9347b _719bfc2">
         <block  wx:for="{{$vNavbar$alldata}}" wx:key="{{index}}" class="_8d9347b">
             <view id="{{index}}" class="weui-navbar__item _8d9347b {{$vNavbar$activeIndex == index ? 'weui-bar__item_on' : ''}}"  bindtap="$vNavbar$tabClick">
                 <view class="weui-navbar__title _8d9347b">{{item.title}}</view>
@@ -10,7 +10,7 @@
         <view class="weui-navbar__slider _8d9347b" style="left: {{$vNavbar$sliderLeft}}px; transform: translateX({{$vNavbar$sliderOffset}}px); -webkit-transform: translateX({{$vNavbar$sliderOffset}}px);"/>
     </view>
         
-    <view class="_7bc4d89">
+    <view class="_7bc4d89 _719bfc2 {{activeIndex !== 0 ? 'hidden' : ''}}">
         
     <swiper class="swiper _7bc4d89" indicator-dots="{{$vRecommend$vSwper$swiperConfig.indicatorDots}}" autoplay="{{$vRecommend$vSwper$swiperConfig.autoplay}}" interval="{{$vRecommend$vSwper$swiperConfig.interval}}" duration="{{$vRecommend$vSwper$swiperConfig.duration}}">
         <block  wx:for="{{$vRecommend$vSwper$alldata}}" wx:key="id">
@@ -37,7 +37,7 @@
     <view class="list _ea8b76e list _7bc4d89">
         <block class="_ea8b76e" wx:for="{{$vRecommend$vList$list}}" wx:for-index="$vRecommend$vList$index" wx:for-item="$vRecommend$vList$item" wx:key="$vRecommend$vList$index">
             
-    <view class="recommend _2b3a784 _ea8b76e" data-id="{{$vRecommend$vList$item.id}}" bindtap="$vRecommend$vList$vItem$recommendItemClick" data-com-index="{{$vRecommend$vList$index}}">
+    <view class="recommend _2b3a784 _ea8b76e" data-id="{{$vRecommend$vList$item.id}}" bindtap="$vRecommend$vList$vItem$tap" data-com-index="{{$vRecommend$vList$index}}">
         <view class="cover _2b3a784">
             <image class="cover-img _2b3a784" src="{{$vRecommend$vList$item.cover}}" mode="aspectFill"/>
             <text class="recomment-title _2b3a784">{{$vRecommend$vList$item.title}}</text>
@@ -46,5 +46,61 @@
     </view>
         </block>
     </view>
+    </view>
+        
+    <view class="moments _08e4a80 _719bfc2 {{activeIndex !== 1 ? 'hidden' : ''}}">
+        <block class="_08e4a80" wx:for="{{$vMoments$moments}}" wx:for-index="$vMoments$index" wx:for-item="$vMoments$item" wx:key="$vMoments$index">
+            
+    <view class="moment _e61226b _08e4a80">
+        <view class="monent-header _e61226b">
+            <view class="avatar _e61226b">
+                <image src="{{$vMoments$item.avatar}}" class="_e61226b"/>
+            </view>
+            <view class="content-view _e61226b">
+                <view class="name-view _e61226b">
+                    <text class="name _e61226b">ces{{$vMoments$item.name}}</text>
+                    <text class="create-time _e61226b">{{$vMoments$item.createTime}}</text>
+                </view>
+                <text class="description _e61226b">清风相送，弹指一梦境</text>
+            </view>
+        </view>
+        <view class="comment-content _e61226b">{{$vMoments$item.content}}</view>
+        <block class="_e61226b" wx:for="{{$vMoments$item.images}}" wx:for-index="$vMoments$vMoment$index" wx:for-item="$vMoments$vMoment$item" wx:key="$vMoments$vMoment$index">
+            <view class="images _e61226b">
+                <block class="_e61226b" wx:for="{{$vMoments$vMoment$item}}" wx:for-index="$vMoments$vMoment$i" wx:for-item="$vMoments$vMoment$img" wx:key="$vMoments$vMoment$i">
+                    <image class="img _e61226b" src="{{$vMoments$vMoment$img}}" mode="aspectFill"/>
+                </block>
+            </view>
+        </block>
+        <view class="buttons _e61226b">
+            <view class="_e61226b">
+                <image class="icon _e61226b" src="{{$vMoments$vMoment$icons.message}}"/>
+                <text class="_e61226b">{{$vMoments$item.upvoteNum}}</text>
+            </view>
+            <view class="_e61226b">
+                <image class="icon _e61226b" style="margin-left: 40rpx;" src="{{$vMoments$vMoment$icons.upvote}}"/>
+                <text class="_e61226b">{{$vMoments$item.favoriteNum}}</text>
+            </view>
+        </view>
+    </view>
+        </block>
+    </view>
+        
+    <view class="activities _fc78df4 _719bfc2 {{activeIndex !== 2 ? 'hidden' : ''}}">
+        <block class="_fc78df4" wx:for="{{$vActivities$activities}}" wx:for-index="$vActivities$index" wx:for-item="$vActivities$item" wx:key="$vActivities$index">
+            
+    <view class="activity _97f9c8c _fc78df4" data-id="{{$vActivities$item.id}}" bindtap="$vActivities$vActivity$tap" data-com-index="{{$vActivities$index}}">
+        <image class="cover _97f9c8c" src="{{$vActivities$item.cover}}" mode="aspectFill"/>
+        <view class="content-view _97f9c8c">
+            <text class="title _97f9c8c">{{$vActivities$item.title}}</text>
+            <text class="time _97f9c8c">{{$vActivities$item.time}}</text>
+            <text class="address _97f9c8c">{{$vActivities$item.address}}</text>
+            <view class="last _97f9c8c">
+                <text class="money _97f9c8c">{{$vActivities$item.money > 0 ? $vActivities$item.money : '免费'}}</text>
+                <text class="join _97f9c8c" type="default">报名</text>
+            </view>
+        </view>
+    </view>
+        </block>
     </view>
     </view>

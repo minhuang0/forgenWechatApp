@@ -1,7 +1,9 @@
 <template>
     <view>
         <v-navbar :alldata='tabs' :activeIndex.sync='activeIndex' :sliderWidth='sliderWidth' @changeActiveIndex.user='changeActiveIndex'></v-navbar>
-        <v-recommend></v-recommend>
+        <v-recommend :class='{ hidden: activeIndex !== 0}'></v-recommend>
+        <v-moments :class='{ hidden: activeIndex !== 1}'></v-moments>
+        <v-activities :class='{ hidden: activeIndex !== 2}'></v-activities>
     </view>
 </template>
 
@@ -9,6 +11,8 @@
     import wepy from 'wepy'
     import navbarComponent from '@/components/navbar'
     import recommendComponent from './recommend'
+    import momentsComponent from './moments'
+    import activitiesComponent from './activity'
 
     export default class Index extends wepy.page {
         config = {
@@ -17,15 +21,15 @@
 
         components = {
             'v-navbar': navbarComponent,
-            'v-recommend': recommendComponent
+            'v-recommend': recommendComponent,
+            'v-moments': momentsComponent,
+            'v-activities': activitiesComponent
         }
 
         data = {
             /* 顶部分类 */
             tabs: [{
                 title: '推荐'
-            }, {
-                title: '达人馆'
             }, {
                 title: '圈子'
             }, {
@@ -37,12 +41,14 @@
 
         methods = {
             changeActiveIndex(activeIndex) {
-                this.activeIndex = activeIndex
+                this.activeIndex = parseInt(activeIndex)
             }
         }
     }
 </script>
 
-<style lang='scss'>
-    @import '../../libs/weui.wxss';
+<style lang="scss" scoped>
+    .hidden {
+        display: none;
+    }
 </style>

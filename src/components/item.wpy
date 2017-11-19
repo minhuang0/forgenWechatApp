@@ -1,5 +1,5 @@
 <template>
-    <view class="recommend" data-id="{{item.id}}" @tap="recommendItemClick">
+    <view class="recommend" data-id="{{item.id}}" @tap="tap">
         <view class="cover">
             <image class="cover-img" src="{{item.cover}}" mode="aspectFill"></image>
             <text class="recomment-title">{{item.title}}</text>
@@ -14,6 +14,11 @@
     export default class Index extends wepy.component {
         props = {
             item: {}
+        }
+        methods = {
+            tap (e) {
+                this.$emit('click', e)
+            }
         }
     }
 </script>

@@ -1,0 +1,91 @@
+<template>
+    <!--logs.wxml-->
+    <view class="container">
+        <view class="page__bd">
+            <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">发表成功</view>
+            <view class="weui-cells weui-cells_after-title">
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <textarea class="weui-textarea" placeholder="您想说的话!" style="height: 3.3em" />
+                    </view>
+                </view>
+                <view class="weui-cell">
+                    <view class="weui-cell__bd">
+                        <view class="weui-uploader">
+                            <view class="weui-uploader__bd">
+                                <view class="weui-uploader__files" id="uploaderFiles">
+                                    <repeat for="{{files}}" key="index" index="index" item="item">
+                                        <view class="weui-uploader__file" bindtap="previewImage" id="{{item}}">
+                                            <image class="weui-uploader__img" src="{{item}}" mode="aspectFill" />
+                                        </view>
+                                    </repeat>
+                                </view>
+                                <view class="weui-uploader__input-box">
+                                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" bindtap="showTopTips">发表</button>
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: '发表朋友圈'
+        }
+
+        data = {
+            showTopTips: false,
+            files: []
+        }
+
+        methods = {
+            chooseImage(e) {
+                const self = this
+                wepy.chooseImage({
+                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
+                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
+                    success(res) {
+                        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
+                        self.files = self.files.concat(res.tempFilePaths)
+                        self.$apply()
+                    }
+                })
+            },
+            previewImage(e) {
+                wepy.previewImage({
+                    current: e.currentTarget.id, // 当前显示图片的http链接
+                    urls: this.files // 需要预览的图片http链接列表
+                })
+            },
+            showTopTips() {
+                this.showTopTips = true
+                setTimeout(() => {
+                    this.showTopTips = false
+                    this.$apply()
+                }, 3000)
+            }
+        }
+        onLoad() {
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    .page__bd {
+      width: 100%;
+    }
+
+    .page__bd .weui-cells {
+      width: 100%;
+    }
+</style>

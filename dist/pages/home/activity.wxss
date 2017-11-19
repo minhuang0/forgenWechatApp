@@ -1,0 +1,2 @@
+@import "./../../components/activity.wxss";
+.activities._fc78df4{position:relative;display:flex;flex-wrap:nowrap;flex-direction:column;background-color:#f8f8f8}

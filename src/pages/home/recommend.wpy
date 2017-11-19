@@ -4,7 +4,7 @@
         <v-title title='专题分类'></v-title>
         <v-h-scroll class='categories' :alldata='categories' @click.user='selectCategory'></v-h-scroll>
         <v-title title='今日推荐'></v-title>
-        <v-list class="list" :list='list'></v-list>
+        <v-list class="list" :list='list' @itemClick.user="selectList"></v-list>
     </view>
 </template>
 
@@ -77,15 +77,18 @@
 
         methods = {
             selectSwiper(e) {
-                console.log(e.currentTarget.dataset.id)
+                wepy.navigateTo({
+                    url: `../../pages/recommend/index?id=${e.currentTarget.dataset.id}`
+                })
+            },
+            selectList(e) {
                 wepy.navigateTo({
                     url: `../../pages/recommend/index?id=${e.currentTarget.dataset.id}`
                 })
             },
             selectCategory(e) {
-                console.log(e.currentTarget.dataset.id)
                 wepy.navigateTo({
-                    url: `../../pages/category/index?id=${e.currentTarget.dataset.id}`
+                    url: `../../pages/list/index?id=${e.currentTarget.dataset.id}`
                 })
             }
         }

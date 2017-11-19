@@ -1,0 +1,2 @@
+@import "./../../components/moment.wxss";
+.moments._08e4a80{position:relative;display:flex;padding-bottom:10rpx;flex-wrap:nowrap;flex-direction:column;background-color:#f8f8f8;background-color:#f8f8f8}

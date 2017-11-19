@@ -1,0 +1,32 @@
+
+    <import src="../../libs/wxParse/wxParse.wxml" class="_ca4043f"/>
+    <view class="recommend _ca4043f">
+        <view class="_ca4043f">
+            <view class="header l-c-c _ca4043f">
+                <view class="l-c _ca4043f">
+                    <image class="head-img _ca4043f" src="{{item.authorHeadImgUrl}}" mode="aspectFill"/>
+                    <text class="name _ca4043f">{{item.authorNickName}}</text>
+                </view>
+                <view class="l-c right _ca4043f">
+                    <view class="l-c _ca4043f">
+                        <view class="iconfont icon icon-praise _ca4043f"/>
+                        <text class="_ca4043f">{{item.upvoteNum}}</text>
+                    </view>
+                    <view class="l-c _ca4043f">
+                        <view class="iconfont icon icon-like_fill _ca4043f"/>
+                        <text class="_ca4043f">{{item.likedNum}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="description _ca4043f">
+                <view class="title _ca4043f">{{item.title}}</view>
+                <view class="category _ca4043f">#{{item.column}}#</view>
+            </view>
+            <view class="content _ca4043f">
+                <!--
+                                    <htmlParse parserName="article" v-bind:parserContent.sync="item.html"></htmlParse>
+                                -->
+                <template is="wxParse" data="{{wxParseData: article.nodes}}" class="_ca4043f"/>
+            </view>
+        </view>
+    </view>

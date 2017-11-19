@@ -1,0 +1,35 @@
+
+    <!--logs.wxml-->
+    <view class="container _9b9ddce">
+        <view class="page__bd _9b9ddce">
+            <view class="weui-toptips weui-toptips_warn _9b9ddce"  wx:if="{{showTopTips}}">发表成功</view>
+            <view class="weui-cells weui-cells_after-title _9b9ddce">
+                <view class="weui-cell _9b9ddce">
+                    <view class="weui-cell__bd _9b9ddce">
+                        <textarea class="weui-textarea _9b9ddce" placeholder="您想说的话!" style="height: 3.3em"/>
+                    </view>
+                </view>
+                <view class="weui-cell _9b9ddce">
+                    <view class="weui-cell__bd _9b9ddce">
+                        <view class="weui-uploader _9b9ddce">
+                            <view class="weui-uploader__bd _9b9ddce">
+                                <view class="weui-uploader__files _9b9ddce" id="uploaderFiles">
+                                    <block class="_9b9ddce" wx:for="{{files}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                                        <view class="weui-uploader__file _9b9ddce" bindtap="previewImage" id="{{item}}">
+                                            <image class="weui-uploader__img _9b9ddce" src="{{item}}" mode="aspectFill"/>
+                                        </view>
+                                    </block>
+                                </view>
+                                <view class="weui-uploader__input-box _9b9ddce">
+                                    <view class="weui-uploader__input _9b9ddce" bindtap="chooseImage"/>
+                                </view>
+                            </view>
+                        </view>
+                    </view>
+                </view>
+            </view>
+            <view class="weui-btn-area _9b9ddce">
+                <button class="weui-btn _9b9ddce" type="primary" bindtap="showTopTips">发表</button>
+            </view>
+        </view>
+    </view>

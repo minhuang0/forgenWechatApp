@@ -14,7 +14,8 @@
     "wepy": "^1.6.0",
     "wepy-async-function": "^1.4.4",
     "wepy-com-toast": "^1.0.2",
-    "weui-wxss": "^1.1.1"
+    "weui-wxss": "^1.1.1",
+    "wxparse": "0.0.1"
   },
   "devDependencies": {
     "babel-eslint": "^7.2.1",

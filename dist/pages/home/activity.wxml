@@ -1,0 +1,18 @@
+
+    <view class="activities _fc78df4">
+        <block class="_fc78df4" wx:for="{{activities}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+            
+    <view class="activity _97f9c8c _fc78df4" data-id="{{item.id}}" bindtap="$vActivity$tap" data-com-index="{{index}}">
+        <image class="cover _97f9c8c" src="{{item.cover}}" mode="aspectFill"/>
+        <view class="content-view _97f9c8c">
+            <text class="title _97f9c8c">{{item.title}}</text>
+            <text class="time _97f9c8c">{{item.time}}</text>
+            <text class="address _97f9c8c">{{item.address}}</text>
+            <view class="last _97f9c8c">
+                <text class="money _97f9c8c">{{item.money > 0 ? item.money : '免费'}}</text>
+                <text class="join _97f9c8c" type="default">报名</text>
+            </view>
+        </view>
+    </view>
+        </block>
+    </view>

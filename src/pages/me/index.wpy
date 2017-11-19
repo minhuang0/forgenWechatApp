@@ -1,0 +1,114 @@
+<template>
+    <view class="me">
+        <view class="header">
+            <view class="cover">
+                <image src="http://www.90houqq.com/data/attachment/forum/201611/08/100416m0763pt026p33axz.jpg" />
+            </view>
+            <view class="header-content">
+                <text class="name">诸葛·刘gloria</text>
+                <image class="img-head" src="https://modao.cc/uploads3/images/1024/10246492/raw_1497340535.jpeg"></image>
+            </view>
+        </view>
+        <view class="moments">
+            <repeat for="{{moments}}" key="index" index="index" item="item">
+                <v-moment :moment="item"></v-moment>
+            </repeat>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    import momentComponent from '@/components/moment'
+    import { paddingImg } from '@/modules/common/utils'
+
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: '我的'
+        }
+
+        components = {
+            'v-moment': momentComponent
+        }
+
+        data = {
+            moments: [{
+                avatar: 'https://modao.cc/uploads3/images/1024/10246492/raw_1497340535.jpeg',
+                name: '诸葛·刘gloria',
+                content: '与柳芽相遇也是偶然，在菜场内的一堆摊位间，发现不起眼的一小袋黄盈盈的嫩芽。其实有点于心不忍，这都是从新绿的柳条上摘下来的吧。但还是忍不住想尝鲜的愿意，买了一点。一点点，已够做出好几个菜了。应时应景，尝个新鲜吧',
+                images: paddingImg([
+                    'https://modao.cc/uploads3/images/1024/10246655/raw_1497340747.jpeg',
+                    'https://modao.cc/uploads3/images/1024/10246656/raw_1497340747.jpeg',
+                    'https://modao.cc/uploads3/images/1024/10246656/raw_1497340747.jpeg'
+                ]),
+                createTime: '1小时前',
+                commons: [{
+                    name: '评论者',
+                    commont: '评论评论评论评论评论评论评论评论'
+                }],
+                upvoteNum: 10,
+                favoriteNum: 20
+            }]
+        }
+
+        methods = {
+        }
+        onLoad() {
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    .me {
+      position: relative;
+      width: 100%;
+
+      .header {
+        position: relative;
+        &::after {
+          content: "";
+          background: #eee;
+          position: absolute;
+          width: 100%;
+          height: 1px;
+          bottom: 0;
+          left: 0;
+        }
+        .header-content {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          z-index: 1;
+          .name {
+            color: #fff;
+            position: absolute;
+            font-size: 14px;
+            right: 140rpx;
+            bottom: 10rpx;
+          }
+          .img-head {
+            position: absolute;
+            right: 20rpx;
+            bottom: -50rpx;
+            background-color: #fff;
+            border: 1rpx solid #eee;
+            padding: 5rpx;
+            height: 100rpx;
+            width: 100rpx;
+          }
+        }
+      }
+      .cover {
+        width: 100%;
+        height: 320rpx;
+        overflow: hidden;
+        background-color: black;
+        text-aligin: center;
+        image {
+          width: 100%;
+        }
+      }
+    }
+</style>

@@ -1,0 +1,187 @@
+<template>
+    <import src='../../libs/wxParse/wxParse.wxml' />
+    <view class='recommend'>
+        <view>
+            <view class='header l-c-c'>
+                <view class='l-c'>
+                    <image class='head-img' src='{{item.authorHeadImgUrl}}' mode='aspectFill' />
+                    <text class='name'>{{item.authorNickName}}</text>
+                </view>
+                <view class='l-c right'>
+                    <view class='l-c'>
+                        <view class="iconfont icon icon-praise"></view>
+                        <text>{{item.upvoteNum}}</text>
+                    </view>
+                    <view class="l-c">
+                        <view class="iconfont icon icon-like_fill"></view>
+                        <text>{{item.likedNum}}</text>
+                    </view>
+                </view>
+            </view>
+            <view class="description">
+                <view class="title">{{item.title}}</view>
+                <view class="category">#{{item.column}}#</view>
+            </view>
+            <view class="content">
+                <!--
+                                    <htmlParse parserName="article" :parserContent.sync="item.html"></htmlParse>
+                                -->
+                <template is="wxParse" data="{{wxParseData: article.nodes}}" />
+            </view>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    import WxParse from '../../libs/wxParse/wxParse.js'
+    // import htmlParse from '@/modules/htmlParse/index'
+
+    const lists = [{
+        column: '私房菜',
+        title: '夏日随风摇曳的铁线莲',
+        html: '<p><span style="font-size: 14px;">铁线莲，别名铁线牡丹，是毛茛科&nbsp;、铁线莲属植物。品种繁多，有的小巧可爱，有的花瓣修长，柔美的花色、清丽脱俗的气质最为动人。</span></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502691759082047648.jpg" title="1502691759082047648.jpg" alt="5c0a1bd64f4fe62f870c80ba079168eb.jpg" style="font-size: 14px;"/></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502691746677047253.jpg" title="1502691746677047253.jpg" alt="9e67f679c771055ca7c0b5014c196138.jpg"/></span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502691767221058980.jpg" title="1502691767221058980.jpg" alt="87c72019491e81b4a4818635b1454ec9.jpg"/></span></p><p><br/></p><p><span style="font-size: 14px;"></span></p><p style="white-space: normal;"><span style="font-size: 14px;">铁线莲的花期为6-9月，颜色大小形状不一的铁线莲在夏季随风摇曳、嬉戏，多姿多彩地盛开着。</span></p><p style="white-space: normal;"><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502692248988034763.jpg" title="1502692248988034763.jpg" alt="65c1580cc5970900f05e590727b7aec7.jpg"/></span></p><p style="white-space: normal;"><span style="font-size: 14px;"><br/></span></p><p><span style="font-size: 14px;">在国外，铁线莲早在一个世纪前就被人们大量栽培应用，庭院、盆栽常常可见，有“藤本花卉皇后”之美称。</span></p><p style="white-space: normal;"><span style="font-size: 14px; font-family: &#39;Lucida Grande&#39;, Tahoma, Verdana, Arial, sans-serif; text-indent: 28px; background-color: rgb(255, 255, 255);"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502693125570080781.jpg" title="1502693125570080781.jpg" alt="ee216a3a3633c5cf3585800c0bc74be5.jpg"/></span></p><p style="white-space: normal;"><span style="font-size: 14px; font-family: &#39;Lucida Grande&#39;, Tahoma, Verdana, Arial, sans-serif; text-indent: 28px; background-color: rgb(255, 255, 255);"><br/></span></p><p><span style="font-size: 14px;">铁线莲拥有一种独特的高雅气质，随意摆放一根枝条都充满了难以言喻的神秘与存在感。</span></p><p style="white-space: normal;"><span style="font-size: 14px; font-family: &#39;Lucida Grande&#39;, Tahoma, Verdana, Arial, sans-serif; text-indent: 28px; background-color: rgb(255, 255, 255);"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502693254731067782.jpg" title="1502693254731067782.jpg" alt="c4bdfd005fee9e03e6b786f5f349fe83.jpg"/></span></p><p style="white-space: normal;"><span style="font-size: 14px; font-family: &#39;Lucida Grande&#39;, Tahoma, Verdana, Arial, sans-serif; text-indent: 28px; background-color: rgb(255, 255, 255);"><br/></span></p><p><span style="font-size: 14px;">在花艺作品中选用深色花瓣的铁线莲，可以为作品增添华丽典雅的神韵，明艳动人的作品一定令你深深着迷。</span></p><p style="white-space: normal;"><span style="font-size: 14px; font-family: &#39;Lucida Grande&#39;, Tahoma, Verdana, Arial, sans-serif; text-indent: 28px; background-color: rgb(255, 255, 255);"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502693445474095764.jpg" title="1502693445474095764.jpg" alt="69de8707760aa8b6208d3f1cc4e28a87.jpg"/></span></p><p style="white-space: normal;"><span style="font-size: 14px; font-family: &#39;Lucida Grande&#39;, Tahoma, Verdana, Arial, sans-serif; text-indent: 28px; background-color: rgb(255, 255, 255);"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502693765211059385.jpg" title="1502693765211059385.jpg" alt="e1624d9deaff6984f84b7afe2eab0fee.jpg"/></span></p><p style="white-space: normal;"><span style="font-size: 14px; font-family: &#39;Lucida Grande&#39;, Tahoma, Verdana, Arial, sans-serif; text-indent: 28px; background-color: rgb(255, 255, 255);"><br/></span></p><p><span style="font-size: 14px;">但无论怎样设计，姿态优美的铁线莲都散发着一种自然曼妙的质感。就像在夏日的窗边轻轻吹拂过的柔风，低调素雅，充满空气感。</span></p><p style="white-space: normal;"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502694225452083689.jpg" title="1502694225452083689.jpg" alt="cdfaa92685ba0c0ec645315ae22efe0f.jpg"/></p><p style="white-space: normal;"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502694218470066145.jpg" title="1502694218470066145.jpg" alt="3596cccb12d347fd6da71b384e0a40ff.jpg"/></p><p style="white-space: normal;"><br/></p><p><span style="font-size: 14px;">除了常应用于家居观赏，铁线莲也为盛夏出阁的新娘献上最喜悦的祝福。铁线莲的风格多样，可华丽可清新，可以让你充分地享受创作的乐趣。</span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502694359135012275.jpg" title="1502694359135012275.jpg" alt="155fccc44cdff68d29abc222e6dfe07d.jpg"/></span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502694366111060762.jpg" title="1502694366111060762.jpg" alt="8baf17d90859647f97e76fdd038c488b.jpg"/></span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502694372932012485.jpg" title="1502694372932012485.jpg" alt="10809df1fcda985918ff81c7641508fa.jpg"/></span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502694379691071142.jpg" title="1502694379691071142.jpg" alt="77fe34c721dd5984226092e07db936a5.jpg"/></span></p><p><span style="font-size: 14px; font-family: &#39;Lucida Grande&#39;, Tahoma, Verdana, Arial, sans-serif; text-indent: 28px; background-color: rgb(255, 255, 255);"><br/></span></p><p><span style="font-size: 14px;">娇嫩欲滴的铁线莲，轻盈柔美，充满生命力，它盛开的美丽模样就是这夏日最闪耀动人的一瞬间。</span></p><p><br/></p><p style="text-align: center;"><span style="font-size: 14px;">Source | pinterest</span></p><p><br/></p><p><br/></p><p><br/></p>',
+        authorOpenId: '10000',
+        authorNickName: '花生馅',
+        authorHeadImgUrl: 'http://static.htxq.net/UploadFiles/headimg/20160721142529242.jpg',
+        isLiked: true,
+        upvoteNum: 97,
+        likedNum: 30,
+        isUpvote: true
+    }, {
+        column: '生活居',
+        title: '打造一片浪漫的玫瑰庭院',
+        html: '<div class="content"> <div class="row box_txt"> <div class="box_txt_inner" id="share_desc"> <p><span style="font-size: 16px;">打造一片浪漫的玫瑰庭院，让家充满幸福的气息。</span><br/></p> </div> </div> <div class="row"> <h2>- 庭院玫瑰的品种与选择 -</h2> <p><br/></p><p><span style="font-size: 14px;">玫瑰的品种十分繁多，在中国我们通常将它分为玫瑰、月季、蔷薇。对于一般从事植物分类的专业人士来说不是一件难事。但是，对于一般业余爱好者来说确是一个比较困难的问题。在文学中“玫瑰”这个词也常常代指了所有的玫瑰。</span></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502347016206024184.jpg" title="1502347016206024184.jpg" alt="9ad0c8d7be45c455aa6dd973ca94e68a.jpg"/></p><p><br/></p><p><span style="font-size: 14px;">玫瑰的名字既浪漫又富有诗意。一般它都带有浓郁的香气，绝大多数品种一年只开一次花，并且带有密密麻麻的枝刺，一芽多花，花枝被剪下后花朵会很快萎蔫，最长时间不会超过半小时。因此，玫瑰不适合于作鲜切花。</span></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502347346587019471.jpg" title="1502347346587019471.jpg" alt="77c6a7efce1b9d16c1cce42cf4deb48f8c546477.jpg"/></p><p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; text-indent: 28px; background-color: rgb(255, 255, 255);"><br/></span></p><p><span style="font-size: 14px;">月季花，就没有玫瑰香味那么浓郁。一般花朵很大而且非常鲜艳，枝刺较少，花朵多单生。鲜花剪下后保鲜期长，一般可保存数天或数周。很适合作为鲜切花、盆植、园艺及绿化。人们日常生活中作为鲜切花馈赠用的“玫瑰”鲜花和盆栽玫瑰，一般都属于月季。月季的品种很多，有藤本、蔓生、灌木之分。</span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502347564289081432.jpg" title="1502347564289081432.jpg" alt="345223.jpg"/></span></p><p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; text-indent: 28px; background-color: rgb(255, 255, 255);"><br/></span></p><p><span style="font-size: 14px;">蔷薇，花朵通常很小，单瓣或重瓣花，每年只开一次花。多为藤本，枝繁叶茂，作为绿篱既有很好的绿化、美化效果，又可起到隔离防护作用深受人们的喜爱。</span></p><p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; text-indent: 28px; background-color: rgb(255, 255, 255);"><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502347670252094443.jpg" title="1502347670252094443.jpg" alt="542344.jpg"/></span></p><p><span style="color: rgb(51, 51, 51); font-family: arial, 宋体, sans-serif; font-size: 14px; text-indent: 28px; background-color: rgb(255, 255, 255);"><br/></span></p><p><span style="font-size: 14px;">无论是高贵的玫瑰，还是随处可见的月季和蔷薇，在庭院里它们都是充满爱的美丽精灵。既然品种多种多样，不妨看到喜欢的玫瑰花色与花形后再做挑选，打造属于你自己的浪漫庭院。</span></p><p><span style="font-size: 14px;"></span></p> </div> <div class="row"> <h2>- 玫瑰庭院的造型 -</h2> <p><br/></p><p><span style="font-size: 14px;">选择一面南向的墙面，在墙面上固定网格架或勾勒出网格的铁丝，柔美曼妙的枝条可以引导至墙壁上，方便植物向上攀爬。藤本的月季就是很好的选择。</span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502348608670006975.jpg" title="1502348608670006975.jpg" alt="ae1b5e1e836c34894e644dc234d3c0c5.jpg"/></span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502348630629009758.jpg" title="1502348630629009758.jpg" alt="292901d4b2ab9dfb0a619aba5751b5df.jpg"/></span></p><p><br/></p><p><span style="font-size: 14px;">除了花墙，还可以用灌木月季、玫瑰种成花篱的模样，不仅有绿化的作用，植物身上的刺还可以防止小偷的进入。</span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502348906256064215.jpg" title="1502348906256064215.jpg" alt="26c1ff07e9968d0ab9582008d35bd5d1.jpg"/></span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502348916117057794.jpg" title="1502348916117057794.jpg" alt="8146c5b032a9597d726ce5970d1cb49c.jpg"/></span></p><p><span style="font-size: 14px;"><br/></span></p><p><span style="font-size: 14px;">在拱形花架或者门旁两侧栽种藤蔓玫瑰的植株。不要刻意折弯枝条，依照花架的宽度，让枝条平均分布在架子上，由下而上引导枝条沿着花架生长，一个曼妙的花门就实现了。<br/></span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502349147718044859.jpg" title="1502349147718044859.jpg" alt="4627ea10db52338ae3d8789aee6f326b.jpg"/></span></p><p><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502349164474091478.jpg" title="1502349164474091478.jpg" alt="c4157647086a0f744cdd438fee53f1d5.jpg"/></span></p><p><br/></p> </div> <div class="row"> <p><span style="font-size: 14px;">在玫瑰花缤纷绽放的时候，邀请朋友到家中作客，开一场玫瑰party! 献上一年播种的大礼,一边欣赏庭院的美景，一边享受劳作的快乐。</span><br/></p><p style="white-space: normal;"><span style="font-size: 14px;"><img src="http://static.htxq.net/UploadFiles/2017/08/10/1502349341292048294.jpg" title="1502349341292048294.jpg" alt="4221df9f060e8aff3aa0729a5cd407e7.jpg"/></span></p><p><br/></p><p style="text-align: center;"><span style="font-size: 14px;">Source | pinterest&nbsp;</span></p><p><br/></p><p><br/></p><p><br/></p> </div> </div>',
+        authorOpenId: '10000',
+        authorNickName: '秋天',
+        authorHeadImgUrl: 'http://static.htxq.net/UploadFiles/2017/08/10/20170810141703886959.jpg',
+        isLiked: true,
+        upvoteNum: 100,
+        likedNum: 45,
+        isUpvote: true
+    }, {
+        column: '养生阁',
+        title: '为你的礼物锦上添「花」',
+        html: '<div class="content"> <div class="row box_txt"> <div class="box_txt_inner" id="share_desc"> <p><span style="font-size: 16px;">在礼物的包装上加入花朵的元素，会瞬间变得更加精致、有格调。本篇文章为大家分享多种包装技巧，为你的礼物锦上添「花」。</span></p> </div> </div> <div class="row"> <p><br/></p><p><br/></p><p style="text-align: center;"><em><span style="font-size: 20px;">1.</span></em></p><p><br/></p><p style="text-align: center;"><span style="font-size: 16px;">mini干花</span></p><p><br/></p><p><span style="font-size: 14px;">只需要准备几朵干花与线绳，系在包装好的礼物外面，瞬间就可以为礼物增添文艺气息，感受自然的美的享受。</span><br/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502428925856067233.jpg" title="1502428925856067233.jpg" alt="059c02e177f53c214ca14ac933bb9464.jpg"/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502428933515095100.jpg" title="1502428933515095100.jpg" alt="4594a411c8c640a234c5fa0c05468819.jpg"/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502428952379020161.jpg" title="1502428952379020161.jpg" alt="e121f3f8cfc336335a7664b3070a9a62.jpg"/></p><p><br/></p><p><br/></p><p><br/></p><p style="text-align: center;"><em><span style="font-size: 20px;">2.</span></em></p><p><br/></p><p style="text-align: center;"><span style="font-size: 16px;">鲜花花束</span></p><p><br/></p><p><span style="font-size: 14px;">当很多朋友一起送礼时，不妨将这些礼物全部装在盒子或篮子里。再准备一束甜美的花束，在即将到来的秋天，有一种丰收的幸福感。</span></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502428979855084269.jpg" title="1502428979855084269.jpg" alt="6c681ba27a308943d6e7ee8b1d2a677c.jpg"/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502428987035047519.jpg" title="1502428987035047519.jpg" alt="9e4fba8b6a873366bfd76da28792dff2.jpg"/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502428995246052142.jpg" title="1502428995246052142.jpg" alt="7bb2c7a9db1cdb2ddb88923a170f0b07.jpg"/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502429001738092762.jpg" title="1502429001738092762.jpg" alt="163f5b0c732a568eee2948d3378658f1.jpg"/></p><p><br/></p><p><br/></p><p><br/></p><p style="text-align: center;"><em><span style="font-size: 20px;">3.</span></em></p><p><br/></p><p style="text-align: center;"><span style="font-size: 16px;">DIY纸花</span></p><p><br/></p><p><span style="font-size: 14px;">最适合小朋友亲手制作礼物的方式，材料简单方便，自己动手制作，满满的心意汇聚成一朵永恒绚烂的花朵送给最亲爱的人。</span><br/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502429027786080677.jpg" title="1502429027786080677.jpg" alt="d3316130bb0af83b11dc561e15a09791.jpg"/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502429033754059240.jpg" title="1502429033754059240.jpg" alt="e7ad63ce3b14cd4188a235f5d65c0119.jpg"/></p><p><br/></p><p><br/></p><p><br/></p><p style="text-align: center;"><em><span style="font-size: 20px;">4.</span></em></p><p><br/></p><p style="text-align: center;"><span style="font-size: 16px;">长久保存的永生花</span></p><p><br/></p><p><span style="font-size: 14px;">永生花最大的特点，既保有鲜花的质感，还可以长期保存，象征长久不变的爱。七夕将至，不如用这精致的花朵与你的礼物结合，让美好的心意陪伴她更长时间。</span><br/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502429081796073694.jpg" title="1502429081796073694.jpg" alt="bfa61ab5350be20584b1e5cfbff700f4.jpg"/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502429097057091979.jpg" title="1502429097057091979.jpg" alt="1094817452c3470f0404d19dcb900769.jpg"/></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502429103471020082.jpg" title="1502429103471020082.jpg" alt="abfb02ca2ae905dcf65e7a49a0653901.jpg"/></p><p><br/></p><p><br/></p><p><br/></p><p style="text-align: center;"><em><span style="font-size: 20px;">5.</span></em></p><p><br/></p><p style="text-align: center;"><span style="font-size: 16px;">花布</span></p><p><span style="font-size: 16px;"><br/></span></p><p><span style="font-size: 14px;">如今全世界都在倡导精简包装、环保过节，用一些可爱的花布将礼物包裹，充满了日式和风的味道，既精美又富有创意。</span></p><p><span style="font-size: 16px;"><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502429132733099733.jpg" title="1502429132733099733.jpg" alt="1214ff379a046ef971704a84d8adc47a.jpg"/></span></p><p><span style="font-size: 16px;"><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502429139100065188.jpg" title="1502429139100065188.jpg" alt="fdf0af68717eb48d4e991c32585eb4a9.jpg"/></span></p><p><span style="font-size: 16px;"><img src="http://static.htxq.net/UploadFiles/2017/08/11/1502429148933015606.jpg" title="1502429148933015606.jpg" alt="5db14e5a5e57def64e81b11359f921dd.jpg"/></span></p><p><span style="font-size: 16px;"><br/></span></p><p><span style="font-size: 14px;">只需要一点点心思就可以让你的礼物更有格调，锦上添花的小技巧一定要试试喔！</span></p><p><br/></p><p style="text-align: center;"><span style="font-size: 14px;">Source | pinterest&nbsp;</span></p><p><br/></p><p><br/></p><p><br/></p><p><br/></p> </div> </div>',
+        authorOpenId: '10000',
+        authorNickName: '空间设计师',
+        authorHeadImgUrl: 'http://static.htxq.net/UploadFiles/headimg/20160727195507935.jpg',
+        isLiked: true,
+        upvoteNum: 120,
+        likedNum: 55,
+        isUpvote: true
+    }]
+
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: '文章'
+        }
+        /**
+        components = {
+            htmlParse
+        }
+        **/
+
+        data = {
+            item: {}
+        }
+
+        methods = {
+        }
+
+        onLoad(options) {
+            const data = lists[options.id || 0]
+            this.item = data
+            WxParse.wxParse('article', 'html', data.html, this, 0)
+            wepy.setNavigationBarTitle({
+                title: data.title
+            })
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    @import '../../libs/wxParse/wxParse.wxss';
+
+    .recommend {
+      .header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100rpx;
+        background-color: #fff;
+        z-index: 1;
+        color: #a4a4a4;
+        padding: 20rpx;
+        font-size: 12px;
+        justify-content: space-between;
+
+        .head-img {
+          height: 100rpx;
+          width: 100rpx;
+          border-radius: 50rpx;
+        }
+
+        .right > view {
+          margin-left: 20rpx;
+        }
+
+        .name {
+          padding: 0 20rpx;
+        }
+
+        .icon {
+          height: 40rpx;
+          width: 40rpx;
+        }
+      }
+
+      .description {
+        position: relative;
+        padding-bottom: 100rpx;
+        padding-top: 140rpx;
+        &::after {
+          content: '';
+          position: absolute;
+          background-color: #f8f8f8;
+          width: 100%;
+          left: 0;
+          height: 50rpx;
+          bottom: 0;
+        }
+        .title {
+          padding: 20rpx;
+          font-size: 20px;
+          text-align: center;
+        }
+        .category {
+          padding: 20rpx;
+          font-size: 14px;
+          text-align: center;
+          position: relative;
+          &::after {
+            content: '';
+            position: absolute;
+            background-color: #a8a8a8;
+            width: 100rpx;
+            left: 50%;
+            height: 4rpx;
+            margin-left: -50rpx;
+            bottom: 0;
+          }
+        }
+      }
+      .content {
+        padding: 20rpx;
+      }
+    }
+
+    /** 图标 **/
+    .icon-like_fill {
+      color: red;
+    }
+    .icon-praise {
+      color: #000;
+    }
+</style>

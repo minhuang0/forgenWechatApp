@@ -1,0 +1,3 @@
+@import "./../../components/baseTitle.wxss";
+@import "./../../components/moment.wxss";
+.moments._b1436aa{position:relative;display:flex;padding-bottom:10rpx;flex-wrap:nowrap;flex-direction:column;background-color:#f8f8f8;background-color:#f8f8f8}.moments .title._b1436aa{color:#fd7e2b}

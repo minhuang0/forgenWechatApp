@@ -1,6 +1,6 @@
 <template>
     <view>
-        <v-title1 title='今日红人'></v-title2>
+        <v-title1 title='今日红人'></v-title1>
         <view class='empty'></view>
         <v-title2 title='精选作品'></v-title2>
         <view class='empty'></view>

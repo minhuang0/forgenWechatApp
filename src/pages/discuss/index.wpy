@@ -1,6 +1,6 @@
 <template>
     <view class="moments">
-        <v-scroll-navbar :tabs='tabs' :activeIndex.sync='activeIndex' @click.user='changeActiveIndex'></v-scroll-navbar>
+        <v-base-title class="title" :leftText.sync="title"></v-base-title>
         <repeat for="{{moments}}" key="index" index="index" item="item">
             <v-moment :moment="item"></v-moment>
         </repeat>
@@ -11,15 +11,20 @@
     import wepy from 'wepy'
     import momentComponent from '@/components/moment'
     import { paddingImg } from '@/modules/common/utils'
-    import scrollNavbarComponent from '@/components/scrollNavbar'
+    import baseTitleComponent from '@/components/baseTitle'
 
-    export default class Index extends wepy.component {
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: '热门话题'
+        }
+
         components = {
-            'v-scroll-navbar': scrollNavbarComponent,
-            'v-moment': momentComponent
+            'v-moment': momentComponent,
+            'v-base-title': baseTitleComponent
         }
 
         data = {
+            title: '',
             moments: [{
                 avatar: 'https://modao.cc/uploads3/images/1024/10246492/raw_1497340535.jpeg',
                 name: '诸葛·刘gloria',
@@ -51,30 +56,10 @@
                 }],
                 upvoteNum: 10,
                 favoriteNum: 20
-            }],
-            /* 顶部分类 */
-            tabs: [{
-                title: '最新'
-            }, {
-                title: '花艺'
-            }, {
-                title: '园艺'
-            }, {
-                title: '家居'
-            }, {
-                title: '婚嫁'
-            }, {
-                title: '生活'
-            }, {
-                title: '杂物'
-            }],
-            activeIndex: 0
+            }]
         }
-
-        methods = {
-            changeActiveIndex(e) {
-                this.activeIndex = parseInt(e.currentTarget.dataset.id)
-            }
+        onLoad(options) {
+            this.title = options.text ? `热门话题: #${options.text}#` : '#更多热门话题#'
         }
     }
 </script>
@@ -88,5 +73,8 @@
       flex-direction: column;
       background-color: #f8f8f8;
       background-color: #f8f8f8;
+      .title {
+          color: #fd7e2b;
+      }
     }
 </style>

@@ -22,7 +22,7 @@
 
         <view class="_3323fe4">
             
-    <view class="title _d08f9c0 _3323fe4">
+    <view class="title _d08f9c0 _3323fe4" data-leftText="{{$vChoice$vBaseTitle$leftText}}" data-rightText="{{$vChoice$vBaseTitle$rightText}}" bindtap="$vChoice$vBaseTitle$tap">
         <text class="left _d08f9c0">{{$vChoice$vBaseTitle$leftText}}</text>
         <view class="right _d08f9c0">
             <text class="_d08f9c0">{{$vChoice$vBaseTitle$rightText}}</text>
@@ -30,7 +30,7 @@
     </view>
             <block class="_3323fe4" wx:for="{{$vChoice$discuss}}" wx:for-index="$vChoice$index" wx:for-item="$vChoice$item" wx:key="$vChoice$index">
                 
-    <view class="text _ca45958 _3323fe4">{{$vChoice$item.text}}</view>
+    <view class="text _ca45958 _3323fe4" bindtap="$vChoice$vText$tap" data-text="{{$vChoice$item.text}}" data-com-index="{{$vChoice$index}}">{{$vChoice$item.text}}</view>
             </block>
         </view>
         

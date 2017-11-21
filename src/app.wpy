@@ -17,6 +17,7 @@
                 'pages/publish/index',
                 'pages/me/index',
                 'pages/show/index',
+                'pages/discuss/index',
                 'pages/index'
             ],
             window: {

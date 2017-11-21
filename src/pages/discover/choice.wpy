@@ -2,9 +2,9 @@
     <view>
         <v-swper :alldata='swiperImgUrls' @click.user='selectSwiper'></v-swper>
         <view>
-            <v-baseTitle leftText="热门讨论" rightText="更多热门讨论"></v-baseTitle>
+            <v-baseTitle leftText="热门话题" rightText="更多热门话题"  @click.user='selectDiscuss' data-id="{{0}}"></v-baseTitle>
             <repeat for="{{discuss}}" key="index" index="index" item="item">
-                <v-text :text="item.text"></v-text>
+                <v-text :text="item.text" data-id="{{index}}" @click.user='selectDiscuss'></v-text>
             </repeat>
         </view>
         <v-title title="热门精选"></v-title>
@@ -94,9 +94,13 @@
                 })
             },
             selectList(e) {
-                console.log(e)
                 wepy.navigateTo({
                     url: `../../pages/recommend/index?id=${e.currentTarget.dataset.id}`
+                })
+            },
+            selectDiscuss(e) {
+                wepy.navigateTo({
+                    url: `../../pages/discuss/index?id=${e.currentTarget.dataset.id}&text=${e.currentTarget.dataset.text || ''}`
                 })
             }
         }

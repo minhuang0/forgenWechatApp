@@ -1,5 +1,5 @@
 <template>
-    <view class="title">
+    <view class="title" data-leftText="{{leftText}}" data-rightText="{{rightText}}" @tap="tap">
         <text class="left">{{leftText}}</text>
         <view class="right">
             <text>{{rightText}}</text>
@@ -14,6 +14,11 @@
         props = {
             leftText: {},
             rightText: {}
+        }
+        methods = {
+            tap(e) {
+                this.$emit('click', e)
+            }
         }
     }
 </script>
@@ -36,10 +41,10 @@
         left: 0;
       }
       .right {
-          display: flex;
-          align-items: flex-end;
-          color: #8e908c;
-          font-size: 12px;
+        display: flex;
+        align-items: flex-end;
+        color: #8e908c;
+        font-size: 12px;
       }
     }
 </style>

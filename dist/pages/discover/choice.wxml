@@ -11,7 +11,7 @@
 
         <view class="_3323fe4">
             
-    <view class="title _d08f9c0 _3323fe4">
+    <view class="title _d08f9c0 _3323fe4" data-leftText="{{$vBaseTitle$leftText}}" data-rightText="{{$vBaseTitle$rightText}}" bindtap="$vBaseTitle$tap">
         <text class="left _d08f9c0">{{$vBaseTitle$leftText}}</text>
         <view class="right _d08f9c0">
             <text class="_d08f9c0">{{$vBaseTitle$rightText}}</text>
@@ -19,7 +19,7 @@
     </view>
             <block class="_3323fe4" wx:for="{{discuss}}" wx:for-index="index" wx:for-item="item" wx:key="index">
                 
-    <view class="text _ca45958 _3323fe4">{{item.text}}</view>
+    <view class="text _ca45958 _3323fe4" bindtap="$vText$tap" data-text="{{item.text}}" data-com-index="{{index}}">{{item.text}}</view>
             </block>
         </view>
         

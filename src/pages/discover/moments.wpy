@@ -1,5 +1,6 @@
 <template>
     <view class="moments">
+        <v-scroll-navbar :tabs='tabs' :activeIndex.sync='activeIndex' @click.user='changeActiveIndex'></v-scroll-navbar>
         <repeat for="{{moments}}" key="index" index="index" item="item">
             <v-moment :moment="item"></v-moment>
         </repeat>
@@ -10,9 +11,11 @@
     import wepy from 'wepy'
     import momentComponent from '@/components/moment'
     import { paddingImg } from '@/modules/common/utils'
+    import scrollNavbarComponent from '@/components/scrollNavbar'
 
     export default class Index extends wepy.component {
         components = {
+            'v-scroll-navbar': scrollNavbarComponent,
             'v-moment': momentComponent
         }
 
@@ -48,12 +51,33 @@
                 }],
                 upvoteNum: 10,
                 favoriteNum: 20
-            }]
+            }],
+            /* 顶部分类 */
+            tabs: [{
+                title: '最新'
+            }, {
+                title: '花艺'
+            }, {
+                title: '园艺'
+            }, {
+                title: '家居'
+            }, {
+                title: '婚嫁'
+            }, {
+                title: '生活'
+            }, {
+                title: '杂物'
+            }],
+            activeIndex: 0
         }
 
         methods = {
             onload () {
                 console.log(this.moments)
+            },
+
+            changeActiveIndex(e) {
+                this.activeIndex = parseInt(e.currentTarget.dataset.id)
             }
         }
     }

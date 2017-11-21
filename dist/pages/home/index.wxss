@@ -1,5 +1,5 @@
+@import "./forgen.wxss";
 @import "./activity.wxss";
-@import "./moments.wxss";
 @import "./recommend.wxss";
 @import "./../../components/navbar.wxss";
 .hidden._719bfc2{display:none}

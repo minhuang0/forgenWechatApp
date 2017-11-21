@@ -1,0 +1,12 @@
+
+    <view class="_2dd78bd">
+        
+    <view class="title _911ca71 _2dd78bd">{{$vTitle1$title}}</view>
+        <view class="empty _2dd78bd"/>
+        
+    <view class="title _911ca71 _2dd78bd">{{$vTitle2$title}}</view>
+        <view class="empty _2dd78bd"/>
+        
+    <view class="title _911ca71 _2dd78bd">{{$vTitle$title}}</view>
+        <view class="empty _2dd78bd"/>
+    </view>

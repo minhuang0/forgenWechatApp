@@ -1,0 +1,49 @@
+<template>
+    <view>
+        <v-navbar :alldata='tabs' :activeIndex.sync='activeIndex' :sliderWidth='sliderWidth' @changeActiveIndex.user='changeActiveIndex'></v-navbar>
+        <v-choice :class='{ hidden: activeIndex !== 0}'></v-choice>
+        <v-moments :class='{ hidden: activeIndex !== 1}'></v-moments>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    import navbarComponent from '@/components/navbar'
+    import momentsComponent from './moments'
+    import choiceComponent from './choice'
+
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: '森林风'
+        }
+
+        components = {
+            'v-navbar': navbarComponent,
+            'v-moments': momentsComponent,
+            'v-choice': choiceComponent
+        }
+
+        data = {
+            /* 顶部分类 */
+            tabs: [{
+                title: '精选'
+            }, {
+                title: '圈子'
+            }],
+            activeIndex: 0,
+            sliderWidth: 93.75
+        }
+
+        methods = {
+            changeActiveIndex(activeIndex) {
+                this.activeIndex = parseInt(activeIndex)
+            }
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    .hidden {
+        display: none;
+    }
+</style>

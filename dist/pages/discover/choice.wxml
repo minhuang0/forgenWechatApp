@@ -1,0 +1,33 @@
+
+    <view class="_3323fe4">
+        
+    <swiper class="swiper _3323fe4" indicator-dots="{{$vSwper$swiperConfig.indicatorDots}}" autoplay="{{$vSwper$swiperConfig.autoplay}}" interval="{{$vSwper$swiperConfig.interval}}" duration="{{$vSwper$swiperConfig.duration}}">
+        <block  wx:for="{{$vSwper$alldata}}" wx:key="id">
+            <swiper-item>
+                <image src="{{item.image}}" style="width: 100%; height=100%;" mode="aspectFill" data-id="{{item.id}}" bindtap="$vSwper$tap"/>
+            </swiper-item>
+        </block>
+    </swiper>
+
+        <view class="_3323fe4">
+            
+    <view class="title _d08f9c0 _3323fe4">
+        <text class="left _d08f9c0">{{$vBaseTitle$leftText}}</text>
+        <view class="right _d08f9c0">
+            <text class="_d08f9c0">{{$vBaseTitle$rightText}}</text>
+        </view>
+    </view>
+            <block class="_3323fe4" wx:for="{{discuss}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                
+    <view class="text _ca45958 _3323fe4">{{item.text}}</view>
+            </block>
+        </view>
+        
+    <view class="title _911ca71 _3323fe4">{{$vTitle$title}}</view>
+        
+    <view class="list _b6beaf1 _3323fe4">
+        <block class="_b6beaf1" wx:for="{{$vGrid$list}}" wx:for-index="$vGrid$index" wx:for-item="$vGrid$item" wx:key="$vGrid$index">
+            <image class="img _b6beaf1" style="{{$vGrid$imgStyle}}" src="{{$vGrid$item.url}}" mode="aspectFill" data-id="{{$vGrid$item.id}}" bindtap="$vGrid$tap"/>
+        </block>
+    </view>
+    </view>

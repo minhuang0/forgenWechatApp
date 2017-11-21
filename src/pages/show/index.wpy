@@ -1,0 +1,33 @@
+<template>
+    <view>
+        <v-title1 title='今日红人'></v-title2>
+        <view class='empty'></view>
+        <v-title2 title='精选作品'></v-title2>
+        <view class='empty'></view>
+        <v-title title='作品投票'></v-title>
+        <view class='empty'></view>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    import titleComponent from '@/components/title'
+
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: '森林风'
+        }
+
+        components = {
+            'v-title': titleComponent,
+            'v-title1': titleComponent,
+            'v-title2': titleComponent
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    .empty {
+        height: 200rpx;
+    }
+</style>

@@ -10,7 +10,7 @@
     </swiper>
 
         
-    <view class="title _911ca71 _7bc4d89">{{$vTitle$title}}</view>
+    <view class="title _911ca71 _7bc4d89">{{$vTitle1$title}}</view>
         
     <view class="list _595bb2f categories _7bc4d89">
         <block  wx:for="{{$vHScroll$alldata}}" wx:key="{{index}}" class="_595bb2f">
@@ -21,7 +21,7 @@
         </block>
     </view>
         
-    <view class="title _911ca71 _7bc4d89">{{$vTitle$title}}</view>
+    <view class="title _911ca71 _7bc4d89">{{$vTitle2$title}}</view>
         
     <view class="list _ea8b76e list _7bc4d89">
         <block class="_ea8b76e" wx:for="{{$vList$list}}" wx:for-index="$vList$index" wx:for-item="$vList$item" wx:key="$vList$index">

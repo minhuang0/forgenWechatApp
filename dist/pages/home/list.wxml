@@ -1,0 +1,29 @@
+
+    <view class="_8319cd6">
+        <block class="_8319cd6" wx:for="{{lists}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+            
+    <view class="title _911ca71 _8319cd6">{{item.categoryName}}</view>
+            
+    <view class="list _ea8b76e list _8319cd6">
+        <block class="_ea8b76e" wx:for="{{item.list}}" wx:for-index="$vList$index" wx:for-item="$vList$item" wx:key="$vList$index">
+            
+    <view class="recommend _2b3a784 _ea8b76e" data-id="{{$vList$item.id}}" bindtap="$vList$vItem$tap" data-com-index="{{index}}-{{$vList$index}}" wx:if="{{item.type === 0}}">
+        <view class="cover _2b3a784">
+            <image class="cover-img _2b3a784" src="{{$vList$item.cover}}" mode="aspectFill"/>
+            <text class="recomment-title _2b3a784">{{$vList$item.title}}</text>
+            <text class="tag _2b3a784">{{$vList$item.tag}}</text>
+        </view>
+    </view>
+            
+    <view class="course _c1c09f4 _ea8b76e" data-id="{{$vList$item.id}}" bindtap="$vList$vCourse$myTap" data-com-index="{{index}}-{{$vList$index}}" wx:if="{{item.type === 1}}">
+        <image class="cover _c1c09f4" src="{{$vList$item.cover}}" mode="aspectFill"/>
+        <view class="content-view _c1c09f4">
+            <text class="title _c1c09f4">{{$vList$item.title}}</text>
+            <text class="description ellipsis _c1c09f4">{{$vList$item.description}}</text>
+            <text class="tag _c1c09f4">#{{$vList$item.tag}}</text>
+        </view>
+    </view>
+        </block>
+    </view>
+        </block>
+    </view>

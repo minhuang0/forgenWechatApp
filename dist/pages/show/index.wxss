@@ -1,0 +1,4 @@
+@import "./../../components/title.wxss";
+@import "./../../components/title.wxss";
+@import "./../../components/title.wxss";
+.empty._2dd78bd{height:200rpx}

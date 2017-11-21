@@ -10,11 +10,13 @@
         config = {
             pages: [
                 'pages/home/index',
+                'pages/discover/index',
                 'pages/recommend/index',
                 'pages/list/index',
                 'pages/activity/index',
                 'pages/publish/index',
                 'pages/me/index',
+                'pages/show/index',
                 'pages/index'
             ],
             window: {
@@ -36,10 +38,22 @@
                         text: '首页'
                     },
                     {
+                        pagePath: 'pages/discover/index',
+                        iconPath: 'modules/images/browse.png',
+                        selectedIconPath: 'modules/images/browse_fill.png',
+                        text: '发现'
+                    },
+                    {
                         pagePath: 'pages/publish/index',
                         iconPath: 'modules/images/camera.png',
                         selectedIconPath: 'modules/images/camera_fill.png',
                         text: '上传'
+                    },
+                    {
+                        pagePath: 'pages/show/index',
+                        iconPath: 'modules/images/dynamic.png',
+                        selectedIconPath: 'modules/images/dynamic_fill.png',
+                        text: '小森秀'
                     },
                     {
                         pagePath: 'pages/me/index',

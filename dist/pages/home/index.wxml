@@ -21,7 +21,7 @@
     </swiper>
 
         
-    <view class="title _911ca71 _7bc4d89">{{$vRecommend$vTitle$title}}</view>
+    <view class="title _911ca71 _7bc4d89">{{$vRecommend$vTitle1$title}}</view>
         
     <view class="list _595bb2f categories _7bc4d89">
         <block  wx:for="{{$vRecommend$vHScroll$alldata}}" wx:key="{{index}}" class="_595bb2f">
@@ -32,7 +32,7 @@
         </block>
     </view>
         
-    <view class="title _911ca71 _7bc4d89">{{$vRecommend$vTitle$title}}</view>
+    <view class="title _911ca71 _7bc4d89">{{$vRecommend$vTitle2$title}}</view>
         
     <view class="list _ea8b76e list _7bc4d89">
         <block class="_ea8b76e" wx:for="{{$vRecommend$vList$list}}" wx:for-index="$vRecommend$vList$index" wx:for-item="$vRecommend$vList$item" wx:key="$vRecommend$vList$index">
@@ -48,41 +48,21 @@
     </view>
     </view>
         
-    <view class="moments _08e4a80 _719bfc2 {{activeIndex !== 1 ? 'hidden' : ''}}">
-        <block class="_08e4a80" wx:for="{{$vMoments$moments}}" wx:for-index="$vMoments$index" wx:for-item="$vMoments$item" wx:key="$vMoments$index">
+    <view class="_722bdc4 _719bfc2 {{activeIndex !== 1 ? 'hidden' : ''}}">
+        <block class="_722bdc4" wx:for="{{$vForgen$lists}}" wx:for-index="$vForgen$index" wx:for-item="$vForgen$item" wx:key="$vForgen$index">
             
-    <view class="moment _e61226b _08e4a80">
-        <view class="monent-header _e61226b">
-            <view class="avatar _e61226b">
-                <image src="{{$vMoments$item.avatar}}" class="_e61226b"/>
-            </view>
-            <view class="content-view _e61226b">
-                <view class="name-view _e61226b">
-                    <text class="name _e61226b">ces{{$vMoments$item.name}}</text>
-                    <text class="create-time _e61226b">{{$vMoments$item.createTime}}</text>
-                </view>
-                <text class="description _e61226b">清风相送，弹指一梦境</text>
+    <view class="title _911ca71 _722bdc4">{{$vForgen$item.categoryName}}</view>
+            
+    <block class="_c1c09f4 list _722bdc4" wx:for="{{$vForgen$item.list}}" wx:for-index="$vForgen$vCourse$index" wx:for-item="$vForgen$vCourse$item" wx:key="$vForgen$vCourse$index">
+        <view class="course _c1c09f4" data-id="{{$vForgen$vCourse$item.id}}" bindtap="$vForgen$vCourse$tap" data-com-index="{{$vForgen$index}}">
+            <image class="cover _c1c09f4" src="{{$vForgen$vCourse$item.cover}}" mode="aspectFill"/>
+            <view class="content-view _c1c09f4">
+                <text class="title _c1c09f4">{{$vForgen$vCourse$item.title}}</text>
+                <text class="description ellipsis _c1c09f4">{{$vForgen$vCourse$item.description}}</text>
+                <text class="tag _c1c09f4">#{{$vForgen$vCourse$item.tag}}</text>
             </view>
         </view>
-        <view class="comment-content _e61226b">{{$vMoments$item.content}}</view>
-        <block class="_e61226b" wx:for="{{$vMoments$item.images}}" wx:for-index="$vMoments$vMoment$index" wx:for-item="$vMoments$vMoment$item" wx:key="$vMoments$vMoment$index">
-            <view class="images _e61226b">
-                <block class="_e61226b" wx:for="{{$vMoments$vMoment$item}}" wx:for-index="$vMoments$vMoment$i" wx:for-item="$vMoments$vMoment$img" wx:key="$vMoments$vMoment$i">
-                    <image class="img _e61226b" src="{{$vMoments$vMoment$img}}" mode="aspectFill"/>
-                </block>
-            </view>
-        </block>
-        <view class="buttons _e61226b">
-            <view class="_e61226b">
-                <image class="icon _e61226b" src="{{$vMoments$vMoment$icons.message}}"/>
-                <text class="_e61226b">{{$vMoments$item.upvoteNum}}</text>
-            </view>
-            <view class="_e61226b">
-                <image class="icon _e61226b" style="margin-left: 40rpx;" src="{{$vMoments$vMoment$icons.upvote}}"/>
-                <text class="_e61226b">{{$vMoments$item.favoriteNum}}</text>
-            </view>
-        </view>
-    </view>
+    </block>
         </block>
     </view>
         

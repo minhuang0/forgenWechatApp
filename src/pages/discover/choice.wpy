@@ -1,0 +1,111 @@
+<template>
+    <view>
+        <v-swper :alldata='swiperImgUrls' @click.user='selectSwiper'></v-swper>
+        <view>
+            <v-baseTitle leftText="热门讨论" rightText="更多热门讨论"></v-baseTitle>
+            <repeat for="{{discuss}}" key="index" index="index" item="item">
+                <v-text :text="item.text"></v-text>
+            </repeat>
+        </view>
+        <v-title title="热门精选"></v-title>
+        <v-grid :list="choiceList" @click.user="selectList"></v-grid>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    import swperComponent from '@/components/swper'
+    import textComponent from '@/components/text'
+    import baseTitleComponent from '@/components/baseTitle'
+    import gridComponent from '@/components/grid'
+    import titleComponent from '@/components/title'
+
+    export default class Index extends wepy.component {
+        components = {
+            'v-swper': swperComponent,
+            'v-text': textComponent,
+            'v-baseTitle': baseTitleComponent,
+            'v-grid': gridComponent,
+            'v-title': titleComponent
+        }
+
+        data = {
+            /* 轮播图数据 */
+            swiperImgUrls: [{
+                id: 1,
+                image: 'http://static.htxq.net/UploadFiles/2017/08/10/20170810141703886959.jpg'
+            }, {
+                id: 0,
+                image: 'http://static.htxq.net/UploadFiles/2017/08/14/20170814140325046299.jpg'
+            }, {
+                id: 1,
+                image: 'http://static.htxq.net/UploadFiles/2017/08/11/20170811131911389859.jpg'
+            }],
+            discuss: [{
+                id: 0,
+                text: '这是什么花'
+            }, {
+                id: 1,
+                text: '干花使用'
+            }, {
+                id: 2,
+                text: '盆栽种植'
+            }],
+            choiceList: [{
+                id: 0,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542719081079365.jpg'
+            }, {
+                id: 1,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542730649005565.jpg'
+            }, {
+                id: 2,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510541506626011490.jpg'
+            }, {
+                id: 3,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542214494079384.jpg'
+            }, {
+                id: 4,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542215017026944.jpg'
+            }, {
+                id: 5,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542215220092294.jpg'
+            }, {
+                id: 6,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542628347035674.jpg'
+            }, {
+                id: 6,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510543629362097062.jpg'
+            }, {
+                id: 6,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510543630413080476.jpg'
+            }, {
+                id: 6,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510543630392093541.jpg'
+            }, {
+                id: 6,
+                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510544891901023536.jpg'
+            }]
+        }
+
+        methods = {
+            selectSwiper(e) {
+                wepy.navigateTo({
+                    url: `../../pages/recommend/index?id=${e.currentTarget.dataset.id}`
+                })
+            },
+            selectList(e) {
+                console.log(e)
+                wepy.navigateTo({
+                    url: `../../pages/recommend/index?id=${e.currentTarget.dataset.id}`
+                })
+            }
+        }
+    }
+</script>
+
+<style lang='scss' scoped>
+    .categories,
+    .list {
+      background-color: #f8f8f8;
+    }
+</style>

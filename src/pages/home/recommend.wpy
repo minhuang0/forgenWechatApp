@@ -1,9 +1,9 @@
 <template>
     <view>
         <v-swper :alldata='swiperImgUrls' @click.user='selectSwiper'></v-swper>
-        <v-title title='专题分类'></v-title>
+        <v-title1 title='专题分类'></v-title1>
         <v-h-scroll class='categories' :alldata='categories' @click.user='selectCategory'></v-h-scroll>
-        <v-title title='今日推荐'></v-title>
+        <v-title2 title='今日推荐'></v-title2>
         <v-list class="list" :list='list' @itemClick.user="selectList"></v-list>
     </view>
 </template>
@@ -18,7 +18,8 @@
     export default class Index extends wepy.component {
         components = {
             'v-swper': swperComponent,
-            'v-title': titleComponent,
+            'v-title1': titleComponent,
+            'v-title2': titleComponent,
             'v-h-scroll': hScrollComponent,
             'v-list': listComponent
         }

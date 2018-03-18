@@ -81,7 +81,7 @@
 </script>
 
 <style lang="less">
-    @import "../../libs/wxParse/wxParse.wxss";
+    @import "../../libs/wxParse/wxParse.scss";
     .wxParse-img {
         margin: 0 auto;
         width: 100%;

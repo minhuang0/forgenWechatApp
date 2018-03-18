@@ -3,10 +3,11 @@
         <image class="cover" src="{{item.cover}}" mode="aspectFill"></image>
         <view class="content-view">
             <text class="title">{{item.title}}</text>
-            <text class="time">{{item.time}}</text>
-            <text class="address">{{item.address}}</text>
+            <text class="description">{{item.description}}</text>
+            <!-- <text class="time">{{item.time}}</text>
+            <text class="address">{{item.address}}</text> -->
             <view class="last">
-                <text class="money">{{item.money > 0 ? item.money : '免费'}}</text>
+                <!-- <text class="money">{{item.money > 0 ? item.money : '免费'}}</text> -->
                 <text class="join" type="default">报名</text>
             </view>
         </view>
@@ -81,9 +82,12 @@
           background-color: #debe7b;
         }
         .last {
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
       }
     }

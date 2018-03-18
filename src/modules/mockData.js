@@ -128,26 +128,13 @@ exports.activities = [{
     description: '时间：2017年9月26日-10月9日\n旅行地点：河北塞罕坝国家森林公园'
 }]
 
+/** 活动详情 */
 exports.activityDetails = {
     title: '花艺课程|浪漫烛光花环',
     imgUrl: 'http://static.htxq.net/UploadFiles/2017/08/14/20170814151409616617.jpg',
     description: '放下工作一周的疲倦，走进清新的植物花园，把你内心的美好用一个花环编织出来，和美妙的烛光相映成辉，开启一段全新的未知旅程。',
     html: '<body style="padding-top: 0px;"><section class="details_title write_info"> <h4> <span id="marketPrice">￥398/人</span> <span id="nowPrice">￥298/人</span> <span id="peopleCount" style="font: 0.22rem/0.52rem">剩余席位：10</span> </h4> <p class="p"> <span id="date">活动时间：2017.08.19/14:00-16:00</span> </p> <p class="p" style="padding-bottom: 0.28rem;"> <span id="address">活动地址：北京.西单大悦城B3会员中心</span> </p> </section> <article id="details_article"><p style="text-align: center;"><span style="font-size: 18px;"><br></span></p><p style="text-align: center;"><span style="font-size: 16px;">- 浪漫烛光花环设计体验 -</span></p><p><br></p><p>&nbsp;</p><p><span style="font-size: 14px;">放下工作一周的疲倦，走进清新的植物花园，把你内心的美好用一个花环编织出来，和美妙的烛光相映成辉，开启一段全新的未知旅程。</span></p><p><span style="font-size: 14px;"><br></span></p><p><span style="font-size: 14px;">本期花艺课堂，带你DIY一个闪烁着浪漫烛光的花环，感受烛光和鲜花结合的双重浪漫，让平凡的生活中也能充满罗曼蒂克的惊喜。</span></p><p><br></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502694874633019488.jpg" title="1502694874633019488.jpg" alt="huayi.jpg"></p><p><img src="http://static.htxq.net/UploadFiles/2017/08/14/1502694880906032342.jpg" title="1502694880906032342.jpg" alt="1501565932861041466.jpg"></p><p><span style="font-size: 14px;">以上图片均为示范，具体DIY的花艺作品会根据花材搭配、个人的喜好、风格、搭配，呈现出不一样的效果，也让温馨的下午时光，充溢着怡然自得的心情。</span></p><p><br></p><p style="text-align: center;"><span style="font-size: 16px;">- 课程介绍 -</span></p><p><br></p><p><span style="font-size: 14px;">本期讲师：王红老师（花田小憩资深花艺师）</span></p><p><span style="font-size: 14px;">课程含饮品、免费的工具使用，做好的作品可以带回家或送给朋友。</span></p><p><br></p><p><span style="font-size: 14px;">课时：2小时</span></p><p><span style="font-size: 14px;">报名截止：开课前1日</span></p><p><span style="font-size: 14px;">席位设定：10人</span></p><p><span style="font-size: 14px;">咨询电话：010-56270610 （周一至周五10:00～17:00）</span></p><p><span style="font-size: 14px;">课堂地址：北京·西单大悦城B3会员中心（可在前台咨询“会员中心”具体位置信息）</span></p><p style="text-align: center;"><span style="font-size: 18px;"><br></span></p><p><span style="font-size: 18px;"><br></span></p><p style="text-align: center;"><span style="font-size: 16px;">- 温馨提示 -</span></p><p>&nbsp;</p><p><span style="font-size: 14px;">1. 课程如需延期或取消，应提前三日联系工作人员，否则视为放弃课程. 本课程为特殊商品，暂不支持退换货&nbsp;</span></p><p><span style="font-size: 14px;">2. 如因特殊原因不能开课或延期，客服会在活动结束一周内联系您办理延期或退款。</span></p><p><span style="font-size: 14px;">3.&nbsp;报名时请填写有效接听电话并保持畅通。</span></p><p style="text-align: center;">&nbsp;</p><p style="text-align: center;">&nbsp;</p><p style="text-align: center;"></p></article></body>',
 }
-
-exports.storeSwipers = [{
-    image: 'https://modao.cc/uploads3/images/1036/10369893/raw_1497833094.jpeg',
-    url: 'https://modao.cc/uploads3/images/1036/10369893/raw_1497833094.jpeg'
-}, {
-    image: 'https://modao.cc/uploads3/images/1038/10380161/raw_1497851915.png',
-    url: 'https://modao.cc/uploads3/images/1038/10380161/raw_1497851915.png'
-}, {
-    image: 'https://modao.cc/uploads3/images/1038/10380163/raw_1497851917.png',
-    url: 'https://modao.cc/uploads3/images/1038/10380163/raw_1497851917.png'
-}, {
-    image: 'https://modao.cc/uploads3/images/1038/10380172/raw_1497851935.png',
-    url: 'https://modao.cc/uploads3/images/1038/10380172/raw_1497851935.png'
-}]
 
 exports.icons = {
     upvote: '../../modules/static/images/praise.png',

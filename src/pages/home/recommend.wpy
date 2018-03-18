@@ -1,10 +1,10 @@
 <template>
     <view>
-        <v-swper :alldata='swiperImgUrls' @click.user='selectSwiper'></v-swper>
+        <v-swper :alldata.sync='banners' @click.user='selectSwiper'></v-swper>
         <v-title1 title='专题分类'></v-title1>
-        <v-h-scroll class='categories' :alldata='categories' @click.user='selectCategory'></v-h-scroll>
+        <v-h-scroll class='categories' :alldata.sync='categories' @click.user='selectCategory'></v-h-scroll>
         <v-title2 title='今日推荐'></v-title2>
-        <v-list class="list" :list='list' @itemClick.user="selectList"></v-list>
+        <v-list class="list" :list.sync='posts' @itemClick.user="selectList"></v-list>
     </view>
 </template>
 
@@ -15,7 +15,17 @@
     import hScrollComponent from '@/components/horizontal-scroll'
     import listComponent from '@/components/list'
 
+    const categoryCovers = [
+        'https://modao.cc/uploads3/images/992/9926261/raw_1496282368.png',
+        'https://modao.cc/uploads3/images/992/9926263/raw_1496282368.jpeg',
+        'https://modao.cc/uploads3/images/992/9926265/raw_1496282369.png',
+        'https://modao.cc/uploads3/images/992/9926267/raw_1496282369.png'
+    ]
+
     export default class Index extends wepy.component {
+        props = {
+            homeData: Object
+        }
         components = {
             'v-swper': swperComponent,
             'v-title1': titleComponent,
@@ -23,57 +33,30 @@
             'v-h-scroll': hScrollComponent,
             'v-list': listComponent
         }
-
-        data = {
-            /* 轮播图数据 */
-            swiperImgUrls: [{
-                id: 1,
-                image: 'http://static.htxq.net/UploadFiles/2017/08/10/20170810141703886959.jpg'
-            }, {
-                id: 0,
-                image: 'http://static.htxq.net/UploadFiles/2017/08/14/20170814140325046299.jpg'
-            }, {
-                id: 1,
-                image: 'http://static.htxq.net/UploadFiles/2017/08/11/20170811131911389859.jpg'
-            }],
-            /* 分类数据 */
-            categories: [{
-                id: 1,
-                cover: 'https://modao.cc/uploads3/images/992/9926261/raw_1496282368.png',
-                title: '热门精选',
-                url: ''
-            }, {
-                id: 2,
-                cover: 'https://modao.cc/uploads3/images/992/9926263/raw_1496282368.jpeg',
-                title: '养生阁',
-                url: ''
-            }, {
-                id: 3,
-                cover: 'https://modao.cc/uploads3/images/992/9926265/raw_1496282369.png',
-                title: '私房菜',
-                url: ''
-            }, {
-                id: 4,
-                cover: 'https://modao.cc/uploads3/images/992/9926267/raw_1496282369.png',
-                title: '生活居',
-                url: ''
-            }],
-            list: [{
-                id: 0,
-                tag: '私房菜',
-                cover: 'http://static.htxq.net/UploadFiles/2017/08/14/20170814140325046299.jpg',
-                title: '夏日随风摇曳的铁线莲'
-            }, {
-                id: 1,
-                tag: '生活居',
-                cover: 'http://static.htxq.net/UploadFiles/2017/08/10/20170810141703886959.jpg',
-                title: '打造一片浪漫的玫瑰庭院'
-            }, {
-                id: 2,
-                tag: '养生阁',
-                cover: 'http://static.htxq.net/UploadFiles/2017/08/11/20170811131911389859.jpg',
-                title: '为你的礼物锦上添「花」'
-            }]
+        computed = {
+            banners () {
+                console.log(this.homeData.banners.posts)
+                return this.homeData.banners.posts
+            },
+            categories () {
+                return this.homeData.recommends.children.map((item, idx) => {
+                    return {
+                        id: item.id,
+                        title: item.name,
+                        cover: categoryCovers[idx]
+                    }
+                })
+            },
+            posts () {
+                return this.homeData.posts.data.map(item => {
+                    return {
+                        id: item.id,
+                        tag: '少传Tag',
+                        cover: item.imgUrl,
+                        title: item.title
+                    }
+                })
+            }
         }
 
         methods = {

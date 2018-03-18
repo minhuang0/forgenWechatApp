@@ -1,9 +1,9 @@
 <template>
     <view class="recommend" data-id="{{item.id}}" @tap="tap">
         <view class="cover">
-            <image class="cover-img" src="{{item.cover}}" mode="aspectFill"></image>
+            <image class="cover-img" src="{{item.cover}}" mode="aspectFill" lazy-load="true"></image>
             <text class="recomment-title">{{item.title}}</text>
-            <text class="tag">{{item.tag}}</text>
+            <!-- <text class="tag">{{item.tag}}</text> -->
         </view>
     </view>
 </template>

@@ -2,11 +2,15 @@
     <!--logs.wxml-->
     <view class="container">
         <view class="page__bd">
-            <view class="weui-toptips weui-toptips_warn" wx:if="{{showTopTips}}">发表成功</view>
+            <view class="weui-toptips weui-toptips_warn" wx:if="{{tips.show}}">{{tips.text}}</view>
+            <view class="weui-toast">
+                <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+                <p class="weui-toast__content" wx:if="{{tips.success}}">发表成功</p>
+            </view>
             <view class="weui-cells weui-cells_after-title">
                 <view class="weui-cell">
                     <view class="weui-cell__bd">
-                        <textarea class="weui-textarea" placeholder="您想说的话!" style="height: 3.3em" />
+                        <textarea class="weui-textarea" placeholder="您想说的话!" style="height: 3.3em" bindinput="bindCommentInput"/>
                     </view>
                 </view>
                 <view class="weui-cell">
@@ -21,7 +25,7 @@
                                     </repeat>
                                 </view>
                                 <view class="weui-uploader__input-box">
-                                    <view class="weui-uploader__input" bindtap="chooseImage"></view>
+                                    <view class="weui-uploader__input" bindtap="chooseMomentImage"></view>
                                 </view>
                             </view>
                         </view>
@@ -29,7 +33,7 @@
                 </view>
             </view>
             <view class="weui-btn-area">
-                <button class="weui-btn" type="primary" bindtap="showTopTips">发表</button>
+                <button class="weui-btn" type="primary" bindtap="confirmMoment">发表</button>
             </view>
         </view>
     </view>
@@ -37,6 +41,7 @@
 
 <script>
     import wepy from 'wepy'
+    import { uploadFile, chooseImage,  postFetch } from '@/modules/common/fetch'
 
     export default class Index extends wepy.page {
         config = {
@@ -44,36 +49,65 @@
         }
 
         data = {
-            showTopTips: false,
-            files: []
+            tips: {
+                show: false,
+                text: ''
+            },
+            content: '',
+            files: [],
+            images: []
         }
 
         methods = {
-            chooseImage(e) {
-                const self = this
-                wepy.chooseImage({
-                    sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
-                    sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
-                    success(res) {
-                        // 返回选定照片的本地文件路径列表，tempFilePath可以作为img标签的src属性显示图片
-                        self.files = self.files.concat(res.tempFilePaths)
-                        self.$apply()
+        }
+        async chooseMomentImage(e) {
+            const imageFilePath = await chooseImage().then(res => {
+                return res.tempFilePaths[0]
+            })
+            uploadFile('/circles/img/upload', imageFilePath).then(imageUrl => {
+                console.log(imageUrl)
+                this.files = this.files.concat(imageFilePath)
+                this.images = this.images.concat(imageUrl)
+                this.$apply()
+            })
+        }
+        bindCommentInput (e) {
+            console.log(e.detail.value)
+            this.content = e.detail.value
+        }
+
+        previewImage(e) {
+            wepy.previewImage({
+                current: e.currentTarget.id, // 当前显示图片的http链接
+                urls: this.files // 需要预览的图片http链接列表
+            })
+        }
+
+        async confirmMoment () {
+            if (this.validateData()) {
+                const rsp = await postFetch('/circles', {
+                    data: {
+                        content: this.content,
+                        circle_imgs: this.images
                     }
                 })
-            },
-            previewImage(e) {
-                wepy.previewImage({
-                    current: e.currentTarget.id, // 当前显示图片的http链接
-                    urls: this.files // 需要预览的图片http链接列表
-                })
-            },
-            showTopTips() {
-                this.showTopTips = true
-                setTimeout(() => {
-                    this.showTopTips = false
-                    this.$apply()
-                }, 3000)
+                console.log(rsp)
             }
+        }
+        showTopTips() {
+            this.tips.show = true
+            setTimeout(() => {
+                this.tips.show = false
+                this.$apply()
+            }, 1000)
+        }
+        validateData () {
+            if (this.content === '' && this.images.length === 0) {
+                this.tips.text = '请上传图片和正文'
+                this.showTopTips()
+                return false
+            }
+            return true
         }
         onLoad() {
         }

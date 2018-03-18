@@ -1,0 +1,118 @@
+<template>
+    <view class="me">
+        <v-moment :moment="moment"></v-moment>
+        <view class="comments">
+            <repeat for="{{comments}}" key="index" index="index" item="item">
+                <view class="comment">{{index + 1}}L: {{item.context}}</view>
+            </repeat>
+        </view>
+        <view class="edit">
+            <input confirm-type="完成" bindinput="bindCommentInput"/>
+            <button @tap="addComment">发布</button>
+        </view>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+    // import { getFetch } from '@/modules/common/fetch'
+    import momentComponent from '@/components/moment'
+    import { paddingImg } from '@/modules/common/utils'
+
+    export default class Index extends wepy.page {
+        config = {
+            navigationBarTitleText: '我的'
+        }
+
+        components = {
+            'v-moment': momentComponent
+        }
+
+        data = {
+            inputMoment: '',
+            // moment: {},
+            moment: {
+                avatar: 'https://modao.cc/uploads3/images/1024/10246492/raw_1497340535.jpeg',
+                name: '诸葛·刘gloria',
+                content: '与柳芽相遇也是偶然，在菜场内的一堆摊位间，发现不起眼的一小袋黄盈盈的嫩芽。其实有点于心不忍，这都是从新绿的柳条上摘下来的吧。但还是忍不住想尝鲜的愿意，买了一点。一点点，已够做出好几个菜了。应时应景，尝个新鲜吧',
+                images: paddingImg([
+                    'https://modao.cc/uploads3/images/1024/10246655/raw_1497340747.jpeg',
+                    'https://modao.cc/uploads3/images/1024/10246656/raw_1497340747.jpeg',
+                    'https://modao.cc/uploads3/images/1024/10246656/raw_1497340747.jpeg'
+                ]),
+                createTime: '1小时前',
+                commons: [{
+                    name: '评论者',
+                    commont: '评论评论评论评论评论评论评论评论'
+                }],
+                upvoteNum: 10,
+                favoriteNum: 20
+            },
+            comments: [{
+                context: '评论评论评论评论评论评论评论评论评论评论评论'
+            }, {
+                context: '评论评论评论评论评论评论评论评论评论评论评论'
+            }, {
+                context: '评论评论评论评论评论评论评论评论评论评论评论'
+            }, {
+                context: '评论评论评论评论评论评论评论评论评论评论评论'
+            }]
+        }
+        bindCommentInput (e) {
+            this.inputMoment = e.detail.value
+        }
+
+        methods = {
+            addComment () {
+                console.log(this.inputMoment)
+            }
+        }
+        async onLoad (options) {
+            // const response = await getFetch(`/posts/${options.id || 1}`)
+            // this.moment = response.circle
+            // this.$apply()
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    .me {
+        position: relative;
+        width: 100%;
+        .comments {
+            padding-bottom: 100rpx;
+            .comment {
+                margin: 20rpx 30rpx;
+                font-size: 14px;
+                color: #555555;
+            }
+        }
+        .edit {
+            background: #fff;
+            position: fixed;
+            left: 0;
+            right: 0;
+            height: 70rpx;
+            bottom: 0;
+            border: 1px;
+            padding: 25rpx 30rpx;
+            input {
+                position: absolute;
+                left: 15rpx;
+                right: 155rpx;
+                height: 46rpx;
+                font-size: 14px;
+                border: 1rpx solid #eee;
+                padding: 10rpx 20rpx;
+            }
+            button {
+                position: absolute;
+                border-radius: 0rpx;
+                right: 15rpx;
+                height: 70rpx;
+                line-height: 70rpx;
+                background: #fff;
+            }
+        }
+    }
+</style>

@@ -1,6 +1,6 @@
 <template>
     <view>
-        <v-swper :alldata='swiperImgUrls' @click.user='selectSwiper'></v-swper>
+        <v-swper :alldata.sync='swiperImgUrls' @click.user='selectSwiper'></v-swper>
         <view>
             <v-baseTitle leftText="热门话题" rightText="更多热门话题"  @click.user='selectDiscuss' data-id="{{0}}"></v-baseTitle>
             <repeat for="{{discuss}}" key="index" index="index" item="item">
@@ -21,6 +21,10 @@
     import titleComponent from '@/components/title'
 
     export default class Index extends wepy.component {
+        props = {
+            choiceData: Object
+        }
+
         components = {
             'v-swper': swperComponent,
             'v-text': textComponent,
@@ -29,18 +33,19 @@
             'v-title': titleComponent
         }
 
+        computed = {
+            swiperImgUrls () {
+                return this.choiceData.banners.map(item => {
+                    return {
+                        id: item.id,
+                        imgUrl: item.imgUrl
+                    }
+                })
+            }
+        }
+
         data = {
             /* 轮播图数据 */
-            swiperImgUrls: [{
-                id: 1,
-                image: 'http://static.htxq.net/UploadFiles/2017/08/10/20170810141703886959.jpg'
-            }, {
-                id: 0,
-                image: 'http://static.htxq.net/UploadFiles/2017/08/14/20170814140325046299.jpg'
-            }, {
-                id: 1,
-                image: 'http://static.htxq.net/UploadFiles/2017/08/11/20170811131911389859.jpg'
-            }],
             discuss: [{
                 id: 0,
                 text: '这是什么花'

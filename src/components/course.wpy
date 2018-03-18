@@ -24,7 +24,6 @@
             }
         }
         onLoad() {
-            console.log(this.item)
         }
     }
 </script>

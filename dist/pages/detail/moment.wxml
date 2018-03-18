@@ -1,0 +1,45 @@
+
+    <view class="me _c8cd676">
+        
+    <view class="moment _e61226b _c8cd676" bindtap="$vMoment$goMomentDetail">
+        <view class="monent-header _e61226b">
+            <view class="avatar _e61226b">
+                <image src="{{$vMoment$moment.avatar}}" class="_e61226b"/>
+            </view>
+            <view class="content-view _e61226b">
+                <view class="name-view _e61226b">
+                    <text class="name _e61226b">ces{{$vMoment$moment.name}}</text>
+                    <text class="create-time _e61226b">{{$vMoment$moment.createTime}}</text>
+                </view>
+                <text class="description _e61226b">清风相送，弹指一梦境</text>
+            </view>
+        </view>
+        <view class="comment-content _e61226b">{{$vMoment$moment.content}}</view>
+        <block class="_e61226b" wx:for="{{$vMoment$moment.images}}" wx:for-index="$vMoment$index" wx:for-item="$vMoment$item" wx:key="$vMoment$index">
+            <view class="images _e61226b">
+                <block class="_e61226b" wx:for="{{$vMoment$item}}" wx:for-index="$vMoment$i" wx:for-item="$vMoment$img" wx:key="$vMoment$i">
+                    <image class="img _e61226b" src="{{$vMoment$img}}" mode="aspectFill"/>
+                </block>
+            </view>
+        </block>
+        <view class="buttons _e61226b">
+            <view class="_e61226b">
+                <image class="icon _e61226b" src="{{$vMoment$icons.message}}"/>
+                <text class="_e61226b">{{$vMoment$moment.upvoteNum}}</text>
+            </view>
+            <view class="_e61226b">
+                <image class="icon _e61226b" style="margin-left: 40rpx;" src="{{$vMoment$icons.upvote}}"/>
+                <text class="_e61226b">{{$vMoment$moment.favoriteNum}}</text>
+            </view>
+        </view>
+    </view>
+        <view class="comments _c8cd676">
+            <block class="_c8cd676" wx:for="{{comments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                <view class="comment _c8cd676">{{index + 1}}L: {{item.context}}</view>
+            </block>
+        </view>
+        <view class="edit _c8cd676">
+            <input confirm-type="完成" bindinput="bindCommentInput" class="_c8cd676"/>
+            <button bindtap="addComment" class="_c8cd676">发布</button>
+        </view>
+    </view>

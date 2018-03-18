@@ -1,5 +1,5 @@
 <template>
-    <view class="moment">
+    <view class="moment" @tap="goMomentDetail">
         <view class="monent-header">
             <view class="avatar">
                 <image src="{{moment.avatar}}"></image>
@@ -44,6 +44,11 @@
         methods = {
             onReady () {
                 console.log(this.moment)
+            },
+            goMomentDetail(e) {
+                wepy.navigateTo({
+                    url: `../../pages/detail/moment?id=${e.currentTarget.dataset.id}`
+                })
             }
         }
 

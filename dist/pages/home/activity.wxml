@@ -6,10 +6,11 @@
         <image class="cover _97f9c8c" src="{{item.cover}}" mode="aspectFill"/>
         <view class="content-view _97f9c8c">
             <text class="title _97f9c8c">{{item.title}}</text>
-            <text class="time _97f9c8c">{{item.time}}</text>
-            <text class="address _97f9c8c">{{item.address}}</text>
+            <text class="description _97f9c8c">{{item.description}}</text>
+            <!-- <text class="time">{{item.time}}</text>
+            <text class="address">{{item.address}}</text> -->
             <view class="last _97f9c8c">
-                <text class="money _97f9c8c">{{item.money > 0 ? item.money : '免费'}}</text>
+                <!-- <text class="money">{{item.money > 0 ? item.money : '免费'}}</text> -->
                 <text class="join _97f9c8c" type="default">报名</text>
             </view>
         </view>

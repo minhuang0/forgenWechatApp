@@ -35,42 +35,58 @@ var Index = function (_wepy$component) {
             args[_key] = arguments[_key];
         }
 
-        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.$repeat = { "activities": { "com": "v-activity", "props": "item" } }, _this.$props = { "v-activity": { "xmlns:v-bind": { "value": "", "for": "activities", "item": "item", "index": "index", "key": "index" }, "v-bind:item.once": { "value": "item", "type": "item", "for": "activities", "item": "item", "index": "index", "key": "index" }, "xmlns:v-on": { "value": "", "for": "activities", "item": "item", "index": "index", "key": "index" } } }, _this.$events = { "v-activity": { "v-on:click": "selectActivity" } }, _this.components = {
+        return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.props = {
+            activityData: Array
+        }, _this.$repeat = { "activities": { "com": "v-activity", "props": "item.sync" } }, _this.$props = { "v-activity": { "xmlns:v-bind": { "value": "", "for": "activities", "item": "item", "index": "index", "key": "index" }, "v-bind:item.sync": { "value": "item", "type": "item", "for": "activities", "item": "item", "index": "index", "key": "index" }, "xmlns:v-on": { "value": "", "for": "activities", "item": "item", "index": "index", "key": "index" } } }, _this.$events = { "v-activity": { "v-on:click": "selectActivity" } }, _this.components = {
             'v-activity': _activity2.default
-        }, _this.data = {
-            activities: [{
-                id: 1,
-                cover: 'https://modao.cc/uploads3/images/1030/10303683/raw_1497508860.jpeg',
-                title: '森林蘑菇总动员亲子厨房大赛',
-                time: '2017-07-18 15:00:00',
-                address: '北京',
-                description: '报名时间：2月1日至2月25日\n报名电话：18210237062 88892960\n幼儿年龄：6-12岁'
-            }, {
-                id: 2,
-                cover: 'https://modao.cc/uploads3/images/1030/10303685/raw_1497508861.jpeg',
-                title: '向自然学习的生活方式',
-                time: '2017-07-18 15:00:00',
-                address: '北京',
-                description: '时间：2017年1月4日 14:00\n内容：向自然学习的生活方式\n讲师：中医文史研究会副会长 王黑特'
-            }, {
-                id: 3,
-                cover: 'https://modao.cc/uploads3/images/1026/10260002/raw_1497399725.jpeg',
-                title: '“体验自然”森林旅行团开团啦！',
-                time: '2017-07-18 15:00:00',
-                address: '北京',
-                description: '时间：2017年9月26日-10月9日\n旅行地点：河北塞罕坝国家森林公园'
-            }]
+        }, _this.computed = {
+            activities: function activities() {
+                console.log(this.activityData);
+                return this.activityData.map(function (i) {
+                    return {
+                        id: i.id,
+                        cover: i.imgUrl,
+                        title: i.title,
+                        description: i.description
+                    };
+                });
+            }
         }, _this.methods = {
             selectActivity: function selectActivity(e) {
                 _wepy2.default.navigateTo({
-                    url: '../../pages/activity/index?id=' + e.currentTarget.dataset.id
+                    url: '../../pages/recommend/index?id=' + e.currentTarget.dataset.id
                 });
             }
         }, _temp), _possibleConstructorReturn(_this, _ret);
     }
 
+    // data = {
+    //     activities: [{
+    //         id: 1,
+    //         cover: 'https://modao.cc/uploads3/images/1030/10303683/raw_1497508860.jpeg',
+    //         title: '森林蘑菇总动员亲子厨房大赛',
+    //         time: '2017-07-18 15:00:00',
+    //         address: '北京',
+    //         description: '报名时间：2月1日至2月25日\n报名电话：18210237062 88892960\n幼儿年龄：6-12岁'
+    //     }, {
+    //         id: 2,
+    //         cover: 'https://modao.cc/uploads3/images/1030/10303685/raw_1497508861.jpeg',
+    //         title: '向自然学习的生活方式',
+    //         time: '2017-07-18 15:00:00',
+    //         address: '北京',
+    //         description: '时间：2017年1月4日 14:00\n内容：向自然学习的生活方式\n讲师：中医文史研究会副会长 王黑特'
+    //     }, {
+    //         id: 3,
+    //         cover: 'https://modao.cc/uploads3/images/1026/10260002/raw_1497399725.jpeg',
+    //         title: '“体验自然”森林旅行团开团啦！',
+    //         time: '2017-07-18 15:00:00',
+    //         address: '北京',
+    //         description: '时间：2017年9月26日-10月9日\n旅行地点：河北塞罕坝国家森林公园'
+    //     }]
+    // }
+
     return Index;
 }(_wepy2.default.component);
 
 exports.default = Index;
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFjdGl2aXR5LmpzIl0sIm5hbWVzIjpbIkluZGV4IiwiJHJlcGVhdCIsIiRwcm9wcyIsIiRldmVudHMiLCJjb21wb25lbnRzIiwiZGF0YSIsImFjdGl2aXRpZXMiLCJpZCIsImNvdmVyIiwidGl0bGUiLCJ0aW1lIiwiYWRkcmVzcyIsImRlc2NyaXB0aW9uIiwibWV0aG9kcyIsInNlbGVjdEFjdGl2aXR5IiwiZSIsIm5hdmlnYXRlVG8iLCJ1cmwiLCJjdXJyZW50VGFyZ2V0IiwiZGF0YXNldCIsImNvbXBvbmVudCJdLCJtYXBwaW5ncyI6Ijs7Ozs7OztBQUNJOzs7O0FBQ0E7Ozs7Ozs7Ozs7OztJQUVxQkEsSzs7Ozs7Ozs7Ozs7Ozs7d0xBQ2xCQyxPLEdBQVUsRUFBQyxjQUFhLEVBQUMsT0FBTSxZQUFQLEVBQW9CLFNBQVEsTUFBNUIsRUFBZCxFLFFBQ2pCQyxNLEdBQVMsRUFBQyxjQUFhLEVBQUMsZ0JBQWUsRUFBQyxTQUFRLEVBQVQsRUFBWSxPQUFNLFlBQWxCLEVBQStCLFFBQU8sTUFBdEMsRUFBNkMsU0FBUSxPQUFyRCxFQUE2RCxPQUFNLE9BQW5FLEVBQWhCLEVBQTRGLG9CQUFtQixFQUFDLFNBQVEsTUFBVCxFQUFnQixRQUFPLE1BQXZCLEVBQThCLE9BQU0sWUFBcEMsRUFBaUQsUUFBTyxNQUF4RCxFQUErRCxTQUFRLE9BQXZFLEVBQStFLE9BQU0sT0FBckYsRUFBL0csRUFBNk0sY0FBYSxFQUFDLFNBQVEsRUFBVCxFQUFZLE9BQU0sWUFBbEIsRUFBK0IsUUFBTyxNQUF0QyxFQUE2QyxTQUFRLE9BQXJELEVBQTZELE9BQU0sT0FBbkUsRUFBMU4sRUFBZCxFLFFBQ1RDLE8sR0FBVSxFQUFDLGNBQWEsRUFBQyxjQUFhLGdCQUFkLEVBQWQsRSxRQUNUQyxVLEdBQWE7QUFDRjtBQURFLFMsUUFJTkMsSSxHQUFPO0FBQ0hDLHdCQUFZLENBQUM7QUFDVEMsb0JBQUksQ0FESztBQUVUQyx1QkFBTyxvRUFGRTtBQUdUQyx1QkFBTyxlQUhFO0FBSVRDLHNCQUFNLHFCQUpHO0FBS1RDLHlCQUFTLElBTEE7QUFNVEMsNkJBQWE7QUFOSixhQUFELEVBT1Q7QUFDQ0wsb0JBQUksQ0FETDtBQUVDQyx1QkFBTyxvRUFGUjtBQUdDQyx1QkFBTyxZQUhSO0FBSUNDLHNCQUFNLHFCQUpQO0FBS0NDLHlCQUFTLElBTFY7QUFNQ0MsNkJBQWE7QUFOZCxhQVBTLEVBY1Q7QUFDQ0wsb0JBQUksQ0FETDtBQUVDQyx1QkFBTyxvRUFGUjtBQUdDQyx1QkFBTyxpQkFIUjtBQUlDQyxzQkFBTSxxQkFKUDtBQUtDQyx5QkFBUyxJQUxWO0FBTUNDLDZCQUFhO0FBTmQsYUFkUztBQURULFMsUUF5QlBDLE8sR0FBVTtBQUNOQywwQkFETSwwQkFDU0MsQ0FEVCxFQUNZO0FBQ2QsK0JBQUtDLFVBQUwsQ0FBZ0I7QUFDWkMsNERBQXNDRixFQUFFRyxhQUFGLENBQWdCQyxPQUFoQixDQUF3Qlo7QUFEbEQsaUJBQWhCO0FBR0g7QUFMSyxTOzs7O0VBakNxQixlQUFLYSxTOztrQkFBbkJwQixLIiwiZmlsZSI6ImFjdGl2aXR5LmpzIiwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgaW1wb3J0IHdlcHkgZnJvbSAnd2VweSdcbiAgICBpbXBvcnQgYWN0aXZpdHlDb21wb25lbnQgZnJvbSAnQC9jb21wb25lbnRzL2FjdGl2aXR5J1xuXG4gICAgZXhwb3J0IGRlZmF1bHQgY2xhc3MgSW5kZXggZXh0ZW5kcyB3ZXB5LmNvbXBvbmVudCB7XG4gICAgICAgJHJlcGVhdCA9IHtcImFjdGl2aXRpZXNcIjp7XCJjb21cIjpcInYtYWN0aXZpdHlcIixcInByb3BzXCI6XCJpdGVtXCJ9fTtcclxuJHByb3BzID0ge1widi1hY3Rpdml0eVwiOntcInhtbG5zOnYtYmluZFwiOntcInZhbHVlXCI6XCJcIixcImZvclwiOlwiYWN0aXZpdGllc1wiLFwiaXRlbVwiOlwiaXRlbVwiLFwiaW5kZXhcIjpcImluZGV4XCIsXCJrZXlcIjpcImluZGV4XCJ9LFwidi1iaW5kOml0ZW0ub25jZVwiOntcInZhbHVlXCI6XCJpdGVtXCIsXCJ0eXBlXCI6XCJpdGVtXCIsXCJmb3JcIjpcImFjdGl2aXRpZXNcIixcIml0ZW1cIjpcIml0ZW1cIixcImluZGV4XCI6XCJpbmRleFwiLFwia2V5XCI6XCJpbmRleFwifSxcInhtbG5zOnYtb25cIjp7XCJ2YWx1ZVwiOlwiXCIsXCJmb3JcIjpcImFjdGl2aXRpZXNcIixcIml0ZW1cIjpcIml0ZW1cIixcImluZGV4XCI6XCJpbmRleFwiLFwia2V5XCI6XCJpbmRleFwifX19O1xyXG4kZXZlbnRzID0ge1widi1hY3Rpdml0eVwiOntcInYtb246Y2xpY2tcIjpcInNlbGVjdEFjdGl2aXR5XCJ9fTtcclxuIGNvbXBvbmVudHMgPSB7XG4gICAgICAgICAgICAndi1hY3Rpdml0eSc6IGFjdGl2aXR5Q29tcG9uZW50XG4gICAgICAgIH1cblxuICAgICAgICBkYXRhID0ge1xuICAgICAgICAgICAgYWN0aXZpdGllczogW3tcbiAgICAgICAgICAgICAgICBpZDogMSxcbiAgICAgICAgICAgICAgICBjb3ZlcjogJ2h0dHBzOi8vbW9kYW8uY2MvdXBsb2FkczMvaW1hZ2VzLzEwMzAvMTAzMDM2ODMvcmF3XzE0OTc1MDg4NjAuanBlZycsXG4gICAgICAgICAgICAgICAgdGl0bGU6ICfmo67mnpfomJHoj4fmgLvliqjlkZjkurLlrZDljqjmiL/lpKfotZsnLFxuICAgICAgICAgICAgICAgIHRpbWU6ICcyMDE3LTA3LTE4IDE1OjAwOjAwJyxcbiAgICAgICAgICAgICAgICBhZGRyZXNzOiAn5YyX5LqsJyxcbiAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogJ+aKpeWQjeaXtumXtO+8mjLmnIgx5pel6IezMuaciDI15pelXFxu5oql5ZCN55S16K+d77yaMTgyMTAyMzcwNjIgODg4OTI5NjBcXG7lubzlhL/lubTpvoTvvJo2LTEy5bKBJ1xuICAgICAgICAgICAgfSwge1xuICAgICAgICAgICAgICAgIGlkOiAyLFxuICAgICAgICAgICAgICAgIGNvdmVyOiAnaHR0cHM6Ly9tb2Rhby5jYy91cGxvYWRzMy9pbWFnZXMvMTAzMC8xMDMwMzY4NS9yYXdfMTQ5NzUwODg2MS5qcGVnJyxcbiAgICAgICAgICAgICAgICB0aXRsZTogJ+WQkeiHqueEtuWtpuS5oOeahOeUn+a0u+aWueW8jycsXG4gICAgICAgICAgICAgICAgdGltZTogJzIwMTctMDctMTggMTU6MDA6MDAnLFxuICAgICAgICAgICAgICAgIGFkZHJlc3M6ICfljJfkuqwnLFxuICAgICAgICAgICAgICAgIGRlc2NyaXB0aW9uOiAn5pe26Ze077yaMjAxN+W5tDHmnIg05pelIDE0OjAwXFxu5YaF5a6577ya5ZCR6Ieq54S25a2m5Lmg55qE55Sf5rS75pa55byPXFxu6K6y5biI77ya5Lit5Yy75paH5Y+y56CU56m25Lya5Ymv5Lya6ZW/IOeOi+m7keeJuSdcbiAgICAgICAgICAgIH0sIHtcbiAgICAgICAgICAgICAgICBpZDogMyxcbiAgICAgICAgICAgICAgICBjb3ZlcjogJ2h0dHBzOi8vbW9kYW8uY2MvdXBsb2FkczMvaW1hZ2VzLzEwMjYvMTAyNjAwMDIvcmF3XzE0OTczOTk3MjUuanBlZycsXG4gICAgICAgICAgICAgICAgdGl0bGU6ICfigJzkvZPpqozoh6rnhLbigJ3mo67mnpfml4XooYzlm6LlvIDlm6LllabvvIEnLFxuICAgICAgICAgICAgICAgIHRpbWU6ICcyMDE3LTA3LTE4IDE1OjAwOjAwJyxcbiAgICAgICAgICAgICAgICBhZGRyZXNzOiAn5YyX5LqsJyxcbiAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogJ+aXtumXtO+8mjIwMTflubQ55pyIMjbml6UtMTDmnIg55pelXFxu5peF6KGM5Zyw54K577ya5rKz5YyX5aGe572V5Z2d5Zu95a625qOu5p6X5YWs5ZutJ1xuICAgICAgICAgICAgfV1cbiAgICAgICAgfVxuXG4gICAgICAgIG1ldGhvZHMgPSB7XG4gICAgICAgICAgICBzZWxlY3RBY3Rpdml0eShlKSB7XG4gICAgICAgICAgICAgICAgd2VweS5uYXZpZ2F0ZVRvKHtcbiAgICAgICAgICAgICAgICAgICAgdXJsOiBgLi4vLi4vcGFnZXMvYWN0aXZpdHkvaW5kZXg/aWQ9JHtlLmN1cnJlbnRUYXJnZXQuZGF0YXNldC5pZH1gXG4gICAgICAgICAgICAgICAgfSlcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgIH1cbiJdfQ==
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImFjdGl2aXR5LmpzIl0sIm5hbWVzIjpbIkluZGV4IiwicHJvcHMiLCJhY3Rpdml0eURhdGEiLCJBcnJheSIsIiRyZXBlYXQiLCIkcHJvcHMiLCIkZXZlbnRzIiwiY29tcG9uZW50cyIsImNvbXB1dGVkIiwiYWN0aXZpdGllcyIsImNvbnNvbGUiLCJsb2ciLCJtYXAiLCJpZCIsImkiLCJjb3ZlciIsImltZ1VybCIsInRpdGxlIiwiZGVzY3JpcHRpb24iLCJtZXRob2RzIiwic2VsZWN0QWN0aXZpdHkiLCJlIiwibmF2aWdhdGVUbyIsInVybCIsImN1cnJlbnRUYXJnZXQiLCJkYXRhc2V0IiwiY29tcG9uZW50Il0sIm1hcHBpbmdzIjoiOzs7Ozs7O0FBQ0k7Ozs7QUFDQTs7Ozs7Ozs7Ozs7O0lBRXFCQSxLOzs7Ozs7Ozs7Ozs7Ozt3TEFDakJDLEssR0FBUTtBQUNKQywwQkFBY0M7QUFEVixTLFFBR1RDLE8sR0FBVSxFQUFDLGNBQWEsRUFBQyxPQUFNLFlBQVAsRUFBb0IsU0FBUSxXQUE1QixFQUFkLEUsUUFDakJDLE0sR0FBUyxFQUFDLGNBQWEsRUFBQyxnQkFBZSxFQUFDLFNBQVEsRUFBVCxFQUFZLE9BQU0sWUFBbEIsRUFBK0IsUUFBTyxNQUF0QyxFQUE2QyxTQUFRLE9BQXJELEVBQTZELE9BQU0sT0FBbkUsRUFBaEIsRUFBNEYsb0JBQW1CLEVBQUMsU0FBUSxNQUFULEVBQWdCLFFBQU8sTUFBdkIsRUFBOEIsT0FBTSxZQUFwQyxFQUFpRCxRQUFPLE1BQXhELEVBQStELFNBQVEsT0FBdkUsRUFBK0UsT0FBTSxPQUFyRixFQUEvRyxFQUE2TSxjQUFhLEVBQUMsU0FBUSxFQUFULEVBQVksT0FBTSxZQUFsQixFQUErQixRQUFPLE1BQXRDLEVBQTZDLFNBQVEsT0FBckQsRUFBNkQsT0FBTSxPQUFuRSxFQUExTixFQUFkLEUsUUFDVEMsTyxHQUFVLEVBQUMsY0FBYSxFQUFDLGNBQWEsZ0JBQWQsRUFBZCxFLFFBQ1RDLFUsR0FBYTtBQUNGO0FBREUsUyxRQUlOQyxRLEdBQVc7QUFDUEMsc0JBRE8sd0JBQ087QUFDVkMsd0JBQVFDLEdBQVIsQ0FBWSxLQUFLVCxZQUFqQjtBQUNBLHVCQUFPLEtBQUtBLFlBQUwsQ0FBa0JVLEdBQWxCLENBQXNCLGFBQUs7QUFDOUIsMkJBQU87QUFDSEMsNEJBQUlDLEVBQUVELEVBREg7QUFFSEUsK0JBQU9ELEVBQUVFLE1BRk47QUFHSEMsK0JBQU9ILEVBQUVHLEtBSE47QUFJSEMscUNBQWFKLEVBQUVJO0FBSloscUJBQVA7QUFNSCxpQkFQTSxDQUFQO0FBUUg7QUFYTSxTLFFBdUNYQyxPLEdBQVU7QUFDTkMsMEJBRE0sMEJBQ1NDLENBRFQsRUFDWTtBQUNkLCtCQUFLQyxVQUFMLENBQWdCO0FBQ1pDLDZEQUF1Q0YsRUFBRUcsYUFBRixDQUFnQkMsT0FBaEIsQ0FBd0JaO0FBRG5ELGlCQUFoQjtBQUdIO0FBTEssUzs7O0FBekJWO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7O0VBaEQrQixlQUFLYSxTOztrQkFBbkIxQixLIiwiZmlsZSI6ImFjdGl2aXR5LmpzIiwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgaW1wb3J0IHdlcHkgZnJvbSAnd2VweSdcbiAgICBpbXBvcnQgYWN0aXZpdHlDb21wb25lbnQgZnJvbSAnQC9jb21wb25lbnRzL2FjdGl2aXR5J1xuXG4gICAgZXhwb3J0IGRlZmF1bHQgY2xhc3MgSW5kZXggZXh0ZW5kcyB3ZXB5LmNvbXBvbmVudCB7XG4gICAgICAgIHByb3BzID0ge1xuICAgICAgICAgICAgYWN0aXZpdHlEYXRhOiBBcnJheVxuICAgICAgICB9XG4gICAgICAgJHJlcGVhdCA9IHtcImFjdGl2aXRpZXNcIjp7XCJjb21cIjpcInYtYWN0aXZpdHlcIixcInByb3BzXCI6XCJpdGVtLnN5bmNcIn19O1xyXG4kcHJvcHMgPSB7XCJ2LWFjdGl2aXR5XCI6e1wieG1sbnM6di1iaW5kXCI6e1widmFsdWVcIjpcIlwiLFwiZm9yXCI6XCJhY3Rpdml0aWVzXCIsXCJpdGVtXCI6XCJpdGVtXCIsXCJpbmRleFwiOlwiaW5kZXhcIixcImtleVwiOlwiaW5kZXhcIn0sXCJ2LWJpbmQ6aXRlbS5zeW5jXCI6e1widmFsdWVcIjpcIml0ZW1cIixcInR5cGVcIjpcIml0ZW1cIixcImZvclwiOlwiYWN0aXZpdGllc1wiLFwiaXRlbVwiOlwiaXRlbVwiLFwiaW5kZXhcIjpcImluZGV4XCIsXCJrZXlcIjpcImluZGV4XCJ9LFwieG1sbnM6di1vblwiOntcInZhbHVlXCI6XCJcIixcImZvclwiOlwiYWN0aXZpdGllc1wiLFwiaXRlbVwiOlwiaXRlbVwiLFwiaW5kZXhcIjpcImluZGV4XCIsXCJrZXlcIjpcImluZGV4XCJ9fX07XHJcbiRldmVudHMgPSB7XCJ2LWFjdGl2aXR5XCI6e1widi1vbjpjbGlja1wiOlwic2VsZWN0QWN0aXZpdHlcIn19O1xyXG4gY29tcG9uZW50cyA9IHtcbiAgICAgICAgICAgICd2LWFjdGl2aXR5JzogYWN0aXZpdHlDb21wb25lbnRcbiAgICAgICAgfVxuXG4gICAgICAgIGNvbXB1dGVkID0ge1xuICAgICAgICAgICAgYWN0aXZpdGllcyAoKSB7XG4gICAgICAgICAgICAgICAgY29uc29sZS5sb2codGhpcy5hY3Rpdml0eURhdGEpXG4gICAgICAgICAgICAgICAgcmV0dXJuIHRoaXMuYWN0aXZpdHlEYXRhLm1hcChpID0+IHtcbiAgICAgICAgICAgICAgICAgICAgcmV0dXJuIHtcbiAgICAgICAgICAgICAgICAgICAgICAgIGlkOiBpLmlkLFxuICAgICAgICAgICAgICAgICAgICAgICAgY292ZXI6IGkuaW1nVXJsLFxuICAgICAgICAgICAgICAgICAgICAgICAgdGl0bGU6IGkudGl0bGUsXG4gICAgICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjogaS5kZXNjcmlwdGlvblxuICAgICAgICAgICAgICAgICAgICB9XG4gICAgICAgICAgICAgICAgfSlcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuXG4gICAgICAgIC8vIGRhdGEgPSB7XG4gICAgICAgIC8vICAgICBhY3Rpdml0aWVzOiBbe1xuICAgICAgICAvLyAgICAgICAgIGlkOiAxLFxuICAgICAgICAvLyAgICAgICAgIGNvdmVyOiAnaHR0cHM6Ly9tb2Rhby5jYy91cGxvYWRzMy9pbWFnZXMvMTAzMC8xMDMwMzY4My9yYXdfMTQ5NzUwODg2MC5qcGVnJyxcbiAgICAgICAgLy8gICAgICAgICB0aXRsZTogJ+ajruael+iYkeiPh+aAu+WKqOWRmOS6suWtkOWOqOaIv+Wkp+i1mycsXG4gICAgICAgIC8vICAgICAgICAgdGltZTogJzIwMTctMDctMTggMTU6MDA6MDAnLFxuICAgICAgICAvLyAgICAgICAgIGFkZHJlc3M6ICfljJfkuqwnLFxuICAgICAgICAvLyAgICAgICAgIGRlc2NyaXB0aW9uOiAn5oql5ZCN5pe26Ze077yaMuaciDHml6Xoh7My5pyIMjXml6VcXG7miqXlkI3nlLXor53vvJoxODIxMDIzNzA2MiA4ODg5Mjk2MFxcbuW5vOWEv+W5tOm+hO+8mjYtMTLlsoEnXG4gICAgICAgIC8vICAgICB9LCB7XG4gICAgICAgIC8vICAgICAgICAgaWQ6IDIsXG4gICAgICAgIC8vICAgICAgICAgY292ZXI6ICdodHRwczovL21vZGFvLmNjL3VwbG9hZHMzL2ltYWdlcy8xMDMwLzEwMzAzNjg1L3Jhd18xNDk3NTA4ODYxLmpwZWcnLFxuICAgICAgICAvLyAgICAgICAgIHRpdGxlOiAn5ZCR6Ieq54S25a2m5Lmg55qE55Sf5rS75pa55byPJyxcbiAgICAgICAgLy8gICAgICAgICB0aW1lOiAnMjAxNy0wNy0xOCAxNTowMDowMCcsXG4gICAgICAgIC8vICAgICAgICAgYWRkcmVzczogJ+WMl+S6rCcsXG4gICAgICAgIC8vICAgICAgICAgZGVzY3JpcHRpb246ICfml7bpl7TvvJoyMDE35bm0MeaciDTml6UgMTQ6MDBcXG7lhoXlrrnvvJrlkJHoh6rnhLblrabkuaDnmoTnlJ/mtLvmlrnlvI9cXG7orrLluIjvvJrkuK3ljLvmloflj7LnoJTnqbbkvJrlia/kvJrplb8g546L6buR54m5J1xuICAgICAgICAvLyAgICAgfSwge1xuICAgICAgICAvLyAgICAgICAgIGlkOiAzLFxuICAgICAgICAvLyAgICAgICAgIGNvdmVyOiAnaHR0cHM6Ly9tb2Rhby5jYy91cGxvYWRzMy9pbWFnZXMvMTAyNi8xMDI2MDAwMi9yYXdfMTQ5NzM5OTcyNS5qcGVnJyxcbiAgICAgICAgLy8gICAgICAgICB0aXRsZTogJ+KAnOS9k+mqjOiHqueEtuKAneajruael+aXheihjOWbouW8gOWbouWVpu+8gScsXG4gICAgICAgIC8vICAgICAgICAgdGltZTogJzIwMTctMDctMTggMTU6MDA6MDAnLFxuICAgICAgICAvLyAgICAgICAgIGFkZHJlc3M6ICfljJfkuqwnLFxuICAgICAgICAvLyAgICAgICAgIGRlc2NyaXB0aW9uOiAn5pe26Ze077yaMjAxN+W5tDnmnIgyNuaXpS0xMOaciDnml6VcXG7ml4XooYzlnLDngrnvvJrmsrPljJfloZ7nvZXlnZ3lm73lrrbmo67mnpflhazlm60nXG4gICAgICAgIC8vICAgICB9XVxuICAgICAgICAvLyB9XG5cbiAgICAgICAgbWV0aG9kcyA9IHtcbiAgICAgICAgICAgIHNlbGVjdEFjdGl2aXR5KGUpIHtcbiAgICAgICAgICAgICAgICB3ZXB5Lm5hdmlnYXRlVG8oe1xuICAgICAgICAgICAgICAgICAgICB1cmw6IGAuLi8uLi9wYWdlcy9yZWNvbW1lbmQvaW5kZXg/aWQ9JHtlLmN1cnJlbnRUYXJnZXQuZGF0YXNldC5pZH1gXG4gICAgICAgICAgICAgICAgfSlcbiAgICAgICAgICAgIH1cbiAgICAgICAgfVxuICAgIH1cbiJdfQ==

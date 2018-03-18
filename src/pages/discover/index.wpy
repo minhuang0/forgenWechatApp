@@ -1,13 +1,14 @@
 <template>
     <view>
         <v-navbar :alldata='tabs' :activeIndex.sync='activeIndex' :sliderWidth='sliderWidth' @changeActiveIndex.user='changeActiveIndex'></v-navbar>
-        <v-choice :class='{ hidden: activeIndex !== 0}'></v-choice>
-        <v-moments :class='{ hidden: activeIndex !== 1}'></v-moments>
+        <v-choice :class='{ hidden: activeIndex !== 0}' :choiceData.sync="choiceData"></v-choice>
+        <v-moments :class='{ hidden: activeIndex !== 1}' :momentsData.sync="momentsData"></v-moments>
     </view>
 </template>
 
 <script>
     import wepy from 'wepy'
+    import { getFetch } from '@/modules/common/fetch'
     import navbarComponent from '@/components/navbar'
     import momentsComponent from './moments'
     import choiceComponent from './choice'
@@ -31,13 +32,28 @@
                 title: '圈子'
             }],
             activeIndex: 0,
-            sliderWidth: 93.75
+            sliderWidth: 93.75,
+            choiceData: {
+                banners: [],
+                hotTopic: []
+            },
+            momentsData: {}
         }
 
         methods = {
             changeActiveIndex(activeIndex) {
                 this.activeIndex = parseInt(activeIndex)
             }
+        }
+
+        async updateDiscoverData () {
+            const response = await getFetch('/circles', { noAjax: true })
+            this.choiceData = { hotTopic: response.hotTopic, banners: response.banners.posts }
+            this.momentsData = response.circles && response.circles.data
+        }
+        async onLoad() {
+            await this.updateDiscoverData()
+            this.$apply()
         }
     }
 </script>

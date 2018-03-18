@@ -1,1 +1,1 @@
-.list._b6beaf1{position:relative;display:flex;flex-wrap:wrap}.list .img._b6beaf1{display:inline-block;padding-left:10px;padding-top:10px}.list .img._b6beaf1:nth-child(even){padding-right:10px}
+.list._b6beaf1{position:relative;display:-webkit-box;display:-webkit-flex;display:flex;-webkit-flex-wrap:wrap;flex-wrap:wrap}.list .img._b6beaf1{display:inline-block;padding-left:10px;padding-top:10px}.list .img._b6beaf1:nth-child(even){padding-right:10px}

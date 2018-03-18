@@ -2,11 +2,15 @@
     <!--logs.wxml-->
     <view class="container _9b9ddce">
         <view class="page__bd _9b9ddce">
-            <view class="weui-toptips weui-toptips_warn _9b9ddce"  wx:if="{{showTopTips}}">发表成功</view>
+            <view class="weui-toptips weui-toptips_warn _9b9ddce"  wx:if="{{tips.show}}">{{tips.text}}</view>
+            <view class="weui-toast _9b9ddce">
+                <i class="weui-icon-success-no-circle weui-icon_toast _9b9ddce"/>
+                <p class="weui-toast__content _9b9ddce"  wx:if="{{tips.success}}">发表成功</p>
+            </view>
             <view class="weui-cells weui-cells_after-title _9b9ddce">
                 <view class="weui-cell _9b9ddce">
                     <view class="weui-cell__bd _9b9ddce">
-                        <textarea class="weui-textarea _9b9ddce" placeholder="您想说的话!" style="height: 3.3em"/>
+                        <textarea class="weui-textarea _9b9ddce" placeholder="您想说的话!" style="height: 3.3em" bindinput="bindCommentInput"/>
                     </view>
                 </view>
                 <view class="weui-cell _9b9ddce">
@@ -21,7 +25,7 @@
                                     </block>
                                 </view>
                                 <view class="weui-uploader__input-box _9b9ddce">
-                                    <view class="weui-uploader__input _9b9ddce" bindtap="chooseImage"/>
+                                    <view class="weui-uploader__input _9b9ddce" bindtap="chooseMomentImage"/>
                                 </view>
                             </view>
                         </view>
@@ -29,7 +33,7 @@
                 </view>
             </view>
             <view class="weui-btn-area _9b9ddce">
-                <button class="weui-btn _9b9ddce" type="primary" bindtap="showTopTips">发表</button>
+                <button class="weui-btn _9b9ddce" type="primary" bindtap="confirmMoment">发表</button>
             </view>
         </view>
     </view>

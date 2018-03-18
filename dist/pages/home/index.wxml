@@ -15,7 +15,7 @@
     <swiper class="swiper _7bc4d89" indicator-dots="{{$vRecommend$vSwper$swiperConfig.indicatorDots}}" autoplay="{{$vRecommend$vSwper$swiperConfig.autoplay}}" interval="{{$vRecommend$vSwper$swiperConfig.interval}}" duration="{{$vRecommend$vSwper$swiperConfig.duration}}">
         <block  wx:for="{{$vRecommend$vSwper$alldata}}" wx:key="id">
             <swiper-item>
-                <image src="{{item.image}}" style="width: 100%; height=100%;" mode="aspectFill" data-id="{{item.id}}" bindtap="$vRecommend$vSwper$tap"/>
+                <image src="{{item.imgUrl}}" style="width: 100%; height=100%;" mode="aspectFill" data-id="{{item.id}}" bindtap="$vRecommend$vSwper$tap" lazy-load="true"/>
             </swiper-item>
         </block>
     </swiper>
@@ -39,9 +39,9 @@
             
     <view class="recommend _2b3a784 _ea8b76e" data-id="{{$vRecommend$vList$item.id}}" bindtap="$vRecommend$vList$vItem$tap" data-com-index="{{$vRecommend$vList$index}}">
         <view class="cover _2b3a784">
-            <image class="cover-img _2b3a784" src="{{$vRecommend$vList$item.cover}}" mode="aspectFill"/>
+            <image class="cover-img _2b3a784" src="{{$vRecommend$vList$item.cover}}" mode="aspectFill" lazy-load="true"/>
             <text class="recomment-title _2b3a784">{{$vRecommend$vList$item.title}}</text>
-            <text class="tag _2b3a784">{{$vRecommend$vList$item.tag}}</text>
+            <!-- <text class="tag">{{item.tag}}</text> -->
         </view>
     </view>
         </block>
@@ -73,10 +73,11 @@
         <image class="cover _97f9c8c" src="{{$vActivities$item.cover}}" mode="aspectFill"/>
         <view class="content-view _97f9c8c">
             <text class="title _97f9c8c">{{$vActivities$item.title}}</text>
-            <text class="time _97f9c8c">{{$vActivities$item.time}}</text>
-            <text class="address _97f9c8c">{{$vActivities$item.address}}</text>
+            <text class="description _97f9c8c">{{$vActivities$item.description}}</text>
+            <!-- <text class="time">{{item.time}}</text>
+            <text class="address">{{item.address}}</text> -->
             <view class="last _97f9c8c">
-                <text class="money _97f9c8c">{{$vActivities$item.money > 0 ? $vActivities$item.money : '免费'}}</text>
+                <!-- <text class="money">{{item.money > 0 ? item.money : '免费'}}</text> -->
                 <text class="join _97f9c8c" type="default">报名</text>
             </view>
         </view>

@@ -4,28 +4,25 @@
         <view class="_5b17174">
             <view class="header l-c-c _5b17174">
                 <view class="l-c _5b17174">
-                    <image class="head-img _5b17174" src="{{item.authorHeadImgUrl}}" mode="aspectFill"/>
-                    <text class="name _5b17174">{{item.authorNickName}}</text>
+                    <image class="head-img _5b17174" src="{{userInfo.avatarUrl}}" mode="aspectFill"/>
+                    <text class="name _5b17174">{{userInfo.nickName}}</text>
                 </view>
                 <view class="l-c right _5b17174">
                     <view class="l-c _5b17174">
                         <view class="iconfont icon icon-praise _5b17174"/>
-                        <text class="_5b17174">{{item.upvoteNum}}</text>
+                        <text class="_5b17174">{{item.targetsLength}}</text>
                     </view>
                     <view class="l-c _5b17174">
                         <view class="iconfont icon icon-like_fill _5b17174"/>
-                        <text class="_5b17174">{{item.likedNum}}</text>
+                        <text class="_5b17174">{{item.commentsLength}}</text>
                     </view>
                 </view>
             </view>
             <view class="description _5b17174">
                 <view class="title _5b17174">{{item.title}}</view>
-                <view class="category _5b17174">#{{item.column}}#</view>
+                <view class="category _5b17174">#{{item.column || '少Tag'}}#</view>
             </view>
             <view class="content _5b17174">
-                <!--
-                                    <htmlParse parserName="article" v-bind:parserContent.sync="item.html"></htmlParse>
-                                -->
                 <template is="wxParse" data="{{wxParseData: article.nodes}}" class="_5b17174"/>
             </view>
         </view>

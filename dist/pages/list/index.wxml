@@ -8,9 +8,9 @@
             
     <view class="recommend _2b3a784 _ea8b76e" data-id="{{$vList$item.id}}" bindtap="$vList$vItem$tap" data-com-index="{{$vList$index}}">
         <view class="cover _2b3a784">
-            <image class="cover-img _2b3a784" src="{{$vList$item.cover}}" mode="aspectFill"/>
+            <image class="cover-img _2b3a784" src="{{$vList$item.cover}}" mode="aspectFill" lazy-load="true"/>
             <text class="recomment-title _2b3a784">{{$vList$item.title}}</text>
-            <text class="tag _2b3a784">{{$vList$item.tag}}</text>
+            <!-- <text class="tag">{{item.tag}}</text> -->
         </view>
     </view>
         </block>

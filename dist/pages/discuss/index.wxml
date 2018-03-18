@@ -9,7 +9,7 @@
     </view>
         <block class="_b1436aa" wx:for="{{moments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
             
-    <view class="moment _e61226b _b1436aa">
+    <view class="moment _e61226b _b1436aa" bindtap="$vMoment$goMomentDetail" data-com-index="{{index}}">
         <view class="monent-header _e61226b">
             <view class="avatar _e61226b">
                 <image src="{{item.avatar}}" class="_e61226b"/>

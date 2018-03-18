@@ -38,7 +38,7 @@
 </script>
 
 <style lang="scss" scoped>
-    @import "../../libs/wxParse/wxParse.wxss";
+    @import "../../libs/wxParse/wxParse.scss";
     .activity {
       .header .cover {
         height: 400rpx;

@@ -15,7 +15,7 @@
     <swiper class="swiper _3323fe4" indicator-dots="{{$vChoice$vSwper$swiperConfig.indicatorDots}}" autoplay="{{$vChoice$vSwper$swiperConfig.autoplay}}" interval="{{$vChoice$vSwper$swiperConfig.interval}}" duration="{{$vChoice$vSwper$swiperConfig.duration}}">
         <block  wx:for="{{$vChoice$vSwper$alldata}}" wx:key="id">
             <swiper-item>
-                <image src="{{item.image}}" style="width: 100%; height=100%;" mode="aspectFill" data-id="{{item.id}}" bindtap="$vChoice$vSwper$tap"/>
+                <image src="{{item.imgUrl}}" style="width: 100%; height=100%;" mode="aspectFill" data-id="{{item.id}}" bindtap="$vChoice$vSwper$tap" lazy-load="true"/>
             </swiper-item>
         </block>
     </swiper>
@@ -52,7 +52,7 @@
     </view>
         <block class="_881210a" wx:for="{{$vMoments$moments}}" wx:for-index="$vMoments$index" wx:for-item="$vMoments$item" wx:key="$vMoments$index">
             
-    <view class="moment _e61226b _881210a">
+    <view class="moment _e61226b _881210a" bindtap="$vMoments$vMoment$goMomentDetail" data-com-index="{{$vMoments$index}}">
         <view class="monent-header _e61226b">
             <view class="avatar _e61226b">
                 <image src="{{$vMoments$item.avatar}}" class="_e61226b"/>

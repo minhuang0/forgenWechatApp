@@ -1,4 +1,7 @@
 exports.paddingImg = (images, len = 3) => {
+    if (images.length === 0) {
+        return []
+    }
     let maxLen = images.length % len === 0 ? parseInt(images.length / len) : parseInt(images.length / len) + 1
     let imgs = []
     images.forEach((img, index) => {

@@ -6,7 +6,7 @@
             </view>
             <view class="content-view">
                 <view class="name-view">
-                    <text class="name">ces{{moment.name}}</text>
+                    <text class="name">{{moment.name}}</text>
                     <text class="create-time">{{moment.createTime}}</text>
                 </view>
                 <text class="description">清风相送，弹指一梦境</text>
@@ -45,10 +45,12 @@
             onReady () {
                 console.log(this.moment)
             },
-            goMomentDetail(e) {
-                wepy.navigateTo({
-                    url: `../../pages/detail/moment?id=${e.currentTarget.dataset.id}`
-                })
+            goMomentDetail() {
+                if (this.moment && this.moment.id) {
+                    wepy.navigateTo({
+                        url: `../../pages/detail/moment?id=${this.moment.id}`
+                    })
+                }
             }
         }
 

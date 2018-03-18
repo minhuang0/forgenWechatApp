@@ -21,7 +21,6 @@
         methods = {
             tap() {
                 this.gitem.childname = `Child Random(${Math.random()})`
-                console.log(`Clicked Group ${this.$parent.$index}. Item ${this.$index}, ID is ${this.gitem.childid}`)
             }
         }
     }

@@ -41,7 +41,7 @@
 
 <script>
     import wepy from 'wepy'
-    import { uploadFile, chooseImage,  postFetch } from '@/modules/common/fetch'
+    import { uploadFile, chooseImage, postFetch } from '@/modules/common/fetch'
 
     export default class Index extends wepy.page {
         config = {
@@ -65,14 +65,12 @@
                 return res.tempFilePaths[0]
             })
             uploadFile('/circles/img/upload', imageFilePath).then(imageUrl => {
-                console.log(imageUrl)
                 this.files = this.files.concat(imageFilePath)
                 this.images = this.images.concat(imageUrl)
                 this.$apply()
             })
         }
         bindCommentInput (e) {
-            console.log(e.detail.value)
             this.content = e.detail.value
         }
 
@@ -91,7 +89,6 @@
                         circle_imgs: this.images
                     }
                 })
-                console.log(rsp)
             }
         }
         showTopTips() {

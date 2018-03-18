@@ -10,8 +10,8 @@
         config = {
             pages: [
                 'pages/home/index',
-                'pages/publish/index',
                 'pages/detail/moment',
+                'pages/publish/index',
                 'pages/discover/index',
                 'pages/list/index',
                 'pages/recommend/index',
@@ -89,7 +89,6 @@
 
         async testAsync() {
             const data = await this.sleep(3)
-            console.log(data)
         }
 
         async getUserInfo () {

@@ -19,7 +19,7 @@
             </view>
             <view class="content-view _e61226b">
                 <view class="name-view _e61226b">
-                    <text class="name _e61226b">ces{{item.name}}</text>
+                    <text class="name _e61226b">{{item.name}}</text>
                     <text class="create-time _e61226b">{{item.createTime}}</text>
                 </view>
                 <text class="description _e61226b">清风相送，弹指一梦境</text>

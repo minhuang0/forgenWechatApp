@@ -62,7 +62,7 @@
         }
         .description {
           align-items: flex-start;
-          height: 120rpx;
+          height: 60rpx;
           white-space: normal;
           color: #8a8a8a;
         }

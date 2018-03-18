@@ -70,7 +70,6 @@
         }
         async loginWechat () {
             const userInfo = await this.$parent.getUserInfo()
-            console.log(userInfo)
             await postFetch('/loginWeChat', { noAjax: true, data: userInfo })
         }
 

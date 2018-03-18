@@ -7,7 +7,6 @@ export const fetch = (url, options, query = {}) => {
     if (!options.noAjax) {
         query.type = 'ajax'
     }
-    console.log(options)
     const fullUrl = utils.fullUrl(HOST, url, query)
     return new Promise((resolve, reject) => {
         return wepy.request({
@@ -64,6 +63,5 @@ export const getFetch = (url, options = {}, query) => {
 
 export const postFetch = (url, options = {}, query) => {
     options.method = 'POST'
-    console.log('postFetch')
     return fetch(url, options, query)
 }

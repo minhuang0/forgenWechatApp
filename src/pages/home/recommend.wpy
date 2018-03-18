@@ -35,7 +35,6 @@
         }
         computed = {
             banners () {
-                console.log(this.homeData.banners.posts)
                 return this.homeData.banners.posts
             },
             categories () {
@@ -43,7 +42,7 @@
                     return {
                         id: item.id,
                         title: item.name,
-                        cover: categoryCovers[idx]
+                        cover: item.imgUrl || categoryCovers[idx]
                     }
                 })
             },

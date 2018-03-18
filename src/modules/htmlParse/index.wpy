@@ -69,9 +69,7 @@
                     this.parserPadding
                 )
                 setTimeout(() => {
-                    console.log(this.data)
                     this.htmlParserTpl = this.data[this.parserName]
-                    console.log(JSON.stringify(this.data))
                 }, 5000)
             } catch (e) {
                 console.warn('kinerHtmlParser:', '没有任何内容需要转换', e)

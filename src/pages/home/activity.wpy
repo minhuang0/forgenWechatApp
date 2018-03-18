@@ -20,7 +20,6 @@
 
         computed = {
             activities () {
-                console.log(this.activityData)
                 return this.activityData.map(i => {
                     return {
                         id: i.id,

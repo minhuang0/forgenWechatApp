@@ -19,6 +19,7 @@
     import momentComponent from '@/components/moment'
     import { paddingImg } from '@/modules/common/utils'
 
+    let counter = 0
     export default class Index extends wepy.page {
         config = {
             navigationBarTitleText: '我的'
@@ -94,7 +95,8 @@
         }
         methods = {
             toggleUpvote () {
-                if (this.moment.targets.length % 2 && this.moment.targets.length > 0) {
+                ++counter
+                if (counter % 2) {
                     return this.requestUpvote(false)
                 }
                 return this.requestUpvote(true)

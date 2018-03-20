@@ -8,12 +8,16 @@
                     <text class='name'>{{userInfo.nickName}}</text>
                 </view>
                 <view class='l-c right'>
-                    <view class='l-c'>
+                    <view class='l-c' @tap="zan">
+                        <view class="iconfont icon icon-praise"></view>
+                        <text>{{item.targetsLength}}</text>
+                    </view>
+                    <view class='l-c' @tap="unzan">
                         <view class="iconfont icon icon-praise"></view>
                         <text>{{item.targetsLength}}</text>
                     </view>
                     <view class="l-c">
-                        <view class="iconfont icon icon-like_fill"></view>
+                        <view class="iconfont icon icon-message_fill"></view>
                         <text>{{item.commentsLength}}</text>
                     </view>
                 </view>
@@ -60,14 +64,32 @@
             },
             comment (data) {
                 this.postComment(data)
+            },
+            zan () {
+                this.requestZan()
+            },
+            unzan () {
+                this.requestUnZan()
             }
         }
         async postComment (data) {
-            const rsp = await postFetch('/circles/comment', {
+            const rsp = await postFetch('/posts/comment', {
                 data: {
                     content: data,
                     post_id: this.item.id
                 },
+                noAjax: true
+            })
+            console.log(rsp)
+        }
+        async requestZan () {
+            const rsp = await getFetch(`/posts/${this.item.id}/zan`, {
+                noAjax: true
+            })
+            console.log(rsp)
+        }
+        async requestUnZan () {
+            const rsp = await getFetch(`/posts/${this.item.id}/unzan`, {
                 noAjax: true
             })
             console.log(rsp)

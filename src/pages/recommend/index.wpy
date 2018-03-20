@@ -25,6 +25,7 @@
             <view class="content">
                 <template is="wxParse" data="{{wxParseData: article.nodes}}" />
             </view>
+            <v-editor @click.user="comment"></v-editor>
         </view>
     </view>
 </template>
@@ -32,13 +33,16 @@
 <script>
     import wepy from 'wepy'
     import WxParse from '../../libs/wxParse/wxParse.js'
-    import { getFetch } from '@/modules/common/fetch'
+    import { getFetch, postFetch } from '@/modules/common/fetch'
+    import Editor from '@/components/editor'
 
     export default class Index extends wepy.page {
         config = {
             navigationBarTitleText: '文章'
         }
-
+        components = {
+            'v-editor': Editor
+        }
         data = {
             item: {},
             userInfo: {}
@@ -53,7 +57,20 @@
                     avatarUrl: 'http://static.htxq.net/UploadFiles/headimg/20160721142529242.jpg'
                 }, post.user || {})
                 return [post, userInfo]
+            },
+            comment (data) {
+                this.postComment(data)
             }
+        }
+        async postComment (data) {
+            const rsp = await postFetch('/circles/comment', {
+                data: {
+                    content: data,
+                    post_id: this.item.id
+                },
+                noAjax: true
+            })
+            console.log(rsp)
         }
 
         async onLoad (options) {
@@ -144,6 +161,7 @@
       }
       .content {
         padding: 20rpx;
+        margin-bottom: 100rpx;
       }
     }
 

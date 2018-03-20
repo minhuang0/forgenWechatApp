@@ -25,5 +25,10 @@
             <view class="content _5b17174">
                 <template is="wxParse" data="{{wxParseData: article.nodes}}" class="_5b17174"/>
             </view>
+            
+    <view class="edit _e937950 _5b17174">
+            <input confirm-type="完成" bindinput="$vEditor$bindInput" class="_e937950"/>
+            <button bindtap="$vEditor$tap" class="_e937950">发布</button>
+    </view>
         </view>
     </view>

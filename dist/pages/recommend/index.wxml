@@ -8,11 +8,7 @@
                     <text class="name _5b17174">{{userInfo.nickName}}</text>
                 </view>
                 <view class="l-c right _5b17174">
-                    <view class="l-c _5b17174" bindtap="zan">
-                        <view class="iconfont icon icon-praise _5b17174"/>
-                        <text class="_5b17174">{{item.targetsLength}}</text>
-                    </view>
-                    <view class="l-c _5b17174" bindtap="unzan">
+                    <view class="l-c _5b17174" bindtap="toggleUpvote">
                         <view class="iconfont icon icon-praise _5b17174"/>
                         <text class="_5b17174">{{item.targetsLength}}</text>
                     </view>

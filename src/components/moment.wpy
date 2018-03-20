@@ -21,11 +21,11 @@
             </view>
         </repeat>
         <view class="buttons">
-            <view>
+            <view @tap="toggleMoments">
                 <image class="icon" src="{{icons.message}}"></image>
                 <text>{{moment.upvoteNum}}</text>
             </view>
-            <view>
+            <view @tap="toggleUpvote">
                 <image class="icon" style="margin-left: 40rpx;" src="{{icons.upvote}}"></image>
                 <text>{{moment.favoriteNum}}</text>
             </view>
@@ -51,6 +51,12 @@
                         url: `../../pages/detail/moment?id=${this.moment.id}`
                     })
                 }
+            },
+            toggleMoments () {
+                this.$emit('toggleMoments')
+            },
+            toggleUpvote () {
+                this.$emit('toggleUpvote')
             }
         }
 

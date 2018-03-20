@@ -89,6 +89,7 @@
                         circle_imgs: this.images
                     }
                 })
+                console.log(rsp)
             }
         }
         showTopTips() {

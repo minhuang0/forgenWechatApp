@@ -8,11 +8,7 @@
                     <text class='name'>{{userInfo.nickName}}</text>
                 </view>
                 <view class='l-c right'>
-                    <view class='l-c' @tap="zan">
-                        <view class="iconfont icon icon-praise"></view>
-                        <text>{{item.targetsLength}}</text>
-                    </view>
-                    <view class='l-c' @tap="unzan">
+                    <view class='l-c' @tap="toggleUpvote">
                         <view class="iconfont icon icon-praise"></view>
                         <text>{{item.targetsLength}}</text>
                     </view>
@@ -65,11 +61,11 @@
             comment (data) {
                 this.postComment(data)
             },
-            zan () {
-                this.requestZan()
-            },
-            unzan () {
-                this.requestUnZan()
+            toggleUpvote () {
+                if (this.item.targets.length % 2 && this.item.targets.length > 0) {
+                    return this.requestUpvote(false)
+                }
+                return this.requestUpvote(true)
             }
         }
         async postComment (data) {
@@ -82,14 +78,8 @@
             })
             console.log(rsp)
         }
-        async requestZan () {
-            const rsp = await getFetch(`/posts/${this.item.id}/zan`, {
-                noAjax: true
-            })
-            console.log(rsp)
-        }
-        async requestUnZan () {
-            const rsp = await getFetch(`/posts/${this.item.id}/unzan`, {
+        async requestUpvote (isUpVote) {
+            const rsp = await getFetch(`/posts/${this.item.id}/${isUpVote ? 'zan' : 'unzan'}`, {
                 noAjax: true
             })
             console.log(rsp)

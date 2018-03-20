@@ -34,11 +34,11 @@
             </view>
         </block>
         <view class="buttons _e61226b">
-            <view class="_e61226b">
+            <view bindtap="$vMoment$toggleMoments" class="_e61226b" data-com-index="{{index}}">
                 <image class="icon _e61226b" src="{{$vMoment$icons.message}}"/>
                 <text class="_e61226b">{{item.upvoteNum}}</text>
             </view>
-            <view class="_e61226b">
+            <view bindtap="$vMoment$toggleUpvote" class="_e61226b" data-com-index="{{index}}">
                 <image class="icon _e61226b" style="margin-left: 40rpx;" src="{{$vMoment$icons.upvote}}"/>
                 <text class="_e61226b">{{item.favoriteNum}}</text>
             </view>

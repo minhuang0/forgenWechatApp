@@ -11,6 +11,10 @@
 	"libVersion": "1.6.4",
 	"appid": "wx074fc89a63291f58",
 	"projectname": "forgen",
+	"svr": "",
+	"client": "",
+	"qcloudRoot": "",
+	"miniprogramRoot": "",
 	"condition": {
 		"search": {
 			"current": -1,

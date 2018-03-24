@@ -20,12 +20,13 @@
             </view>
             <view class="description">
                 <view class="title">{{item.title}}</view>
-                <view class="category">#{{item.column || '少Tag'}}#</view>
+                <view class="category">{{tags}}</view>
             </view>
             <view class="content">
                 <template is="wxParse" data="{{wxParseData: article.nodes}}" />
             </view>
-            <v-editor @click.user="comment"></v-editor>
+            <v-comments :comments.sync="comments"></v-comments>
+            <v-editor @click.user="comment" :inputValue.sync="inputValue"></v-editor>
         </view>
     </view>
 </template>
@@ -35,6 +36,7 @@
     import WxParse from '../../libs/wxParse/wxParse.js'
     import { getFetch, postFetch } from '@/modules/common/fetch'
     import Editor from '@/components/editor'
+    import Comments from '@/components/comments'
 
     let counter = 0
     export default class Index extends wepy.page {
@@ -42,17 +44,30 @@
             navigationBarTitleText: '文章'
         }
         components = {
-            'v-editor': Editor
+            'v-editor': Editor,
+            'v-comments': Comments
         }
         data = {
-            item: {},
+            inputValue: '',
+            item: {
+                tags: []
+            },
+            comments: [],
             userInfo: {}
+        }
+        computed = {
+            tags () {
+                return this.item.tags.reduce((value, t) => {
+                    return `${value} #${t}#`
+                }, '')
+            }
         }
 
         methods = {
             renderPost (post) {
                 post.targetsLength = post.targets.length
                 post.commentsLength = post.comments.length
+                post.tags = post.topics.map(t => t.name)
                 const userInfo = Object.assign({
                     nickName: '小森',
                     avatarUrl: 'http://static.htxq.net/UploadFiles/headimg/20160721142529242.jpg'
@@ -71,12 +86,27 @@
             }
         }
         async postComment (data) {
+            const userInfo = await this.$parent.getUserInfo()
             const rsp = await postFetch('/posts/comment', {
                 data: {
                     content: data,
                     post_id: this.item.id
                 },
                 noAjax: true
+            }).then(() => {
+                this.comments.unshift({
+                    content: data,
+                    created_at: new Date(),
+                    user_id: userInfo.nickName
+                })
+                this.inputValue = ''
+                this.$apply()
+            }).catch(() => {
+                wepy.showToast({
+                    title: '评论失败',
+                    icon: 'none',
+                    duration: 2000
+                })
             })
             console.log(rsp)
         }
@@ -88,9 +118,10 @@
         }
 
         async onLoad (options) {
-            const data = await getFetch(`/posts/${options.id || 1}`)
+            const data = await getFetch(`/posts/${options.id || 26}`)
             const renderData = this.methods.renderPost(data.post)
             this.item = renderData[0]
+            this.comments = this.item.comments
             this.userInfo = renderData[1]
             this.$apply()
             WxParse.wxParse('article', 'html', this.item.content, this, 0)
@@ -175,7 +206,6 @@
       }
       .content {
         padding: 20rpx;
-        margin-bottom: 100rpx;
       }
     }
 

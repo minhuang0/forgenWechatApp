@@ -20,15 +20,33 @@
             </view>
             <view class="description _5b17174">
                 <view class="title _5b17174">{{item.title}}</view>
-                <view class="category _5b17174">#{{item.column || '少Tag'}}#</view>
+                <view class="category _5b17174">{{tags}}</view>
             </view>
             <view class="content _5b17174">
                 <template is="wxParse" data="{{wxParseData: article.nodes}}" class="_5b17174"/>
             </view>
             
+    <view class="comments _2a2221f _5b17174"  wx:if="{{$vComments$comments.length > 0}}">
+        <view class="top _2a2221f">
+            <text class="_2a2221f">{{$vComments$comments.length + ' 条评论'}}</text>
+        </view>
+        <block wx:for="{{$vComments$newComments}}" wx:key="{{index}}" class="_2a2221f">
+            <view class="comment _2a2221f">
+                <view class="user _2a2221f">
+                    <view class="user-info _2a2221f">
+                        <image class="avator _2a2221f" src="{{item.cover}}" mode="aspectFill" lazy-load="true"/>
+                        <text class="username _2a2221f">用户{{item.id}}</text>
+                    </view>
+                    <text class="time _2a2221f">{{item.created_at}}</text>
+                </view>
+                <text class="content _2a2221f">{{ item.content }}</text>
+            </view>
+        </block>
+    </view>
+            
     <view class="edit _e937950 _5b17174">
-            <input confirm-type="完成" bindinput="$vEditor$bindInput" class="_e937950"/>
-            <button bindtap="$vEditor$tap" class="_e937950">发布</button>
+        <input confirm-type="完成" bindinput="$vEditor$bindInput" value="{{$vEditor$inputValue}}" placeholder="请输入不少于15字的评论" class="_e937950"/>
+        <button bindtap="$vEditor$tap" class="_e937950">发布</button>
     </view>
         </view>
     </view>

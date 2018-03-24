@@ -1,3 +1,5 @@
+import { differenceInSeconds, differenceInMinutes, differenceInHours, differenceInDays, differenceInWeeks, differenceInMonths, differenceInYears } from 'date-fns'
+
 exports.paddingImg = (images, len = 3) => {
     if (images.length === 0) {
         return []
@@ -64,4 +66,16 @@ exports.fullUrl = (API_HOST, url, query = {}) => {
         return `${retUrl}?${qs}`
     }
     return retUrl
+}
+
+exports.timeTransform = (time) => {
+    const now = new Date()
+    const diffYears = differenceInYears(now, time)
+    const diffMonths = differenceInMonths(now, time)
+    const diffWeeks = differenceInWeeks(now, time)
+    const diffDays = differenceInDays(now, time)
+    const diffHours = differenceInHours(now, time)
+    const diffMins = differenceInMinutes(now, time)
+    const diffSeconds = differenceInSeconds(now, time)
+    return diffYears ? `${diffYears}年前` : diffMonths ? `${diffMonths}月前` : diffWeeks ? `${diffWeeks}周前` : diffDays ? `${diffDays}天前` : diffHours ? `${diffHours}小时前` : diffMins ? `${diffMins}分钟前` : diffSeconds > 10 ? `${diffSeconds}秒前` : '刚刚'
 }

@@ -1,7 +1,7 @@
 <template>
     <view class="edit">
-            <input confirm-type="完成" bindinput="bindInput"/>
-            <button @tap="tap">发布</button>
+        <input confirm-type="完成" bindinput="bindInput" value="{{inputValue}}" placeholder="请输入不少于15字的评论"/>
+        <button @tap="tap">发布</button>
     </view>
 </template>
 
@@ -9,15 +9,20 @@
     import wepy from 'wepy'
 
     export default class Index extends wepy.component {
-        data = {
-            inputValue: ''
+        props = {
+            inputValue: {
+                type: String,
+                default: '',
+                twoWay: true
+            }
         }
         methods = {
             tap (e) {
                 this.$emit('click', this.inputValue)
             },
             bindInput (e) {
-                this.inputValue = e.detail.value
+                this.$parent.inputValue = e.detail.value
+                this.$parent.$apply()
             }
         }
     }

@@ -9,7 +9,7 @@
     </view>
         <block class="_b1436aa" wx:for="{{moments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
             
-    <view class="moment _e61226b _b1436aa" bindtap="$vMoment$goMomentDetail" data-com-index="{{index}}">
+    <view class="moment _e61226b _b1436aa" catchtap="$vMoment$goMomentDetail" data-com-index="{{index}}">
         <view class="monent-header _e61226b">
             <view class="avatar _e61226b">
                 <image src="{{item.avatar}}" class="_e61226b"/>
@@ -19,10 +19,10 @@
                     <text class="name _e61226b">{{item.name}}</text>
                     <text class="create-time _e61226b">{{item.createTime}}</text>
                 </view>
-                <text class="description _e61226b">清风相送，弹指一梦境</text>
+                <text class="description _e61226b">该用户没有个性签名</text>
             </view>
         </view>
-        <view class="comment-content _e61226b">{{item.content}}</view>
+        <text class="comment-content _e61226b">{{item.content}}</text>
         <block class="_e61226b" wx:for="{{item.images}}" wx:for-index="$vMoment$index" wx:for-item="$vMoment$item" wx:key="$vMoment$index">
             <view class="images _e61226b">
                 <block class="_e61226b" wx:for="{{$vMoment$item}}" wx:for-index="$vMoment$i" wx:for-item="$vMoment$img" wx:key="$vMoment$i">
@@ -31,11 +31,11 @@
             </view>
         </block>
         <view class="buttons _e61226b">
-            <view bindtap="$vMoment$toggleMoments" class="_e61226b" data-com-index="{{index}}">
+            <view catchtap="$vMoment$toggleMoments" class="_e61226b" data-com-index="{{index}}">
                 <image class="icon _e61226b" src="{{$vMoment$icons.message}}"/>
                 <text class="_e61226b">{{item.upvoteNum}}</text>
             </view>
-            <view bindtap="$vMoment$toggleUpvote" class="_e61226b" data-com-index="{{index}}">
+            <view catchtap="$vMoment$toggleUpvote" class="_e61226b" data-com-index="{{index}}">
                 <image class="icon _e61226b" style="margin-left: 40rpx;" src="{{$vMoment$icons.upvote}}"/>
                 <text class="_e61226b">{{item.favoriteNum}}</text>
             </view>

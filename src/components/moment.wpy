@@ -1,5 +1,5 @@
 <template>
-    <view class="moment" @tap="goMomentDetail">
+    <view class="moment" @tap.stop="goMomentDetail">
         <view class="monent-header">
             <view class="avatar">
                 <image src="{{moment.avatar}}"></image>
@@ -9,10 +9,10 @@
                     <text class="name">{{moment.name}}</text>
                     <text class="create-time">{{moment.createTime}}</text>
                 </view>
-                <text class="description">清风相送，弹指一梦境</text>
+                <text class="description">该用户没有个性签名</text>
             </view>
         </view>
-        <view class="comment-content">{{moment.content}}</view>
+        <text class="comment-content">{{moment.content}}</text>
         <repeat for="{{moment.images}}" key="index" index="index" item="item">
             <view class="images">
                 <repeat for="{{item}}" key="i" index="i" item="img">
@@ -21,11 +21,11 @@
             </view>
         </repeat>
         <view class="buttons">
-            <view @tap="toggleMoments">
+            <view @tap.stop="toggleMoments">
                 <image class="icon" src="{{icons.message}}"></image>
                 <text>{{moment.upvoteNum}}</text>
             </view>
-            <view @tap="toggleUpvote">
+            <view @tap.stop="toggleUpvote">
                 <image class="icon" style="margin-left: 40rpx;" src="{{icons.upvote}}"></image>
                 <text>{{moment.favoriteNum}}</text>
             </view>
@@ -38,13 +38,9 @@
 
     export default class Index extends wepy.component {
         props = {
-            moment: {}
+            moment: Object
         }
-
         methods = {
-            onReady () {
-                console.log(this.moment)
-            },
             goMomentDetail() {
                 if (this.moment && this.moment.id) {
                     wepy.navigateTo({
@@ -52,10 +48,12 @@
                     })
                 }
             },
-            toggleMoments () {
+            toggleMoments (e) {
+                console.log('toggleMoments')
                 this.$emit('toggleMoments')
             },
             toggleUpvote () {
+                console.log('toggleUpvote')
                 this.$emit('toggleUpvote')
             }
         }
@@ -125,11 +123,12 @@
           height: 40rpx;
         }
       }
-      .comment-content {
-        color: #555555;
-        font-size: 14px;
-        margin: 20rpx 30rpx;
-      }
+        .comment-content {
+            display: inline-block;
+            color: #555555;
+            font-size: 14px;
+            margin: 20rpx 30rpx;
+        }
       .images {
         display: flex;
         flex-wrap: wrap;
@@ -137,7 +136,7 @@
         .img {
           flex: 1;
           width: 210rpx;
-          height: 220rpx;
+          height: 210rpx;
           padding: 10rpx;
         }
       }

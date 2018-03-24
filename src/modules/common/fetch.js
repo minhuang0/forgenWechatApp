@@ -20,7 +20,7 @@ export const fetch = (url, options, query = {}) => {
                 if (res.header['Set-Cookie']) {
                     cookie = res.header['Set-Cookie']
                 }
-                resolve(res.data)
+                return res.statusCode === 200 ? resolve(res.data) : reject(res)
             },
             fail: reject
         })

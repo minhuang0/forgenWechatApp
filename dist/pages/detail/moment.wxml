@@ -1,7 +1,7 @@
 
     <view class="me _c8cd676">
         
-    <view class="moment _e61226b _c8cd676" bindtap="$vMoment$goMomentDetail">
+    <view class="moment _e61226b _c8cd676" catchtap="$vMoment$goMomentDetail">
         <view class="monent-header _e61226b">
             <view class="avatar _e61226b">
                 <image src="{{$vMoment$moment.avatar}}" class="_e61226b"/>
@@ -11,10 +11,10 @@
                     <text class="name _e61226b">{{$vMoment$moment.name}}</text>
                     <text class="create-time _e61226b">{{$vMoment$moment.createTime}}</text>
                 </view>
-                <text class="description _e61226b">清风相送，弹指一梦境</text>
+                <text class="description _e61226b">该用户没有个性签名</text>
             </view>
         </view>
-        <view class="comment-content _e61226b">{{$vMoment$moment.content}}</view>
+        <text class="comment-content _e61226b">{{$vMoment$moment.content}}</text>
         <block class="_e61226b" wx:for="{{$vMoment$moment.images}}" wx:for-index="$vMoment$index" wx:for-item="$vMoment$item" wx:key="$vMoment$index">
             <view class="images _e61226b">
                 <block class="_e61226b" wx:for="{{$vMoment$item}}" wx:for-index="$vMoment$i" wx:for-item="$vMoment$img" wx:key="$vMoment$i">
@@ -23,23 +23,46 @@
             </view>
         </block>
         <view class="buttons _e61226b">
-            <view bindtap="$vMoment$toggleMoments" class="_e61226b">
+            <view catchtap="$vMoment$toggleMoments" class="_e61226b">
                 <image class="icon _e61226b" src="{{$vMoment$icons.message}}"/>
                 <text class="_e61226b">{{$vMoment$moment.upvoteNum}}</text>
             </view>
-            <view bindtap="$vMoment$toggleUpvote" class="_e61226b">
+            <view catchtap="$vMoment$toggleUpvote" class="_e61226b">
                 <image class="icon _e61226b" style="margin-left: 40rpx;" src="{{$vMoment$icons.upvote}}"/>
                 <text class="_e61226b">{{$vMoment$moment.favoriteNum}}</text>
             </view>
         </view>
     </view>
-        <view class="comments _c8cd676">
-            <block class="_c8cd676" wx:for="{{comments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-                <view class="comment _c8cd676">{{index + 1}}L: {{item.context}}</view>
-            </block>
+        
+    <view class="comments _2a2221f _c8cd676"  wx:if="{{$vComments$comments.length > 0}}">
+        <view class="top _2a2221f">
+            <text class="_2a2221f">{{$vComments$comments.length + ' 条评论'}}</text>
         </view>
-        <view class="edit _c8cd676">
-            <input confirm-type="完成" bindinput="bindCommentInput" class="_c8cd676"/>
-            <button bindtap="addComment" class="_c8cd676">发布</button>
-        </view>
+        <block wx:for="{{$vComments$newComments}}" wx:key="{{index}}" class="_2a2221f">
+            <view class="comment _2a2221f">
+                <view class="user _2a2221f">
+                    <view class="user-info _2a2221f">
+                        <image class="avator _2a2221f" src="{{item.cover}}" mode="aspectFill" lazy-load="true"/>
+                        <text class="username _2a2221f">用户{{item.id}}</text>
+                    </view>
+                    <text class="time _2a2221f">{{item.created_at}}</text>
+                </view>
+                <text class="content _2a2221f">{{ item.content }}</text>
+            </view>
+        </block>
+    </view>
+        <!-- <view class="comments">
+            <repeat for="{{comments}}" key="index" index="index" item="item">
+                <view class="comment">{{index + 1}}L: {{item.context}}</view>
+            </repeat>
+        </view> -->
+        
+    <view class="edit _e937950 _c8cd676">
+        <input confirm-type="完成" bindinput="$vEditor$bindInput" value="{{$vEditor$inputValue}}" placeholder="请输入不少于15字的评论" class="_e937950"/>
+        <button bindtap="$vEditor$tap" class="_e937950">发布</button>
+    </view>
+        <!-- <view class="edit">
+            <input confirm-type="完成" bindinput="bindCommentInput"/>
+            <button bindtap="addComment">发布</button>
+        </view> -->
     </view>

@@ -9,12 +9,12 @@
     export default class extends wepy.app {
         config = {
             pages: [
+                'pages/discover/index',
                 'pages/home/index',
+                'pages/recommend/index',
                 'pages/detail/moment',
                 'pages/publish/index',
-                'pages/discover/index',
                 'pages/list/index',
-                'pages/recommend/index',
                 'pages/activity/index',
                 'pages/me/index',
                 'pages/show/index',
@@ -76,7 +76,6 @@
         }
 
         onLaunch() {
-            this.testAsync()
         }
 
         sleep(s) {
@@ -85,10 +84,6 @@
                     resolve('promise resolved')
                 }, s * 1000)
             })
-        }
-
-        async testAsync() {
-            const data = await this.sleep(3)
         }
 
         async getUserInfo () {

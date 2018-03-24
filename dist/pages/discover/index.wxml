@@ -44,12 +44,7 @@
     </view>
         
     <view class="moments _881210a _943ddae {{activeIndex !== 1 ? 'hidden' : ''}}">
-        
-    <view class="scroll-nav _e8e8468 _881210a">
-        <block class="_e8e8468" wx:for="{{$vMoments$vScrollNavbar$tabs}}" wx:for-index="$vMoments$vScrollNavbar$index" wx:for-item="$vMoments$vScrollNavbar$item" wx:key="$vMoments$vScrollNavbar$index">
-            <view class="item _e8e8468 {{$vMoments$vScrollNavbar$activeIndex == $vMoments$vScrollNavbar$index ? 'active' : ''}}"  bindtap="$vMoments$vScrollNavbar$tap" data-id="{{$vMoments$vScrollNavbar$index}}">{{$vMoments$vScrollNavbar$item.title}}</view>
-        </block>
-    </view>
+        <!-- <v-scroll-navbar v-bind:tabs.once='tabs' v-bind:activeIndex.sync='activeIndex' v-on:click='changeActiveIndex'></v-scroll-navbar> -->
         <block class="_881210a" wx:for="{{$vMoments$moments}}" wx:for-index="$vMoments$index" wx:for-item="$vMoments$item" wx:key="$vMoments$index">
             
     <view class="moment _e61226b _881210a" bindtap="$vMoments$vMoment$goMomentDetail" data-com-index="{{$vMoments$index}}">
@@ -74,11 +69,11 @@
             </view>
         </block>
         <view class="buttons _e61226b">
-            <view class="_e61226b">
+            <view bindtap="$vMoments$vMoment$toggleMoments" class="_e61226b" data-com-index="{{$vMoments$index}}">
                 <image class="icon _e61226b" src="{{$vMoments$vMoment$icons.message}}"/>
                 <text class="_e61226b">{{$vMoments$item.upvoteNum}}</text>
             </view>
-            <view class="_e61226b">
+            <view bindtap="$vMoments$vMoment$toggleUpvote" class="_e61226b" data-com-index="{{$vMoments$index}}">
                 <image class="icon _e61226b" style="margin-left: 40rpx;" src="{{$vMoments$vMoment$icons.upvote}}"/>
                 <text class="_e61226b">{{$vMoments$item.favoriteNum}}</text>
             </view>

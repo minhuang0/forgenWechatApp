@@ -1,15 +1,17 @@
 <template>
     <view class="me">
         <v-moment :moment.sync="momentData" @toggleUpvote.user="toggleUpvote" @toggleMoments.user="toggleMoments"></v-moment>
-        <view class="comments">
+        <v-comments :comments.sync="comments"></v-comments>
+        <!-- <view class="comments">
             <repeat for="{{comments}}" key="index" index="index" item="item">
                 <view class="comment">{{index + 1}}L: {{item.context}}</view>
             </repeat>
-        </view>
-        <view class="edit">
+        </view> -->
+        <v-editor @click.user="comment" :inputValue.sync="inputValue"></v-editor>
+        <!-- <view class="edit">
             <input confirm-type="完成" bindinput="bindCommentInput"/>
             <button @tap="addComment">发布</button>
-        </view>
+        </view> -->
     </view>
 </template>
 
@@ -17,6 +19,8 @@
     import wepy from 'wepy'
     import { getFetch, postFetch } from '@/modules/common/fetch'
     import momentComponent from '@/components/moment'
+    import Comments from '@/components/comments'
+    import Editor from '@/components/editor'
     import { paddingImg } from '@/modules/common/utils'
 
     let counter = 0
@@ -26,12 +30,15 @@
         }
 
         components = {
-            'v-moment': momentComponent
+            'v-editor': Editor,
+            'v-moment': momentComponent,
+            'v-comments': Comments
         }
 
         computed = {
             momentData () {
                 const user = this.moment.user || {}
+                this.comments = this.moment.comments
                 return {
                     avatar: user.avatarUrl,
                     name: user.nickName,
@@ -45,53 +52,38 @@
         }
 
         data = {
-            inputMoment: '',
+            inputValue: '',
             moment: {
                 circle_imgs: [],
                 targets: [],
                 comments: [],
                 user: {}
             },
-            // moment: {
-            //     avatar: 'https://modao.cc/uploads3/images/1024/10246492/raw_1497340535.jpeg',
-            //     name: '诸葛·刘gloria',
-            //     content: '与柳芽相遇也是偶然，在菜场内的一堆摊位间，发现不起眼的一小袋黄盈盈的嫩芽。其实有点于心不忍，这都是从新绿的柳条上摘下来的吧。但还是忍不住想尝鲜的愿意，买了一点。一点点，已够做出好几个菜了。应时应景，尝个新鲜吧',
-            //     images: paddingImg([
-            //         'https://modao.cc/uploads3/images/1024/10246655/raw_1497340747.jpeg',
-            //         'https://modao.cc/uploads3/images/1024/10246656/raw_1497340747.jpeg',
-            //         'https://modao.cc/uploads3/images/1024/10246656/raw_1497340747.jpeg'
-            //     ]),
-            //     createTime: '1小时前',
-            //     commons: [{
-            //         name: '评论者',
-            //         commont: '评论评论评论评论评论评论评论评论'
-            //     }],
-            //     upvoteNum: 10,
-            //     favoriteNum: 20
-            // },
-            comments: [{
-                context: '评论评论评论评论评论评论评论评论评论评论评论'
-            }, {
-                context: '评论评论评论评论评论评论评论评论评论评论评论'
-            }, {
-                context: '评论评论评论评论评论评论评论评论评论评论评论'
-            }, {
-                context: '评论评论评论评论评论评论评论评论评论评论评论'
-            }]
+            comments: []
         }
-        bindCommentInput (e) {
-            this.inputMoment = e.detail.value
-        }
-
-        async addComment () {
-            const rsp = await postFetch('/circles/comment', {
+        async addComment (content) {
+            const userInfo = await this.$parent.getUserInfo()
+            await postFetch('/circles/comment', {
                 data: {
-                    content: this.inputMoment,
+                    content,
                     circle_id: this.moment.id
                 },
                 noAjax: true
+            }).then(() => {
+                this.comments.unshift({
+                    content,
+                    created_at: new Date(),
+                    user_id: userInfo.nickName
+                })
+                this.inputValue = ''
+                this.$apply()
+            }).catch(() => {
+                wepy.showToast({
+                    title: '评论失败',
+                    icon: 'none',
+                    duration: 2000
+                })
             })
-            console.log(rsp)
         }
         methods = {
             toggleUpvote () {
@@ -103,6 +95,9 @@
             },
             toggleMoments () {
                 console.log('toggleMoments')
+            },
+            comment (data) {
+                this.addComment(data)
             }
         }
         async requestUpvote (isUpVote) {
@@ -132,31 +127,8 @@
             }
         }
         .edit {
-            background: #fff;
             position: fixed;
-            left: 0;
-            right: 0;
-            height: 70rpx;
             bottom: 0;
-            border: 1px;
-            padding: 25rpx 30rpx;
-            input {
-                position: absolute;
-                left: 15rpx;
-                right: 155rpx;
-                height: 46rpx;
-                font-size: 14px;
-                border: 1rpx solid #eee;
-                padding: 10rpx 20rpx;
-            }
-            button {
-                position: absolute;
-                border-radius: 0rpx;
-                right: 15rpx;
-                height: 70rpx;
-                line-height: 70rpx;
-                background: #fff;
-            }
         }
     }
 </style>

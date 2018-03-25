@@ -35,8 +35,8 @@
                     content: this.moment.content,
                     images: paddingImg(this.moment.circle_imgs.map(i => i.imgUrl)),
                     createTime: this.moment.created_at || '无返回时间',
-                    upvoteNum: this.moment.comments.length,
-                    favoriteNum: this.moment.targets.length
+                    upvoteNum: this.moment.upvoteNum,
+                    commentsNum: this.moment.commentsNum
                 }
             }
         }
@@ -66,7 +66,6 @@
                     user_id: userInfo.nickName
                 })
                 this.inputValue = ''
-                this.moment.hasZan = !this.moment.hasZan
                 this.$apply()
             }).catch(() => {
                 wepy.showToast({
@@ -91,16 +90,20 @@
             }
         }
         async requestUpvote (isUpVote) {
-            const rsp = await getFetch(`/circles/${this.moment.id}/${isUpVote ? 'zan' : 'unzan'}`, {
+            await getFetch(`/circles/${this.moment.id}/${isUpVote ? 'zan' : 'unzan'}`, {
                 noAjax: true
+            }).then(() => {
+                this.moment.hasZan = !this.moment.hasZan
+                this.moment.upvoteNum = this.moment.hasZan ? this.moment.upvoteNum + 1 : this.moment.upvoteNum > 1 ? this.moment.upvoteNum - 1 : 0
+                this.$apply()
             })
-            console.log(rsp)
         }
         async onLoad (options) {
-            console.log(options)
             const rsp = await getFetch(`/circles/${options.id || 1}`)
             this.moment = rsp.circle
             this.moment.hasZan = rsp.hasZan
+            this.moment.upvoteNum = rsp.circle.targets.length
+            this.moment.commentsNum = rsp.circle.comments.length
             this.$apply()
         }
     }

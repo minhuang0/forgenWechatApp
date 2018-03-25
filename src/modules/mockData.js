@@ -71,7 +71,7 @@ exports.moments = [{
         commont: '评论评论评论评论评论评论评论评论'
     }],
     upvoteNum: 10,
-    favoriteNum: 20
+    commentsNum: 20
 }, {
     avatar: 'https://modao.cc/uploads3/images/1024/10246490/raw_1497340535.jpeg',
     name: '珠贝勒',
@@ -86,7 +86,7 @@ exports.moments = [{
         commont: '评论评论评论评论评论评论评论评论'
     }],
     upvoteNum: 10,
-    favoriteNum: 20
+    commentsNum: 20
 }]
 
 /** 朋友圈列表 **/
@@ -104,7 +104,7 @@ exports.selfMoments = [{
         commont: '评论评论评论评论评论评论评论评论'
     }],
     upvoteNum: 10,
-    favoriteNum: 20
+    commentsNum: 20
 }]
 
 /** 活动列表 **/

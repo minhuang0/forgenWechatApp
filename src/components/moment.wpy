@@ -23,11 +23,11 @@
         <view class="buttons">
             <view @tap.stop="toggleMoments">
                 <image class="icon" src="{{icons.message}}"></image>
-                <text>{{moment.upvoteNum}}</text>
+                <text>{{moment.commentsNum}}</text>
             </view>
             <view @tap.stop="toggleUpvote">
                 <image class="icon" style="margin-left: 40rpx;" src="{{icons.upvote}}"></image>
-                <text>{{moment.favoriteNum}}</text>
+                <text>{{moment.upvoteNum}}</text>
             </view>
         </view>
     </view>
@@ -42,7 +42,6 @@
         }
         methods = {
             goMomentDetail() {
-                console.log(this.moment)
                 if (this.moment && this.moment.id) {
                     wepy.navigateTo({
                         url: `../../pages/detail/moment?id=${this.moment.id}`
@@ -50,11 +49,9 @@
                 }
             },
             toggleMoments (e) {
-                console.log('toggleMoments')
                 this.$emit('toggleMoments')
             },
             toggleUpvote () {
-                console.log('toggleUpvote')
                 this.$emit('toggleUpvote')
             }
         }

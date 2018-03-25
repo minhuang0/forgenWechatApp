@@ -25,7 +25,6 @@
         computed = {
             moments () {
                 return this.momentsData.map(m => {
-                    console.log(m)
                     const user = m.user || {}
                     return {
                         id: m.id,
@@ -34,8 +33,8 @@
                         content: m.content,
                         images: paddingImg(m.circle_imgs.map(i => i.imgUrl)),
                         createTime: timeTransform(m.created_at),
-                        upvoteNum: m.comments_count,
-                        favoriteNum: m.targets_count
+                        upvoteNum: m.targets_count,
+                        commentsNum: m.comments_count
                     }
                 })
             }

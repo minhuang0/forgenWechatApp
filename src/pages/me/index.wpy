@@ -44,7 +44,7 @@
                         images: paddingImg(m.circle_imgs.map(i => i.imgUrl)),
                         createTime: timeTransform(m.created_at),
                         upvoteNum: m.targets_count,
-                        favoriteNum: m.comments_count
+                        commentsNum: m.comments_count
                     }
                 })
             }

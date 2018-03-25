@@ -75,7 +75,7 @@
             </view>
             <view catchtap="$vMoments$vMoment$toggleUpvote" class="_04ee5ab" data-com-index="{{$vMoments$index}}">
                 <image class="icon _04ee5ab" style="margin-left: 40rpx;" src="{{$vMoments$vMoment$icons.upvote}}"/>
-                <text class="_04ee5ab">{{$vMoments$item.favoriteNum}}</text>
+                <text class="_04ee5ab">{{$vMoments$item.commentsNum}}</text>
             </view>
         </view>
     </view>

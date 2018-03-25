@@ -12,7 +12,7 @@
     export default class Index extends wepy.component {
         props = {
             tabs: {},
-            activeIndex: {}
+            activeIndex: Number
         }
         methods = {
             tap(e) {

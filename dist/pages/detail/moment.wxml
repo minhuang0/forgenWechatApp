@@ -51,18 +51,9 @@
             </view>
         </block>
     </view>
-        <!-- <view class="comments">
-            <repeat for="{{comments}}" key="index" index="index" item="item">
-                <view class="comment">{{index + 1}}L: {{item.context}}</view>
-            </repeat>
-        </view> -->
         
     <view class="edit _aa40698 _178eff6">
         <input confirm-type="完成" bindinput="$vEditor$bindInput" value="{{$vEditor$inputValue}}" placeholder="请输入不少于15字的评论" class="_aa40698"/>
         <button bindtap="$vEditor$tap" class="_aa40698">发布</button>
     </view>
-        <!-- <view class="edit">
-            <input confirm-type="完成" bindinput="bindCommentInput"/>
-            <button bindtap="addComment">发布</button>
-        </view> -->
     </view>

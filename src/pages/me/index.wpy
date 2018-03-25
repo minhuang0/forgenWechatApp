@@ -37,7 +37,7 @@
                 const user = this.user
                 return this.moments.map(m => {
                     return {
-                        id: user.id,
+                        id: m.id,
                         avatar: user.avatarUrl,
                         name: user.nickName,
                         content: m.content,

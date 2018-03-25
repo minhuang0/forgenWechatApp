@@ -24,8 +24,8 @@
 
         computed = {
             moments () {
-                console.log(this.momentsData)
                 return this.momentsData.map(m => {
+                    console.log(m)
                     const user = m.user || {}
                     return {
                         id: m.id,

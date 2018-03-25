@@ -42,6 +42,7 @@
         }
         methods = {
             goMomentDetail() {
+                console.log(this.moment)
                 if (this.moment && this.moment.id) {
                     wepy.navigateTo({
                         url: `../../pages/detail/moment?id=${this.moment.id}`

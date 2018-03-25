@@ -11,7 +11,7 @@
 
     export default class Index extends wepy.page {
         config = {
-            navigationBarTitleText: '森林风'
+            navigationBarTitleText: '圈子'
         }
 
         components = {
@@ -22,10 +22,10 @@
             momentsData: []
         }
         async updateData () {
-            const rsp = await getFetch('/circles/list', { noAjax: true })
+            const rsp = await getFetch('/circles/circleList', { noAjax: true })
             this.momentsData = rsp.circles && rsp.circles.data
         }
-        async onLoad() {
+        async onShow () {
             await this.updateData()
             this.$apply()
         }

@@ -6,9 +6,9 @@
         <block wx:for="{{newComments}}" wx:key="{{index}}">
             <view class="comment">
                 <view class="user">
-                    <view class="user-info">
-                        <image class="avator" src="{{item.cover}}" mode="aspectFill" lazy-load="true"></image>
-                        <text class="username">用户{{item.id}}</text>
+                    <view class="user-info" @tap="goUserInfo" data-userid="{{item.user_id}}">
+                        <image class="avator" src="{{item.avator }}" mode="aspectFill" lazy-load="true"></image>
+                        <text class="username">{{item.nickName}}</text>
                     </view>
                     <text class="time">{{item.created_at}}</text>
                 </view>
@@ -29,8 +29,18 @@
         computed = {
             newComments () {
                 return this.comments.map(i => {
+                    const user = i.user || {}
                     i.created_at = timeTransform(i.created_at)
+                    i.avator = user.avatarUrl
+                    i.nickName = user.nickName
                     return i
+                })
+            }
+        }
+        methods = {
+            goUserInfo (e) {
+                wepy.navigateTo({
+                    url: `../me/user?id=${e.currentTarget.dataset.userid}`
                 })
             }
         }

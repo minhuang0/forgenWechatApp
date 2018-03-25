@@ -31,6 +31,7 @@
                 this.comments = this.moment.comments
                 return {
                     avatar: user.avatarUrl,
+                    user_id: this.moment.user_id,
                     name: user.nickName,
                     content: this.moment.content,
                     images: paddingImg(this.moment.circle_imgs.map(i => i.imgUrl)),
@@ -62,6 +63,10 @@
             }).then(() => {
                 this.comments.unshift({
                     content,
+                    user: {
+                        avatarUrl: userInfo.avatarUrl,
+                        nickName: userInfo.nickName
+                    },
                     created_at: new Date(),
                     user_id: userInfo.nickName
                 })

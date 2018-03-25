@@ -12,12 +12,13 @@
             pages: [
                 'pages/home/index',
                 'pages/discover/index',
+                'pages/publish/index',
                 'pages/recommend/index',
                 'pages/detail/moment',
-                'pages/publish/index',
                 'pages/list/index',
                 'pages/activity/index',
                 'pages/me/index',
+                'pages/me/user',
                 'pages/show/index',
                 'pages/discuss/index',
                 'pages/index'

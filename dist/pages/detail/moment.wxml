@@ -2,7 +2,7 @@
     <view class="me _178eff6">
         
     <view class="moment _04ee5ab _178eff6" catchtap="$vMoment$goMomentDetail">
-        <view class="monent-header _04ee5ab">
+        <view class="monent-header _04ee5ab" bindtap="$vMoment$goUserInfo" data-userid="{{$vMoment$moment.user_id}}">
             <view class="avatar _04ee5ab">
                 <image src="{{$vMoment$moment.avatar}}" class="_04ee5ab"/>
             </view>
@@ -14,7 +14,7 @@
                 <!-- <text class="description">该用户没有个性签名</text> -->
             </view>
         </view>
-        <text class="comment-content _04ee5ab">{{$vMoment$moment.content}}</text>
+        <text class="comment-content _04ee5ab"  wx:if="{{$vMoment$moment.content}}">{{$vMoment$moment.content}}</text>
         <block class="_04ee5ab" wx:for="{{$vMoment$moment.images}}" wx:for-index="$vMoment$index" wx:for-item="$vMoment$item" wx:key="$vMoment$index">
             <view class="images _04ee5ab">
                 <block class="_04ee5ab" wx:for="{{$vMoment$item}}" wx:for-index="$vMoment$i" wx:for-item="$vMoment$img" wx:key="$vMoment$i">
@@ -41,9 +41,9 @@
         <block wx:for="{{$vComments$newComments}}" wx:key="{{index}}" class="_02c155f">
             <view class="comment _02c155f">
                 <view class="user _02c155f">
-                    <view class="user-info _02c155f">
-                        <image class="avator _02c155f" src="{{item.cover}}" mode="aspectFill" lazy-load="true"/>
-                        <text class="username _02c155f">用户{{item.id}}</text>
+                    <view class="user-info _02c155f" bindtap="$vComments$goUserInfo" data-userid="{{item.user_id}}">
+                        <image class="avator _02c155f" src="{{item.avator }}" mode="aspectFill" lazy-load="true"/>
+                        <text class="username _02c155f">{{item.nickName}}</text>
                     </view>
                     <text class="time _02c155f">{{item.created_at}}</text>
                 </view>

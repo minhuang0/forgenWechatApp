@@ -10,11 +10,11 @@
                 <view class='l-c right'>
                     <view class='l-c' @tap="toggleUpvote">
                         <view class="iconfont icon icon-praise"></view>
-                        <text>{{item.targetsLength}}</text>
+                        <text>{{item.upvoteNum}}</text>
                     </view>
                     <view class="l-c">
                         <view class="iconfont icon icon-message_fill"></view>
-                        <text>{{item.commentsLength}}</text>
+                        <text>{{item.commentsNum}}</text>
                     </view>
                 </view>
             </view>
@@ -78,8 +78,7 @@
                 this.postComment(data)
             },
             toggleUpvote () {
-                ++counter
-                if (counter % 2) {
+                if (this.item.hasZan) {
                     return this.requestUpvote(false)
                 }
                 return this.requestUpvote(true)
@@ -96,6 +95,10 @@
             }).then(() => {
                 this.comments.unshift({
                     content: data,
+                    user: {
+                        avatarUrl: userInfo.avatarUrl,
+                        nickName: userInfo.nickName
+                    },
                     created_at: new Date(),
                     user_id: userInfo.nickName
                 })
@@ -111,16 +114,21 @@
             console.log(rsp)
         }
         async requestUpvote (isUpVote) {
-            const rsp = await getFetch(`/posts/${this.item.id}/${isUpVote ? 'zan' : 'unzan'}`, {
+            await getFetch(`/posts/${this.item.id}/${isUpVote ? 'zan' : 'unzan'}`, {
                 noAjax: true
+            }).then(() => {
+                this.item.hasZan = !this.item.hasZan
+                this.item.upvoteNum = this.item.hasZan ? this.item.upvoteNum + 1 : this.item.upvoteNum > 1 ? this.item.upvoteNum - 1 : 0
+                this.$apply()
             })
-            console.log(rsp)
         }
 
         async onLoad (options) {
             const data = await getFetch(`/posts/${options.id || 26}`)
             const renderData = this.methods.renderPost(data.post)
             this.item = renderData[0]
+            this.item.upvoteNum = this.item.targets.length
+            this.item.commentsNum = this.item.comments.length
             this.comments = this.item.comments
             this.userInfo = renderData[1]
             this.$apply()

@@ -13,7 +13,7 @@
             <block class="_44d4dd0" wx:for="{{adapterMoments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
                 
     <view class="moment _04ee5ab _44d4dd0" catchtap="$vMoment$goMomentDetail" data-com-index="{{index}}">
-        <view class="monent-header _04ee5ab">
+        <view class="monent-header _04ee5ab" bindtap="$vMoment$goUserInfo" data-userid="{{item.user_id}}" data-com-index="{{index}}">
             <view class="avatar _04ee5ab">
                 <image src="{{item.avatar}}" class="_04ee5ab"/>
             </view>
@@ -25,7 +25,7 @@
                 <!-- <text class="description">该用户没有个性签名</text> -->
             </view>
         </view>
-        <text class="comment-content _04ee5ab">{{item.content}}</text>
+        <text class="comment-content _04ee5ab"  wx:if="{{item.content}}">{{item.content}}</text>
         <block class="_04ee5ab" wx:for="{{item.images}}" wx:for-index="$vMoment$index" wx:for-item="$vMoment$item" wx:key="$vMoment$index">
             <view class="images _04ee5ab">
                 <block class="_04ee5ab" wx:for="{{$vMoment$item}}" wx:for-index="$vMoment$i" wx:for-item="$vMoment$img" wx:key="$vMoment$i">

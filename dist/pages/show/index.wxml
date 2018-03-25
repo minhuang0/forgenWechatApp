@@ -2,11 +2,10 @@
     <view class="_68a4d7d">
         
     <view class="moments _0eb65ca _68a4d7d">
-        <!-- <v-scroll-navbar v-bind:tabs.once='tabs' v-bind:activeIndex.sync='activeIndex' v-on:click='changeActiveIndex'></v-scroll-navbar> -->
         <block class="_0eb65ca" wx:for="{{$vMoments$moments}}" wx:for-index="$vMoments$index" wx:for-item="$vMoments$item" wx:key="$vMoments$index">
             
     <view class="moment _04ee5ab _0eb65ca" catchtap="$vMoments$vMoment$goMomentDetail" data-com-index="{{$vMoments$index}}">
-        <view class="monent-header _04ee5ab">
+        <view class="monent-header _04ee5ab" bindtap="$vMoments$vMoment$goUserInfo" data-userid="{{$vMoments$item.user_id}}" data-com-index="{{$vMoments$index}}">
             <view class="avatar _04ee5ab">
                 <image src="{{$vMoments$item.avatar}}" class="_04ee5ab"/>
             </view>

@@ -10,11 +10,11 @@
                 <view class="l-c right _0016a86">
                     <view class="l-c _0016a86" bindtap="toggleUpvote">
                         <view class="iconfont icon icon-praise _0016a86"/>
-                        <text class="_0016a86">{{item.targetsLength}}</text>
+                        <text class="_0016a86">{{item.upvoteNum}}</text>
                     </view>
                     <view class="l-c _0016a86">
                         <view class="iconfont icon icon-message_fill _0016a86"/>
-                        <text class="_0016a86">{{item.commentsLength}}</text>
+                        <text class="_0016a86">{{item.commentsNum}}</text>
                     </view>
                 </view>
             </view>
@@ -33,9 +33,9 @@
         <block wx:for="{{$vComments$newComments}}" wx:key="{{index}}" class="_02c155f">
             <view class="comment _02c155f">
                 <view class="user _02c155f">
-                    <view class="user-info _02c155f">
-                        <image class="avator _02c155f" src="{{item.cover}}" mode="aspectFill" lazy-load="true"/>
-                        <text class="username _02c155f">用户{{item.id}}</text>
+                    <view class="user-info _02c155f" bindtap="$vComments$goUserInfo" data-userid="{{item.user_id}}">
+                        <image class="avator _02c155f" src="{{item.avator }}" mode="aspectFill" lazy-load="true"/>
+                        <text class="username _02c155f">{{item.nickName}}</text>
                     </view>
                     <text class="time _02c155f">{{item.created_at}}</text>
                 </view>

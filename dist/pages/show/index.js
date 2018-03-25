@@ -42,7 +42,7 @@ var Index = function (_wepy$page) {
         }
 
         return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = Index.__proto__ || Object.getPrototypeOf(Index)).call.apply(_ref, [this].concat(args))), _this), _this.config = {
-            navigationBarTitleText: '森林风'
+            navigationBarTitleText: '圈子'
         }, _this.$repeat = {}, _this.$props = { "v-moments": { "xmlns:v-bind": "", "v-bind:momentsData.sync": "momentsData" } }, _this.$events = {}, _this.components = {
             'v-moments': _moments2.default
         }, _this.data = {
@@ -60,7 +60,7 @@ var Index = function (_wepy$page) {
                         switch (_context.prev = _context.next) {
                             case 0:
                                 _context.next = 2;
-                                return (0, _fetch.getFetch)('/circles/list', { noAjax: true });
+                                return (0, _fetch.getFetch)('/circles/circleList', { noAjax: true });
 
                             case 2:
                                 rsp = _context.sent;
@@ -82,7 +82,7 @@ var Index = function (_wepy$page) {
             return updateData;
         }()
     }, {
-        key: 'onLoad',
+        key: 'onShow',
         value: function () {
             var _ref3 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
                 return regeneratorRuntime.wrap(function _callee2$(_context2) {
@@ -103,11 +103,11 @@ var Index = function (_wepy$page) {
                 }, _callee2, this);
             }));
 
-            function onLoad() {
+            function onShow() {
                 return _ref3.apply(this, arguments);
             }
 
-            return onLoad;
+            return onShow;
         }()
     }]);
 
@@ -117,4 +117,4 @@ var Index = function (_wepy$page) {
 
 Page(require('./../../npm/wepy/lib/wepy.js').default.$createPage(Index , 'pages/show/index'));
 
-//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbIkluZGV4IiwiY29uZmlnIiwibmF2aWdhdGlvbkJhclRpdGxlVGV4dCIsIiRyZXBlYXQiLCIkcHJvcHMiLCIkZXZlbnRzIiwiY29tcG9uZW50cyIsImRhdGEiLCJtb21lbnRzRGF0YSIsIm5vQWpheCIsInJzcCIsImNpcmNsZXMiLCJ1cGRhdGVEYXRhIiwiJGFwcGx5IiwicGFnZSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQ0k7Ozs7QUFDQTs7OztBQUNBOzs7Ozs7Ozs7Ozs7SUFFcUJBLEs7Ozs7Ozs7Ozs7Ozs7O3dMQUNqQkMsTSxHQUFTO0FBQ0xDLG9DQUF3QjtBQURuQixTLFFBSVZDLE8sR0FBVSxFLFFBQ2pCQyxNLEdBQVMsRUFBQyxhQUFZLEVBQUMsZ0JBQWUsRUFBaEIsRUFBbUIsMkJBQTBCLGFBQTdDLEVBQWIsRSxRQUNUQyxPLEdBQVUsRSxRQUNUQyxVLEdBQWE7QUFDRjtBQURFLFMsUUFJTkMsSSxHQUFPO0FBQ0hDLHlCQUFhO0FBRFYsUzs7Ozs7Ozs7Ozs7Ozt1Q0FJZSxxQkFBUyxlQUFULEVBQTBCLEVBQUVDLFFBQVEsSUFBVixFQUExQixDOzs7QUFBWkMsbUM7O0FBQ04scUNBQUtGLFdBQUwsR0FBbUJFLElBQUlDLE9BQUosSUFBZUQsSUFBSUMsT0FBSixDQUFZSixJQUE5Qzs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozt1Q0FHTSxLQUFLSyxVQUFMLEU7OztBQUNOLHFDQUFLQyxNQUFMOzs7Ozs7Ozs7Ozs7Ozs7Ozs7O0VBckIyQixlQUFLQyxJOztrQkFBbkJkLEsiLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICBpbXBvcnQgd2VweSBmcm9tICd3ZXB5J1xuICAgIGltcG9ydCBtb21lbnRzQ29tcG9uZW50IGZyb20gJy4uL2Rpc2NvdmVyL21vbWVudHMnXG4gICAgaW1wb3J0IHsgZ2V0RmV0Y2ggfSBmcm9tICdAL21vZHVsZXMvY29tbW9uL2ZldGNoJ1xuXG4gICAgZXhwb3J0IGRlZmF1bHQgY2xhc3MgSW5kZXggZXh0ZW5kcyB3ZXB5LnBhZ2Uge1xuICAgICAgICBjb25maWcgPSB7XG4gICAgICAgICAgICBuYXZpZ2F0aW9uQmFyVGl0bGVUZXh0OiAn5qOu5p6X6aOOJ1xuICAgICAgICB9XG5cbiAgICAgICAkcmVwZWF0ID0ge307XHJcbiRwcm9wcyA9IHtcInYtbW9tZW50c1wiOntcInhtbG5zOnYtYmluZFwiOlwiXCIsXCJ2LWJpbmQ6bW9tZW50c0RhdGEuc3luY1wiOlwibW9tZW50c0RhdGFcIn19O1xyXG4kZXZlbnRzID0ge307XHJcbiBjb21wb25lbnRzID0ge1xuICAgICAgICAgICAgJ3YtbW9tZW50cyc6IG1vbWVudHNDb21wb25lbnRcbiAgICAgICAgfVxuXG4gICAgICAgIGRhdGEgPSB7XG4gICAgICAgICAgICBtb21lbnRzRGF0YTogW11cbiAgICAgICAgfVxuICAgICAgICBhc3luYyB1cGRhdGVEYXRhICgpIHtcbiAgICAgICAgICAgIGNvbnN0IHJzcCA9IGF3YWl0IGdldEZldGNoKCcvY2lyY2xlcy9saXN0JywgeyBub0FqYXg6IHRydWUgfSlcbiAgICAgICAgICAgIHRoaXMubW9tZW50c0RhdGEgPSByc3AuY2lyY2xlcyAmJiByc3AuY2lyY2xlcy5kYXRhXG4gICAgICAgIH1cbiAgICAgICAgYXN5bmMgb25Mb2FkKCkge1xuICAgICAgICAgICAgYXdhaXQgdGhpcy51cGRhdGVEYXRhKClcbiAgICAgICAgICAgIHRoaXMuJGFwcGx5KClcbiAgICAgICAgfVxuICAgIH1cbiJdfQ==
+//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbIkluZGV4IiwiY29uZmlnIiwibmF2aWdhdGlvbkJhclRpdGxlVGV4dCIsIiRyZXBlYXQiLCIkcHJvcHMiLCIkZXZlbnRzIiwiY29tcG9uZW50cyIsImRhdGEiLCJtb21lbnRzRGF0YSIsIm5vQWpheCIsInJzcCIsImNpcmNsZXMiLCJ1cGRhdGVEYXRhIiwiJGFwcGx5IiwicGFnZSJdLCJtYXBwaW5ncyI6Ijs7Ozs7Ozs7O0FBQ0k7Ozs7QUFDQTs7OztBQUNBOzs7Ozs7Ozs7Ozs7SUFFcUJBLEs7Ozs7Ozs7Ozs7Ozs7O3dMQUNqQkMsTSxHQUFTO0FBQ0xDLG9DQUF3QjtBQURuQixTLFFBSVZDLE8sR0FBVSxFLFFBQ2pCQyxNLEdBQVMsRUFBQyxhQUFZLEVBQUMsZ0JBQWUsRUFBaEIsRUFBbUIsMkJBQTBCLGFBQTdDLEVBQWIsRSxRQUNUQyxPLEdBQVUsRSxRQUNUQyxVLEdBQWE7QUFDRjtBQURFLFMsUUFJTkMsSSxHQUFPO0FBQ0hDLHlCQUFhO0FBRFYsUzs7Ozs7Ozs7Ozs7Ozt1Q0FJZSxxQkFBUyxxQkFBVCxFQUFnQyxFQUFFQyxRQUFRLElBQVYsRUFBaEMsQzs7O0FBQVpDLG1DOztBQUNOLHFDQUFLRixXQUFMLEdBQW1CRSxJQUFJQyxPQUFKLElBQWVELElBQUlDLE9BQUosQ0FBWUosSUFBOUM7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7Ozs7dUNBR00sS0FBS0ssVUFBTCxFOzs7QUFDTixxQ0FBS0MsTUFBTDs7Ozs7Ozs7Ozs7Ozs7Ozs7OztFQXJCMkIsZUFBS0MsSTs7a0JBQW5CZCxLIiwiZmlsZSI6ImluZGV4LmpzIiwic291cmNlc0NvbnRlbnQiOlsiXG4gICAgaW1wb3J0IHdlcHkgZnJvbSAnd2VweSdcbiAgICBpbXBvcnQgbW9tZW50c0NvbXBvbmVudCBmcm9tICcuLi9kaXNjb3Zlci9tb21lbnRzJ1xuICAgIGltcG9ydCB7IGdldEZldGNoIH0gZnJvbSAnQC9tb2R1bGVzL2NvbW1vbi9mZXRjaCdcblxuICAgIGV4cG9ydCBkZWZhdWx0IGNsYXNzIEluZGV4IGV4dGVuZHMgd2VweS5wYWdlIHtcbiAgICAgICAgY29uZmlnID0ge1xuICAgICAgICAgICAgbmF2aWdhdGlvbkJhclRpdGxlVGV4dDogJ+WciOWtkCdcbiAgICAgICAgfVxuXG4gICAgICAgJHJlcGVhdCA9IHt9O1xyXG4kcHJvcHMgPSB7XCJ2LW1vbWVudHNcIjp7XCJ4bWxuczp2LWJpbmRcIjpcIlwiLFwidi1iaW5kOm1vbWVudHNEYXRhLnN5bmNcIjpcIm1vbWVudHNEYXRhXCJ9fTtcclxuJGV2ZW50cyA9IHt9O1xyXG4gY29tcG9uZW50cyA9IHtcbiAgICAgICAgICAgICd2LW1vbWVudHMnOiBtb21lbnRzQ29tcG9uZW50XG4gICAgICAgIH1cblxuICAgICAgICBkYXRhID0ge1xuICAgICAgICAgICAgbW9tZW50c0RhdGE6IFtdXG4gICAgICAgIH1cbiAgICAgICAgYXN5bmMgdXBkYXRlRGF0YSAoKSB7XG4gICAgICAgICAgICBjb25zdCByc3AgPSBhd2FpdCBnZXRGZXRjaCgnL2NpcmNsZXMvY2lyY2xlTGlzdCcsIHsgbm9BamF4OiB0cnVlIH0pXG4gICAgICAgICAgICB0aGlzLm1vbWVudHNEYXRhID0gcnNwLmNpcmNsZXMgJiYgcnNwLmNpcmNsZXMuZGF0YVxuICAgICAgICB9XG4gICAgICAgIGFzeW5jIG9uU2hvdyAoKSB7XG4gICAgICAgICAgICBhd2FpdCB0aGlzLnVwZGF0ZURhdGEoKVxuICAgICAgICAgICAgdGhpcy4kYXBwbHkoKVxuICAgICAgICB9XG4gICAgfVxuIl19

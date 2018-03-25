@@ -16,7 +16,7 @@
 
     export default class Index extends wepy.page {
         config = {
-            navigationBarTitleText: '森林风'
+            navigationBarTitleText: '发现'
         }
 
         components = {
@@ -53,7 +53,7 @@
             this.choiceData = { hotTopic: response.hotTopic, banners: response.banners.posts, circles: (response.circles && response.circles.data) || [] }
             // this.momentsData = response.circles && response.circles.data
         }
-        async onLoad() {
+        async onShow() {
             await this.updateDiscoverData()
             this.$apply()
         }

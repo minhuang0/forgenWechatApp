@@ -1,6 +1,6 @@
 <template>
     <view class="moment" @tap.stop="goMomentDetail">
-        <view class="monent-header">
+        <view class="monent-header" @tap="goUserInfo" data-userid="{{moment.user_id}}">
             <view class="avatar">
                 <image src="{{moment.avatar}}"></image>
             </view>
@@ -12,7 +12,7 @@
                 <!-- <text class="description">该用户没有个性签名</text> -->
             </view>
         </view>
-        <text class="comment-content">{{moment.content}}</text>
+        <text class="comment-content" wx:if="{{moment.content}}">{{moment.content}}</text>
         <repeat for="{{moment.images}}" key="index" index="index" item="item">
             <view class="images">
                 <repeat for="{{item}}" key="i" index="i" item="img">
@@ -53,6 +53,11 @@
             },
             toggleUpvote () {
                 this.$emit('toggleUpvote')
+            },
+            goUserInfo (e) {
+                wepy.navigateTo({
+                    url: `../me/user?id=${e.currentTarget.dataset.userid}`
+                })
             }
         }
 

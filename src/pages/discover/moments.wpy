@@ -1,6 +1,5 @@
 <template>
     <view class="moments">
-        <!-- <v-scroll-navbar :tabs='tabs' :activeIndex.sync='activeIndex' @click.user='changeActiveIndex'></v-scroll-navbar> -->
         <repeat for="{{moments}}" key="index" index="index" item="item">
             <v-moment :moment.sync="item" :id="index"></v-moment>
         </repeat>
@@ -11,14 +10,12 @@
     import wepy from 'wepy'
     import momentComponent from '@/components/moment'
     import { timeTransform, paddingImg } from '@/modules/common/utils'
-    import scrollNavbarComponent from '@/components/scrollNavbar'
 
     export default class Index extends wepy.component {
         props = {
             momentsData: Array
         }
         components = {
-            'v-scroll-navbar': scrollNavbarComponent,
             'v-moment': momentComponent
         }
 
@@ -28,6 +25,7 @@
                     const user = m.user || {}
                     return {
                         id: m.id,
+                        user_id: m.user_id,
                         avatar: user.avatarUrl,
                         name: user.nickName,
                         content: m.content,

@@ -1,8 +1,18 @@
 
-    <view class="moments _0eb65ca">
-        <block class="_0eb65ca" wx:for="{{moments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-            
-    <view class="moment _04ee5ab _0eb65ca" catchtap="$vMoment$goMomentDetail" data-com-index="{{index}}">
+    <view class="me _eb25229">
+        <view class="header _eb25229">
+            <view class="cover _eb25229">
+                <image src="http://www.90houqq.com/data/attachment/forum/201611/08/100416m0763pt026p33axz.jpg" class="_eb25229"/>
+            </view>
+            <view class="header-content _eb25229">
+                <text class="name _eb25229">{{user.nickName}}</text>
+                <image class="img-head _eb25229" src="{{user.avatarUrl}}"/>
+            </view>
+        </view>
+        <view class="moments _eb25229">
+            <block class="_eb25229" wx:for="{{adapterMoments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                
+    <view class="moment _04ee5ab _eb25229" catchtap="$vMoment$goMomentDetail" data-com-index="{{index}}">
         <view class="monent-header _04ee5ab" bindtap="$vMoment$goUserInfo" data-userid="{{item.user_id}}" data-com-index="{{index}}">
             <view class="avatar _04ee5ab">
                 <image src="{{item.avatar}}" class="_04ee5ab"/>
@@ -34,5 +44,6 @@
             </view>
         </view>
     </view>
-        </block>
+            </block>
+        </view>
     </view>

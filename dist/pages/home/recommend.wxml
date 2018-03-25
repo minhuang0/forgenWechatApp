@@ -30,7 +30,7 @@
         <view class="cover _babbf7e">
             <image class="cover-img _babbf7e" src="{{$vList$item.cover}}" mode="aspectFill" lazy-load="true"/>
             <text class="recomment-title _babbf7e">{{$vList$item.title}}</text>
-            <!-- <text class="tag">{{item.tag}}</text> -->
+            <text class="tag _babbf7e">{{$vList$item.tag}}</text>
         </view>
     </view>
         </block>

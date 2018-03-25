@@ -17,7 +17,7 @@
                 <!-- <text class="description">该用户没有个性签名</text> -->
             </view>
         </view>
-        <text class="comment-content _04ee5ab">{{$vMoments$item.content}}</text>
+        <text class="comment-content _04ee5ab"  wx:if="{{$vMoments$item.content}}">{{$vMoments$item.content}}</text>
         <block class="_04ee5ab" wx:for="{{$vMoments$item.images}}" wx:for-index="$vMoments$vMoment$index" wx:for-item="$vMoments$vMoment$item" wx:key="$vMoments$vMoment$index">
             <view class="images _04ee5ab">
                 <block class="_04ee5ab" wx:for="{{$vMoments$vMoment$item}}" wx:for-index="$vMoments$vMoment$i" wx:for-item="$vMoments$vMoment$img" wx:key="$vMoments$vMoment$i">

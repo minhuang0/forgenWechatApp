@@ -48,9 +48,10 @@
             },
             posts () {
                 return this.homeData.posts.data.map(item => {
+                    const tag = (item.topics && item.topics[0] && item.topics[0].name) || ''
                     return {
                         id: item.id,
-                        tag: '少传Tag',
+                        tag: tag,
                         cover: item.imgUrl,
                         title: item.title
                     }

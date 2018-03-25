@@ -38,7 +38,6 @@
     import Editor from '@/components/editor'
     import Comments from '@/components/comments'
 
-    let counter = 0
     export default class Index extends wepy.page {
         config = {
             navigationBarTitleText: '文章'
@@ -224,4 +223,5 @@
     .icon-praise {
       color: #000;
     }
+
 </style>

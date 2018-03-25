@@ -28,7 +28,7 @@
                         user_id: m.user_id,
                         avatar: user.avatarUrl,
                         name: user.nickName,
-                        content: m.content,
+                        content: m.content || '',
                         images: paddingImg(m.circle_imgs.map(i => i.imgUrl)),
                         createTime: timeTransform(m.created_at),
                         upvoteNum: m.targets_count,

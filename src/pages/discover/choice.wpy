@@ -8,7 +8,7 @@
             </repeat>
         </view>
         <v-title title="热门精选"></v-title>
-        <v-grid :list="choiceList" @click.user="selectList"></v-grid>
+        <v-grid :list.sync="choiceList" @click.user="selectList"></v-grid>
     </view>
 </template>
 
@@ -49,45 +49,58 @@
                         name: i.name
                     }
                 })
+            },
+            choiceList () {
+                return this.choiceData.circles.reduce((arr, i) => {
+                    console.log(i.circle_imgs)
+                    if (i.circle_imgs && i.circle_imgs.length > 0) {
+                        arr.push({
+                            id: i.id,
+                            url: i.circle_imgs[0].imgUrl
+                        })
+                    }
+                    console.log(arr)
+                    return arr
+                }, [])
             }
         }
 
         data = {
             /* 轮播图数据 */
-            choiceList: [{
-                id: 0,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542719081079365.jpg'
-            }, {
-                id: 1,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542730649005565.jpg'
-            }, {
-                id: 2,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510541506626011490.jpg'
-            }, {
-                id: 3,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542214494079384.jpg'
-            }, {
-                id: 4,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542215017026944.jpg'
-            }, {
-                id: 5,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542215220092294.jpg'
-            }, {
-                id: 6,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542628347035674.jpg'
-            }, {
-                id: 6,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510543629362097062.jpg'
-            }, {
-                id: 6,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510543630413080476.jpg'
-            }, {
-                id: 6,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510543630392093541.jpg'
-            }, {
-                id: 6,
-                url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510544891901023536.jpg'
-            }]
+            // choiceList: [{
+            //     id: 0,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542719081079365.jpg'
+            // }, {
+            //     id: 1,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542730649005565.jpg'
+            // }, {
+            //     id: 2,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510541506626011490.jpg'
+            // }, {
+            //     id: 3,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542214494079384.jpg'
+            // }, {
+            //     id: 4,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542215017026944.jpg'
+            // }, {
+            //     id: 5,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542215220092294.jpg'
+            // }, {
+            //     id: 6,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542628347035674.jpg'
+            // }, {
+            //     id: 6,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510543629362097062.jpg'
+            // }, {
+            //     id: 6,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510543630413080476.jpg'
+            // }, {
+            //     id: 6,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510543630392093541.jpg'
+            // }, {
+            //     id: 6,
+            //     url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510544891901023536.jpg'
+            // }]
         }
 
         methods = {
@@ -98,7 +111,7 @@
             },
             selectList(e) {
                 wepy.navigateTo({
-                    url: `../../pages/recommend/index?id=${e.currentTarget.dataset.id}`
+                    url: `../../pages/detail/moment?id=${e.currentTarget.dataset.id}`
                 })
             },
             selectDiscuss(e) {

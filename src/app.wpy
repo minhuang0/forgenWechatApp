@@ -77,9 +77,6 @@
         }
 
         onLaunch() {
-            // this.getUserInfo()
-        }
-        onReady () {
             this.getUserInfo()
         }
 

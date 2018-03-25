@@ -1,16 +1,17 @@
 <template>
     <view>
-        <v-navbar :alldata='tabs' :activeIndex.sync='activeIndex' :sliderWidth='sliderWidth' @changeActiveIndex.user='changeActiveIndex'></v-navbar>
-        <v-choice :class='{ hidden: activeIndex !== 0}' :choiceData.sync="choiceData"></v-choice>
-        <v-moments :class='{ hidden: activeIndex !== 1}' :momentsData.sync="momentsData"></v-moments>
+        <!-- <v-navbar :alldata='tabs' :activeIndex.sync='activeIndex' :sliderWidth='sliderWidth' @changeActiveIndex.user='changeActiveIndex'></v-navbar> -->
+        <!-- <v-choice :class='{ hidden: activeIndex !== 0}' :choiceData.sync="choiceData"></v-choice> -->
+        <!-- <v-moments :class='{ hidden: activeIndex !== 1}' :momentsData.sync="momentsData"></v-moments> -->
+        <v-choice :choiceData.sync="choiceData"></v-choice>
     </view>
 </template>
 
 <script>
     import wepy from 'wepy'
     import { getFetch } from '@/modules/common/fetch'
-    import navbarComponent from '@/components/navbar'
-    import momentsComponent from './moments'
+    // import navbarComponent from '@/components/navbar'
+    // import momentsComponent from './moments'
     import choiceComponent from './choice'
 
     export default class Index extends wepy.page {
@@ -19,25 +20,26 @@
         }
 
         components = {
-            'v-navbar': navbarComponent,
-            'v-moments': momentsComponent,
+            // 'v-navbar': navbarComponent,
+            // 'v-moments': momentsComponent,
             'v-choice': choiceComponent
         }
 
         data = {
             /* 顶部分类 */
-            tabs: [{
-                title: '精选'
-            }, {
-                title: '圈子'
-            }],
-            activeIndex: 0,
-            sliderWidth: 93.75,
+            // tabs: [{
+            //     title: '精选'
+            // }, {
+            //     title: '圈子'
+            // }],
+            // activeIndex: 0,
+            // sliderWidth: 93.75,
             choiceData: {
                 banners: [],
-                hotTopic: []
-            },
-            momentsData: []
+                hotTopic: [],
+                circles: []
+            }
+            // momentsData: []
         }
 
         methods = {
@@ -48,8 +50,8 @@
 
         async updateDiscoverData () {
             const response = await getFetch('/circles', { noAjax: true })
-            this.choiceData = { hotTopic: response.hotTopic, banners: response.banners.posts }
-            this.momentsData = response.circles && response.circles.data
+            this.choiceData = { hotTopic: response.hotTopic, banners: response.banners.posts, circles: (response.circles && response.circles.data) || [] }
+            // this.momentsData = response.circles && response.circles.data
         }
         async onLoad() {
             await this.updateDiscoverData()

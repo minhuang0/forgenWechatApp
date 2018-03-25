@@ -1,17 +1,17 @@
 
-    <view class="activities _fc78df4">
-        <block class="_fc78df4" wx:for="{{activities}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+    <view class="activities _5a62c46">
+        <block class="_5a62c46" wx:for="{{activities}}" wx:for-index="index" wx:for-item="item" wx:key="index">
             
-    <view class="activity _97f9c8c _fc78df4" data-id="{{item.id}}" bindtap="$vActivity$tap" data-com-index="{{index}}">
-        <image class="cover _97f9c8c" src="{{item.cover}}" mode="aspectFill"/>
-        <view class="content-view _97f9c8c">
-            <text class="title _97f9c8c">{{item.title}}</text>
-            <text class="description _97f9c8c">{{item.description}}</text>
+    <view class="activity _0ca24fa _5a62c46" data-id="{{item.id}}" bindtap="$vActivity$tap" data-com-index="{{index}}">
+        <image class="cover _0ca24fa" src="{{item.cover}}" mode="aspectFill"/>
+        <view class="content-view _0ca24fa">
+            <text class="title _0ca24fa">{{item.title}}</text>
+            <text class="description _0ca24fa">{{item.description}}</text>
             <!-- <text class="time">{{item.time}}</text>
             <text class="address">{{item.address}}</text> -->
-            <view class="last _97f9c8c">
+            <view class="last _0ca24fa">
                 <!-- <text class="money">{{item.money > 0 ? item.money : '免费'}}</text> -->
-                <text class="join _97f9c8c" type="default">报名</text>
+                <text class="join _0ca24fa" type="default">报名</text>
             </view>
         </view>
     </view>

@@ -1,12 +1,12 @@
 
-    <view class="_2dd78bd">
+    <view class="_68a4d7d">
         
-    <view class="title _911ca71 _2dd78bd">{{$vTitle1$title}}</view>
-        <view class="empty _2dd78bd"/>
+    <view class="title _cbe9f31 _68a4d7d">{{$vTitle1$title}}</view>
+        <view class="empty _68a4d7d"/>
         
-    <view class="title _911ca71 _2dd78bd">{{$vTitle2$title}}</view>
-        <view class="empty _2dd78bd"/>
+    <view class="title _cbe9f31 _68a4d7d">{{$vTitle2$title}}</view>
+        <view class="empty _68a4d7d"/>
         
-    <view class="title _911ca71 _2dd78bd">{{$vTitle$title}}</view>
-        <view class="empty _2dd78bd"/>
+    <view class="title _cbe9f31 _68a4d7d">{{$vTitle$title}}</view>
+        <view class="empty _68a4d7d"/>
     </view>

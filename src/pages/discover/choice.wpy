@@ -3,8 +3,8 @@
         <v-swper :alldata.sync='swiperImgUrls' @click.user='selectSwiper'></v-swper>
         <view>
             <v-baseTitle leftText="热门话题" rightText="更多热门话题"  @click.user='selectDiscuss' data-id="{{0}}"></v-baseTitle>
-            <repeat for="{{discuss}}" key="index" index="index" item="item">
-                <v-text :text="item.text" data-id="{{index}}" @click.user='selectDiscuss'></v-text>
+            <repeat for="{{hotTopic}}" key="index" index="index" item="item">
+                <v-text :text="item.name" data-id="{{item.id}}" @click.user='selectDiscuss'></v-text>
             </repeat>
         </view>
         <v-title title="热门精选"></v-title>
@@ -41,21 +41,19 @@
                         imgUrl: item.imgUrl
                     }
                 })
+            },
+            hotTopic () {
+                return this.choiceData.hotTopic.map(i => {
+                    return {
+                        id: i.id,
+                        name: i.name
+                    }
+                })
             }
         }
 
         data = {
             /* 轮播图数据 */
-            discuss: [{
-                id: 0,
-                text: '这是什么花'
-            }, {
-                id: 1,
-                text: '干花使用'
-            }, {
-                id: 2,
-                text: '盆栽种植'
-            }],
             choiceList: [{
                 id: 0,
                 url: 'http://static.htxq.net/UploadFiles/2017/11/13/1510542719081079365.jpg'
@@ -104,6 +102,7 @@
                 })
             },
             selectDiscuss(e) {
+                console.log(e.currentTarget.dataset)
                 wepy.navigateTo({
                     url: `../../pages/discuss/index?id=${e.currentTarget.dataset.id}&text=${e.currentTarget.dataset.text || ''}`
                 })

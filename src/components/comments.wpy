@@ -28,7 +28,6 @@
         }
         computed = {
             newComments () {
-                console.log(this.comments)
                 return this.comments.map(i => {
                     i.created_at = timeTransform(i.created_at)
                     return i

@@ -1,45 +1,23 @@
 
-    <view class="moments _b1436aa">
+    <view class="moments _ec3ac2c">
         
-    <view class="title _d08f9c0 title _b1436aa" data-leftText="{{$vBaseTitle$leftText}}" data-rightText="{{$vBaseTitle$rightText}}" bindtap="$vBaseTitle$tap">
-        <text class="left _d08f9c0">{{$vBaseTitle$leftText}}</text>
-        <view class="right _d08f9c0">
-            <text class="_d08f9c0">{{$vBaseTitle$rightText}}</text>
+    <view class="title _5a01040 title _ec3ac2c" data-leftText="{{$vBaseTitle$leftText}}" data-rightText="{{$vBaseTitle$rightText}}" bindtap="$vBaseTitle$tap">
+        <text class="left _5a01040">{{$vBaseTitle$leftText}}</text>
+        <view class="right _5a01040">
+            <text class="_5a01040">{{$vBaseTitle$rightText}}</text>
         </view>
     </view>
-        <block class="_b1436aa" wx:for="{{moments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-            
-    <view class="moment _e61226b _b1436aa" catchtap="$vMoment$goMomentDetail" data-com-index="{{index}}">
-        <view class="monent-header _e61226b">
-            <view class="avatar _e61226b">
-                <image src="{{item.avatar}}" class="_e61226b"/>
-            </view>
-            <view class="content-view _e61226b">
-                <view class="name-view _e61226b">
-                    <text class="name _e61226b">{{item.name}}</text>
-                    <text class="create-time _e61226b">{{item.createTime}}</text>
-                </view>
-                <text class="description _e61226b">该用户没有个性签名</text>
+        <!-- <repeat for="{{adapterPosts}}" key="index" index="index" item="item"> -->
+        
+    <block class="_bdfbe46 list _ec3ac2c" wx:for="{{$vCourse$list}}" wx:for-index="$vCourse$index" wx:for-item="$vCourse$item" wx:key="$vCourse$index">
+        <view class="course _bdfbe46" data-id="{{$vCourse$item.id}}" bindtap="$vCourse$tap">
+            <image class="cover _bdfbe46" src="{{$vCourse$item.cover}}" mode="aspectFill"/>
+            <view class="content-view _bdfbe46">
+                <text class="title _bdfbe46">{{$vCourse$item.title}}</text>
+                <text class="description ellipsis _bdfbe46">{{$vCourse$item.description}}</text>
+                <text class="tag _bdfbe46">{{$vCourse$item.tag}}</text>
             </view>
         </view>
-        <text class="comment-content _e61226b">{{item.content}}</text>
-        <block class="_e61226b" wx:for="{{item.images}}" wx:for-index="$vMoment$index" wx:for-item="$vMoment$item" wx:key="$vMoment$index">
-            <view class="images _e61226b">
-                <block class="_e61226b" wx:for="{{$vMoment$item}}" wx:for-index="$vMoment$i" wx:for-item="$vMoment$img" wx:key="$vMoment$i">
-                    <image class="img _e61226b" src="{{$vMoment$img}}" mode="aspectFill"/>
-                </block>
-            </view>
-        </block>
-        <view class="buttons _e61226b">
-            <view catchtap="$vMoment$toggleMoments" class="_e61226b" data-com-index="{{index}}">
-                <image class="icon _e61226b" src="{{$vMoment$icons.message}}"/>
-                <text class="_e61226b">{{item.upvoteNum}}</text>
-            </view>
-            <view catchtap="$vMoment$toggleUpvote" class="_e61226b" data-com-index="{{index}}">
-                <image class="icon _e61226b" style="margin-left: 40rpx;" src="{{$vMoment$icons.upvote}}"/>
-                <text class="_e61226b">{{item.favoriteNum}}</text>
-            </view>
-        </view>
-    </view>
-        </block>
+    </block>
+        <!-- </repeat> -->
     </view>

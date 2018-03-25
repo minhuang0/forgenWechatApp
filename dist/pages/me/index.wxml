@@ -1,46 +1,46 @@
 
-    <view class="me _77e5458">
-        <view class="header _77e5458">
-            <view class="cover _77e5458">
-                <image src="http://www.90houqq.com/data/attachment/forum/201611/08/100416m0763pt026p33axz.jpg" class="_77e5458"/>
+    <view class="me _44d4dd0">
+        <view class="header _44d4dd0">
+            <view class="cover _44d4dd0">
+                <image src="http://www.90houqq.com/data/attachment/forum/201611/08/100416m0763pt026p33axz.jpg" class="_44d4dd0"/>
             </view>
-            <view class="header-content _77e5458">
-                <text class="name _77e5458">诸葛·刘gloria</text>
-                <image class="img-head _77e5458" src="https://modao.cc/uploads3/images/1024/10246492/raw_1497340535.jpeg"/>
+            <view class="header-content _44d4dd0">
+                <text class="name _44d4dd0">{{user.nickName}}</text>
+                <image class="img-head _44d4dd0" src="{{user.avatarUrl}}"/>
             </view>
         </view>
-        <view class="moments _77e5458">
-            <block class="_77e5458" wx:for="{{moments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+        <view class="moments _44d4dd0">
+            <block class="_44d4dd0" wx:for="{{adapterMoments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
                 
-    <view class="moment _e61226b _77e5458" catchtap="$vMoment$goMomentDetail" data-com-index="{{index}}">
-        <view class="monent-header _e61226b">
-            <view class="avatar _e61226b">
-                <image src="{{item.avatar}}" class="_e61226b"/>
+    <view class="moment _04ee5ab _44d4dd0" catchtap="$vMoment$goMomentDetail" data-com-index="{{index}}">
+        <view class="monent-header _04ee5ab">
+            <view class="avatar _04ee5ab">
+                <image src="{{item.avatar}}" class="_04ee5ab"/>
             </view>
-            <view class="content-view _e61226b">
-                <view class="name-view _e61226b">
-                    <text class="name _e61226b">{{item.name}}</text>
-                    <text class="create-time _e61226b">{{item.createTime}}</text>
+            <view class="content-view _04ee5ab">
+                <view class="name-view _04ee5ab">
+                    <text class="name _04ee5ab">{{item.name}}</text>
+                    <text class="create-time _04ee5ab">{{item.createTime}}</text>
                 </view>
-                <text class="description _e61226b">该用户没有个性签名</text>
+                <!-- <text class="description">该用户没有个性签名</text> -->
             </view>
         </view>
-        <text class="comment-content _e61226b">{{item.content}}</text>
-        <block class="_e61226b" wx:for="{{item.images}}" wx:for-index="$vMoment$index" wx:for-item="$vMoment$item" wx:key="$vMoment$index">
-            <view class="images _e61226b">
-                <block class="_e61226b" wx:for="{{$vMoment$item}}" wx:for-index="$vMoment$i" wx:for-item="$vMoment$img" wx:key="$vMoment$i">
-                    <image class="img _e61226b" src="{{$vMoment$img}}" mode="aspectFill"/>
+        <text class="comment-content _04ee5ab">{{item.content}}</text>
+        <block class="_04ee5ab" wx:for="{{item.images}}" wx:for-index="$vMoment$index" wx:for-item="$vMoment$item" wx:key="$vMoment$index">
+            <view class="images _04ee5ab">
+                <block class="_04ee5ab" wx:for="{{$vMoment$item}}" wx:for-index="$vMoment$i" wx:for-item="$vMoment$img" wx:key="$vMoment$i">
+                    <image class="img _04ee5ab" src="{{$vMoment$img}}" mode="aspectFill"/>
                 </block>
             </view>
         </block>
-        <view class="buttons _e61226b">
-            <view catchtap="$vMoment$toggleMoments" class="_e61226b" data-com-index="{{index}}">
-                <image class="icon _e61226b" src="{{$vMoment$icons.message}}"/>
-                <text class="_e61226b">{{item.upvoteNum}}</text>
+        <view class="buttons _04ee5ab">
+            <view catchtap="$vMoment$toggleMoments" class="_04ee5ab" data-com-index="{{index}}">
+                <image class="icon _04ee5ab" src="{{$vMoment$icons.message}}"/>
+                <text class="_04ee5ab">{{item.upvoteNum}}</text>
             </view>
-            <view catchtap="$vMoment$toggleUpvote" class="_e61226b" data-com-index="{{index}}">
-                <image class="icon _e61226b" style="margin-left: 40rpx;" src="{{$vMoment$icons.upvote}}"/>
-                <text class="_e61226b">{{item.favoriteNum}}</text>
+            <view catchtap="$vMoment$toggleUpvote" class="_04ee5ab" data-com-index="{{index}}">
+                <image class="icon _04ee5ab" style="margin-left: 40rpx;" src="{{$vMoment$icons.upvote}}"/>
+                <text class="_04ee5ab">{{item.favoriteNum}}</text>
             </view>
         </view>
     </view>

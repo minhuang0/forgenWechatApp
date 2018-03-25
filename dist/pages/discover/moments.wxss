@@ -1,3 +1,3 @@
 @import "./../../components/moment.wxss";
 @import "./../../components/scrollNavbar.wxss";
-.moments._881210a{position:relative;display:-webkit-box;display:-webkit-flex;display:flex;padding-bottom:10rpx;-webkit-flex-wrap:nowrap;flex-wrap:nowrap;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;background-color:#f8f8f8;background-color:#f8f8f8}
+.moments._0eb65ca{position:relative;display:-webkit-box;display:-webkit-flex;display:flex;padding-bottom:10rpx;-webkit-flex-wrap:nowrap;flex-wrap:nowrap;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;flex-direction:column;background-color:#f8f8f8;background-color:#f8f8f8}

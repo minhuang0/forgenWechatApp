@@ -1,39 +1,39 @@
 
     <!--logs.wxml-->
-    <view class="container _9b9ddce">
-        <view class="page__bd _9b9ddce">
-            <view class="weui-toptips weui-toptips_warn _9b9ddce"  wx:if="{{tips.show}}">{{tips.text}}</view>
-            <view class="weui-toast _9b9ddce">
-                <i class="weui-icon-success-no-circle weui-icon_toast _9b9ddce"/>
-                <p class="weui-toast__content _9b9ddce"  wx:if="{{tips.success}}">发表成功</p>
+    <view class="container _ea5f74e">
+        <view class="page__bd _ea5f74e">
+            <view class="weui-toptips weui-toptips_warn _ea5f74e"  wx:if="{{tips.show}}">{{tips.text}}</view>
+            <view class="weui-toast _ea5f74e">
+                <i class="weui-icon-success-no-circle weui-icon_toast _ea5f74e"/>
+                <p class="weui-toast__content _ea5f74e"  wx:if="{{tips.success}}">发表成功</p>
             </view>
-            <view class="weui-cells weui-cells_after-title _9b9ddce">
-                <view class="weui-cell _9b9ddce">
-                    <view class="weui-cell__bd _9b9ddce">
-                        <textarea class="weui-textarea _9b9ddce" placeholder="您想说的话!" style="height: 3.3em" bindinput="bindCommentInput"/>
+            <view class="weui-cells weui-cells_after-title _ea5f74e">
+                <view class="weui-cell _ea5f74e">
+                    <view class="weui-cell__bd _ea5f74e">
+                        <textarea class="weui-textarea _ea5f74e" placeholder="您想说的话!" style="height: 3.3em" bindinput="bindCommentInput"/>
                     </view>
                 </view>
-                <view class="weui-cell _9b9ddce">
-                    <view class="weui-cell__bd _9b9ddce">
-                        <view class="weui-uploader _9b9ddce">
-                            <view class="weui-uploader__bd _9b9ddce">
-                                <view class="weui-uploader__files _9b9ddce" id="uploaderFiles">
-                                    <block class="_9b9ddce" wx:for="{{files}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-                                        <view class="weui-uploader__file _9b9ddce" bindtap="previewImage" id="{{item}}">
-                                            <image class="weui-uploader__img _9b9ddce" src="{{item}}" mode="aspectFill"/>
+                <view class="weui-cell _ea5f74e">
+                    <view class="weui-cell__bd _ea5f74e">
+                        <view class="weui-uploader _ea5f74e">
+                            <view class="weui-uploader__bd _ea5f74e">
+                                <view class="weui-uploader__files _ea5f74e" id="uploaderFiles">
+                                    <block class="_ea5f74e" wx:for="{{files}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                                        <view class="weui-uploader__file _ea5f74e" bindtap="previewImage" id="{{item}}">
+                                            <image class="weui-uploader__img _ea5f74e" src="{{item}}" mode="aspectFill"/>
                                         </view>
                                     </block>
                                 </view>
-                                <view class="weui-uploader__input-box _9b9ddce">
-                                    <view class="weui-uploader__input _9b9ddce" bindtap="chooseMomentImage"/>
+                                <view class="weui-uploader__input-box _ea5f74e">
+                                    <view class="weui-uploader__input _ea5f74e" bindtap="chooseMomentImage"/>
                                 </view>
                             </view>
                         </view>
                     </view>
                 </view>
             </view>
-            <view class="weui-btn-area _9b9ddce">
-                <button class="weui-btn _9b9ddce" type="primary" bindtap="confirmMoment">发表</button>
+            <view class="weui-btn-area _ea5f74e">
+                <button class="weui-btn _ea5f74e" type="primary" bindtap="confirmMoment">发表</button>
             </view>
         </view>
     </view>

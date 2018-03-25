@@ -5,7 +5,7 @@
             <view class="content-view">
                 <text class="title">{{item.title}}</text>
                 <text class="description ellipsis">{{item.description}}</text>
-                <text class="tag">#{{item.tag}}</text>
+                <text class="tag">{{item.tag}}</text>
             </view>
         </view>
     </repeat>
@@ -39,7 +39,7 @@
       .cover {
         display: block;
         width: 300rpx;
-        height: 240rpx;
+        height: 286rpx;
       }
       .content-view {
         padding: 20rpx;
@@ -62,7 +62,7 @@
         }
         .description {
           align-items: flex-start;
-          height: 60rpx;
+          height: 110rpx;
           white-space: normal;
           color: #8a8a8a;
         }

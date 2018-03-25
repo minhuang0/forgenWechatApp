@@ -79,3 +79,7 @@ exports.timeTransform = (time) => {
     const diffSeconds = differenceInSeconds(now, time)
     return diffYears ? `${diffYears}年前` : diffMonths ? `${diffMonths}月前` : diffWeeks ? `${diffWeeks}周前` : diffDays ? `${diffDays}天前` : diffHours ? `${diffHours}小时前` : diffMins ? `${diffMins}分钟前` : diffSeconds > 10 ? `${diffSeconds}秒前` : '刚刚'
 }
+
+exports.maxLength = (str, length = 25) => {
+    return str.length > length ? `${str.slice(0, length - 1)}...` : str
+}

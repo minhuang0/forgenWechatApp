@@ -9,7 +9,7 @@
                     <text class="name">{{moment.name}}</text>
                     <text class="create-time">{{moment.createTime}}</text>
                 </view>
-                <text class="description">该用户没有个性签名</text>
+                <!-- <text class="description">该用户没有个性签名</text> -->
             </view>
         </view>
         <text class="comment-content">{{moment.content}}</text>
@@ -117,6 +117,7 @@
           align-items: center;
           justify-content: space-between;
           position: relative;
+          height: 100%;
         }
         .create-time {
           display: inline-block;

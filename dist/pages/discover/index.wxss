@@ -1,4 +1,4 @@
 @import "./choice.wxss";
 @import "./moments.wxss";
 @import "./../../components/navbar.wxss";
-.hidden._943ddae{display:none}
+.hidden._1daf42e{display:none}

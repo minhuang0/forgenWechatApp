@@ -5,12 +5,12 @@
                 <image src="http://www.90houqq.com/data/attachment/forum/201611/08/100416m0763pt026p33axz.jpg" />
             </view>
             <view class="header-content">
-                <text class="name">诸葛·刘gloria</text>
-                <image class="img-head" src="https://modao.cc/uploads3/images/1024/10246492/raw_1497340535.jpeg"></image>
+                <text class="name">{{user.nickName}}</text>
+                <image class="img-head" src="{{user.avatarUrl}}"></image>
             </view>
         </view>
         <view class="moments">
-            <repeat for="{{moments}}" key="index" index="index" item="item">
+            <repeat for="{{adapterMoments}}" key="index" index="index" item="item">
                 <v-moment :moment="item"></v-moment>
             </repeat>
         </view>
@@ -20,7 +20,8 @@
 <script>
     import wepy from 'wepy'
     import momentComponent from '@/components/moment'
-    import { paddingImg } from '@/modules/common/utils'
+    import { getFetch } from '@/modules/common/fetch'
+    import { paddingImg, timeTransform } from '@/modules/common/utils'
 
     export default class Index extends wepy.page {
         config = {
@@ -31,30 +32,38 @@
             'v-moment': momentComponent
         }
 
-        data = {
-            moments: [{
-                id: 1,
-                avatar: 'https://modao.cc/uploads3/images/1024/10246492/raw_1497340535.jpeg',
-                name: '诸葛·刘gloria',
-                content: '与柳芽相遇也是偶然，在菜场内的一堆摊位间，发现不起眼的一小袋黄盈盈的嫩芽。其实有点于心不忍，这都是从新绿的柳条上摘下来的吧。但还是忍不住想尝鲜的愿意，买了一点。一点点，已够做出好几个菜了。应时应景，尝个新鲜吧',
-                images: paddingImg([
-                    'https://modao.cc/uploads3/images/1024/10246655/raw_1497340747.jpeg',
-                    'https://modao.cc/uploads3/images/1024/10246656/raw_1497340747.jpeg',
-                    'https://modao.cc/uploads3/images/1024/10246656/raw_1497340747.jpeg'
-                ]),
-                createTime: '1小时前',
-                commons: [{
-                    name: '评论者',
-                    commont: '评论评论评论评论评论评论评论评论'
-                }],
-                upvoteNum: 10,
-                favoriteNum: 20
-            }]
+        computed = {
+            adapterMoments () {
+                const user = this.user
+                return this.moments.map(m => {
+                    return {
+                        id: user.id,
+                        avatar: user.avatarUrl,
+                        name: user.nickName,
+                        content: m.content,
+                        images: paddingImg(m.circle_imgs.map(i => i.imgUrl)),
+                        createTime: timeTransform(m.created_at),
+                        upvoteNum: m.targets_count,
+                        favoriteNum: m.comments_count
+                    }
+                })
+            }
         }
 
+        data = {
+            moments: [],
+            user: {}
+        }
         methods = {
         }
-        onLoad() {
+        async fetchData () {
+            const response = await getFetch('/user/57')
+            this.moments = response.circles
+            this.user = response.user
+        }
+        async onLoad() {
+            await this.fetchData()
+            this.$apply()
         }
     }
 </script>
@@ -110,6 +119,9 @@
         image {
           width: 100%;
         }
+      }
+      .moments {
+          margin-top: 65rpx;
       }
     }
 </style>

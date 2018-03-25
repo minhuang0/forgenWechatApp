@@ -11,6 +11,7 @@
     import wepy from 'wepy'
     import titleComponent from '@/components/title'
     import courseComponent from '@/components/course'
+    import { maxLength } from '@/modules/common/utils'
 
     export default class Index extends wepy.component {
         props = {
@@ -31,66 +32,18 @@
                         list: item.posts.map(i => {
                             return {
                                 id: i.id,
-                                tag: i.tag || '没有标签',
+                                tag: i.topics.reduce((value, t) => {
+                                    return `${value} #${t.name}#`
+                                }, ''),
                                 title: i.title,
                                 cover: i.imgUrl,
-                                description: i.description || '没有description'
+                                description: maxLength(i.description)
                             }
                         })
                     }
                 })
             }
         }
-
-        // data = {
-        //     lists: [{
-        //         type: 1,
-        //         categoryName: '森林文化',
-        //         list: [{
-        //             id: 3,
-        //             tag: '森林文化',
-        //             cover: 'http://static.htxq.net/UploadFiles/2017/11/15/1510756866503005360.jpg',
-        //             title: '10个养花创意等你来试',
-        //             description: '与植物盆栽打交道的过程是美好的，既能安抚情绪，又能细细品味生活。如果在养花的同时再加上一些创意，跟植物来一场有趣的“游戏”，这才是与植物的最佳交流方式'
-        //         }, {
-        //             id: 6,
-        //             tag: '产品鉴别',
-        //             cover: 'http://static.htxq.net/UploadFiles/2017/10/30/test/20171030103616481.jpg',
-        //             title: '20种秋季花材种植指南',
-        //             description: '今天给大家介绍20种适合在秋冬季节种植的花材，跟着Q姐一起去看看吧~'
-        //         }]
-        //     }, {
-        //         type: 1,
-        //         categoryName: '森林厨房',
-        //         list: [{
-        //             id: 4,
-        //             tag: '森林厨房',
-        //             cover: 'http://static.htxq.net/UploadFiles/2017/10/24/test/20171024140320235.jpg',
-        //             title: '在山水之间 与植物为邻',
-        //             description: '在这里，有最酷的餐厅；在这里，你可以真真正正地在优美宁静环山围绕的大自然里吃上一顿美餐！'
-        //         }]
-        //     }, {
-        //         type: 1,
-        //         categoryName: '森林风光',
-        //         list: [{
-        //             id: 5,
-        //             tag: '森林风光',
-        //             cover: 'http://static.htxq.net/UploadFiles/2017/11/13/test/20171113161607248.jpg',
-        //             title: '十条全球最梦幻的树木隧道',
-        //             description: '树木，地球上最古老的生物群体之一，带着强大、持久与忍耐的力量，树木可以雕刻成各种形式。今天，鲁鲁带你探寻10条全球最梦幻的树木隧道，发现地球上的美丽存在，领悟大自然的神奇力量。'
-        //         }]
-        //     }, {
-        //         type: 1,
-        //         categoryName: '森林蘑菇、林产品鉴别',
-        //         list: [{
-        //             id: 6,
-        //             tag: '产品鉴别',
-        //             cover: 'http://static.htxq.net/UploadFiles/2017/10/30/test/20171030103616481.jpg',
-        //             title: '20种秋季花材种植指南',
-        //             description: '今天给大家介绍20种适合在秋冬季节种植的花材，跟着Q姐一起去看看吧~'
-        //         }]
-        //     }]
-        // }
 
         methods = {
             selectList(e) {

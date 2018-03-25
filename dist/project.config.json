@@ -8,13 +8,10 @@
 		"newFeature": true
 	},
 	"compileType": "miniprogram",
-	"libVersion": "1.6.4",
+	"libVersion": "1.9.94",
 	"appid": "wx074fc89a63291f58",
 	"projectname": "forgen",
-	"svr": "",
-	"client": "",
-	"qcloudRoot": "",
-	"miniprogramRoot": "",
+	"isGameTourist": false,
 	"condition": {
 		"search": {
 			"current": -1,
@@ -22,6 +19,10 @@
 		},
 		"conversation": {
 			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
 			"list": []
 		},
 		"miniprogram": {

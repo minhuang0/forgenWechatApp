@@ -77,7 +77,7 @@
         }
 
         onLaunch() {
-            this.getUserInfo()
+            // this.getUserInfo()
         }
 
         sleep(s) {

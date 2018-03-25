@@ -76,6 +76,7 @@
         }
 
         async onLoad() {
+            await this.$parent.getUserInfo()
             await this.updateHomeData()
             await this.updateActivity()
             await this.updateSenJiuTang()

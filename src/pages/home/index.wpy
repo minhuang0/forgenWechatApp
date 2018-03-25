@@ -10,7 +10,7 @@
 <script>
     import wepy from 'wepy'
     import navbarComponent from '@/components/navbar'
-    import { getFetch, postFetch } from '@/modules/common/fetch'
+    import { getFetch } from '@/modules/common/fetch'
     import recommendComponent from './recommend'
     import activitiesComponent from './activity'
     import forgenComponent from './forgen'
@@ -68,10 +68,6 @@
             const response = await getFetch('/posts/activity')
             this.activityData = response.topics && response.topics.posts
         }
-        async loginWechat () {
-            const userInfo = await this.$parent.getUserInfo()
-            await postFetch('/loginWeChat', { noAjax: true, data: userInfo })
-        }
 
         methods = {
             changeActiveIndex(activeIndex) {
@@ -80,7 +76,6 @@
         }
 
         async onLoad() {
-            await this.loginWechat()
             await this.updateHomeData()
             await this.updateActivity()
             await this.updateSenJiuTang()

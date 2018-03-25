@@ -3,14 +3,10 @@
     <view class="container _ea5f74e">
         <view class="page__bd _ea5f74e">
             <view class="weui-toptips weui-toptips_warn _ea5f74e"  wx:if="{{tips.show}}">{{tips.text}}</view>
-            <view class="weui-toast _ea5f74e">
-                <i class="weui-icon-success-no-circle weui-icon_toast _ea5f74e"/>
-                <p class="weui-toast__content _ea5f74e"  wx:if="{{tips.success}}">发表成功</p>
-            </view>
             <view class="weui-cells weui-cells_after-title _ea5f74e">
                 <view class="weui-cell _ea5f74e">
                     <view class="weui-cell__bd _ea5f74e">
-                        <textarea class="weui-textarea _ea5f74e" placeholder="您想说的话!" style="height: 3.3em" bindinput="bindCommentInput"/>
+                        <textarea class="weui-textarea _ea5f74e" placeholder="您想说的话!" style="height: 3.3em" bindinput="bindCommentInput" value="{{content}}"/>
                     </view>
                 </view>
                 <view class="weui-cell _ea5f74e">

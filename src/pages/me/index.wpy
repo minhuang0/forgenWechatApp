@@ -57,11 +57,12 @@
         methods = {
         }
         async fetchData () {
-            const response = await getFetch('/user/57')
+            const userInfo = await this.$parent.getUserInfo()
+            const response = await getFetch(`/user/${userInfo.id}`)
             this.moments = response.circles
             this.user = response.user
         }
-        async onLoad() {
+        async onShow () {
             await this.fetchData()
             this.$apply()
         }

@@ -5,6 +5,7 @@
 <script>
     import wepy from 'wepy'
     import 'wepy-async-function'
+    import { postFetch } from '@/modules/common/fetch'
 
     export default class extends wepy.app {
         config = {
@@ -76,6 +77,10 @@
         }
 
         onLaunch() {
+            // this.getUserInfo()
+        }
+        onReady () {
+            this.getUserInfo()
         }
 
         sleep(s) {
@@ -90,7 +95,7 @@
             const that = this
             return new Promise((resolve, reject) => {
                 if (that.globalData.userInfo) {
-                    resolve(that.globalData.userInfo)
+                    return resolve(that.globalData.userInfo)
                 }
                 wepy.login({
                     success(res) {
@@ -113,9 +118,11 @@
                                     wepy.getUserInfo({
                                         success: function (res) {
                                             that.globalData.userInfo = res.userInfo
-                                            that.globalData.userInfo.password = '1234567890'
                                             that.globalData.userInfo.openId = openIdRes.data.openid
-                                            resolve(res.userInfo)
+                                            return postFetch('/loginWeChat', { noAjax: true, data: this.globalData.userInfo }).then(userInfo => {
+                                                this.globalData.userInfo.id = userInfo.user.id
+                                                resolve(that.globalData.userInfo)
+                                            })
                                             // 自定义操作
                                             // 绑定数据，渲染页面
                                         },

@@ -3,14 +3,10 @@
     <view class="container">
         <view class="page__bd">
             <view class="weui-toptips weui-toptips_warn" wx:if="{{tips.show}}">{{tips.text}}</view>
-            <view class="weui-toast">
-                <i class="weui-icon-success-no-circle weui-icon_toast"></i>
-                <p class="weui-toast__content" wx:if="{{tips.success}}">发表成功</p>
-            </view>
             <view class="weui-cells weui-cells_after-title">
                 <view class="weui-cell">
                     <view class="weui-cell__bd">
-                        <textarea class="weui-textarea" placeholder="您想说的话!" style="height: 3.3em" bindinput="bindCommentInput"/>
+                        <textarea class="weui-textarea" placeholder="您想说的话!" style="height: 3.3em" bindinput="bindCommentInput" value="{{content}}"/>
                     </view>
                 </view>
                 <view class="weui-cell">
@@ -61,6 +57,11 @@
         methods = {
         }
         async chooseMomentImage(e) {
+            if (this.files.length >= 9) {
+                this.tips.text = '最大上传9张图片'
+                this.showTopTips()
+                return
+            }
             const imageFilePath = await chooseImage().then(res => {
                 return res.tempFilePaths[0]
             })
@@ -82,15 +83,29 @@
         }
 
         async confirmMoment () {
+            const self = this
             if (this.validateData()) {
-                const rsp = await postFetch('/circles', {
+                await postFetch('/circles', {
                     data: {
                         content: this.content,
                         circle_imgs: this.images
                     }
+                }).then(() => {
+                    wepy.showToast({
+                        title: '发表成功',
+                        icon: 'success',
+                        duration: 1000
+                    })
+                    self.resetData()
                 })
-                console.log(rsp)
             }
+        }
+
+        resetData () {
+            this.files = []
+            this.content = ''
+            this.images = []
+            this.$apply()
         }
         showTopTips() {
             this.tips.show = true

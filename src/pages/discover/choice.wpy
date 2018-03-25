@@ -52,14 +52,12 @@
             },
             choiceList () {
                 return this.choiceData.circles.reduce((arr, i) => {
-                    console.log(i.circle_imgs)
                     if (i.circle_imgs && i.circle_imgs.length > 0) {
                         arr.push({
                             id: i.id,
                             url: i.circle_imgs[0].imgUrl
                         })
                     }
-                    console.log(arr)
                     return arr
                 }, [])
             }

@@ -1,17 +1,13 @@
 <template>
     <view>
-        <v-title1 title='今日红人'></v-title1>
-        <view class='empty'></view>
-        <v-title2 title='精选作品'></v-title2>
-        <view class='empty'></view>
-        <v-title title='作品投票'></v-title>
-        <view class='empty'></view>
+        <v-moments :momentsData.sync="momentsData"></v-moments>
     </view>
 </template>
 
 <script>
     import wepy from 'wepy'
-    import titleComponent from '@/components/title'
+    import momentsComponent from '../discover/moments'
+    import { getFetch } from '@/modules/common/fetch'
 
     export default class Index extends wepy.page {
         config = {
@@ -19,9 +15,19 @@
         }
 
         components = {
-            'v-title': titleComponent,
-            'v-title1': titleComponent,
-            'v-title2': titleComponent
+            'v-moments': momentsComponent
+        }
+
+        data = {
+            momentsData: []
+        }
+        async updateData () {
+            const rsp = await getFetch('/circles/list', { noAjax: true })
+            this.momentsData = rsp.circles && rsp.circles.data
+        }
+        async onLoad() {
+            await this.updateData()
+            this.$apply()
         }
     }
 </script>

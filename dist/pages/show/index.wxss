@@ -1,2 +1,2 @@
-@import "./../../components/title.wxss";
+@import "./../discover/moments.wxss";
 .empty._68a4d7d{height:200rpx}

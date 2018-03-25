@@ -56,7 +56,7 @@
                         pagePath: 'pages/show/index',
                         iconPath: 'modules/images/dynamic.png',
                         selectedIconPath: 'modules/images/dynamic_fill.png',
-                        text: '小森秀'
+                        text: '圈子'
                     },
                     {
                         pagePath: 'pages/me/index',

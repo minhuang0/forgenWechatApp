@@ -7,12 +7,33 @@
 
 <script>
     import wepy from 'wepy'
+    // import qs from 'querystring'
+    import { uploadFile } from '@/modules/common/fetch'
+    // import base64 from '@/modules/common/base64'
+
+    // const Base64 = base64.Base64
+    // console.log(Base64, FileReader, Blob)
+
     export default class Index extends wepy.page {
         data = {
             cctx: {},
-            image: ''
+            image: '',
+            auth: {}
         }
-        onReady (res) {
+        // getAuth () {
+        //     const param = qs.stringify({
+        //         'grant_type': 'client_credentials',
+        //         'client_id': 'G3hbda7Guw7lkkYwolGDO5Lc',
+        //         'client_secret': 'uGPppSHwRmUcFfnLvyfNKP0FzRsO7uk5'
+        //     })
+        //     getFetch('http://aip.baidubce.com/oauth/2.0/token?' + param, {
+        //         noAjax: true
+        //     }).then(res => {
+        //         this.auth = res
+        //     })
+        // }
+        async onReady (res) {
+            await this.$parent.getUserInfo()
             if (wepy.createCameraContext()) {
                 this.cctx = wepy.createCameraContext('myCamera')
             } else { // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
@@ -22,14 +43,20 @@
                 })
             }
         }
-        takePhoto() {
+        async takePhoto() {
             this.cctx.takePhoto({
                 quality: 'high',
                 success: (res) => {
+                    console.log(res)
                     this.image = res.tempImagePath
-                    console.log(this.image)
-                    this.alert()
+                    this.checktPlant(res.tempImagePath)
                 }
+            })
+        }
+        async checktPlant (imageFilePath) {
+            uploadFile('/user/leafSnap', imageFilePath).then(res => {
+                console.log(res)
+                this.$apply()
             })
         }
         alert (text) {

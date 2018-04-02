@@ -11,9 +11,9 @@ export const fetch = (url, options, query = {}) => {
     return new Promise((resolve, reject) => {
         return wepy.request({
             url: fullUrl,
-            header: {
+            header: Object.assign({
                 Cookie: cookie
-            },
+            }, options.header || {}),
             data: options.data,
             method: options.method,
             success: (res) => {

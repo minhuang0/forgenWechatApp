@@ -2,36 +2,42 @@
     <view class="content">
         <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 100%;"></camera>
         <view class="btn" bindtap="takePhoto">识别</view>
+        <view wx:if="{{showResult}}" class="result">
+            <image class="img" src="{{image}}" mode="aspectFill" lazy-load="true"></image>
+            <view class="list">
+                <block wx:for="{{formatResult}}" wx:key="{{index}}">
+                    <view class="item">
+                        <view>{{item.score}}</view>
+                        <view>{{item.name}}</view>
+                    </view>
+                </block>
+            </view>
+            <view class="cancle icon iconfont icon-cancel" @tap="cancle"></view>
+        </view>
     </view>
 </template>
 
 <script>
     import wepy from 'wepy'
-    // import qs from 'querystring'
     import { uploadFile } from '@/modules/common/fetch'
-    // import base64 from '@/modules/common/base64'
-
-    // const Base64 = base64.Base64
-    // console.log(Base64, FileReader, Blob)
 
     export default class Index extends wepy.page {
         data = {
             cctx: {},
             image: '',
-            auth: {}
+            showResult: false,
+            result: []
         }
-        // getAuth () {
-        //     const param = qs.stringify({
-        //         'grant_type': 'client_credentials',
-        //         'client_id': 'G3hbda7Guw7lkkYwolGDO5Lc',
-        //         'client_secret': 'uGPppSHwRmUcFfnLvyfNKP0FzRsO7uk5'
-        //     })
-        //     getFetch('http://aip.baidubce.com/oauth/2.0/token?' + param, {
-        //         noAjax: true
-        //     }).then(res => {
-        //         this.auth = res
-        //     })
-        // }
+        computed = {
+            formatResult () {
+                return this.result.map(i => {
+                    return {
+                        score: parseInt(i.score * 100) + '%',
+                        name: i.name
+                    }
+                })
+            }
+        }
         async onReady (res) {
             await this.$parent.getUserInfo()
             if (wepy.createCameraContext()) {
@@ -43,11 +49,19 @@
                 })
             }
         }
+        methods = {
+            cancle () {
+                this.image = ''
+                this.result = []
+                this.showResult = false
+                this.$apply()
+            }
+        }
         async takePhoto() {
             this.cctx.takePhoto({
                 quality: 'high',
                 success: (res) => {
-                    console.log(res)
+                    wepy.showLoading({ title: '加载中', mask: true })
                     this.image = res.tempImagePath
                     this.checktPlant(res.tempImagePath)
                 }
@@ -55,7 +69,12 @@
         }
         async checktPlant (imageFilePath) {
             uploadFile('/user/leafSnap', imageFilePath).then(res => {
-                console.log(res)
+                const rsp = JSON.parse(res)
+                const result = rsp.res.result
+                console.log(typeof result, result)
+                this.result = Array.isArray(result) ? result : result ? [result] : []
+                this.showResult = true
+                wepy.hideLoading()
                 this.$apply()
             })
         }
@@ -84,13 +103,59 @@
         bottom: 10%;
         left: 50%;
         margin-left: -100rpx;
-        width: 200rpx;
-        height: 70rpx;
-        border-radius: 50rpx;
+        width: 150rpx;
+        height: 150rpx;
+        border-radius: 75rpx;
         background: rgba(0, 0, 0, 0.1);
         display:flex;
         align-items:center;
         justify-content:center;
         color:rgba(255, 255, 255, 0.5);
+    }
+    .result {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #fff;
+        .img {
+            position: relative;
+            height: 400rpx;
+            width: 400rpx;
+            left: 50%;
+            margin-left: -200rpx;
+            border: 1px solid #e5e5e5;
+        }
+        .list {
+            margin: 50rpx 160rpx;
+            color: #333;
+            .item {
+                margin: 20rpx 0;
+                padding: 5rpx;
+                position: relative;
+                display: flex;
+                justify-content: space-between;
+                &::after {
+                    content: "";
+                    position: absolute;
+                    background: #f4f4f4;
+                    width: 100%;
+                    height: 1px;
+                    bottom: 0;
+                    left: 0;
+                }
+            }
+        }
+        .cancle {
+            font-size: 100rpx;
+            color: #e5e5e5;
+            position: absolute;
+            width: 120rpx;
+            height: 80rpx;
+            left: 50%;
+            margin-left: -50rpx;
+            bottom: 140rpx;
+        }
     }
 </style>

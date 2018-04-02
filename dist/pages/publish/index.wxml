@@ -2,4 +2,16 @@
     <view class="content _ea5f74e">
         <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 100%;" class="_ea5f74e"/>
         <view class="btn _ea5f74e" bindtap="takePhoto">识别</view>
+        <view  wx:if="{{showResult}}" class="result _ea5f74e">
+            <image class="img _ea5f74e" src="{{image}}" mode="aspectFill" lazy-load="true"/>
+            <view class="list _ea5f74e">
+                <block wx:for="{{formatResult}}" wx:key="{{index}}" class="_ea5f74e">
+                    <view class="item _ea5f74e">
+                        <view class="_ea5f74e">{{item.score}}</view>
+                        <view class="_ea5f74e">{{item.name}}</view>
+                    </view>
+                </block>
+            </view>
+            <view class="cancle icon iconfont icon-cancel _ea5f74e" bindtap="cancle"/>
+        </view>
     </view>

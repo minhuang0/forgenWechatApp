@@ -100,16 +100,15 @@
     }
     .btn {
         position: absolute;
+        text-align: center;
+        line-height: 150rpx;
         bottom: 10%;
         left: 50%;
-        margin-left: -100rpx;
+        margin-left: -75rpx;
         width: 150rpx;
         height: 150rpx;
         border-radius: 75rpx;
-        background: rgba(0, 0, 0, 0.1);
-        display:flex;
-        align-items:center;
-        justify-content:center;
+        background: rgba(0, 0, 0, 0.2);
         color:rgba(255, 255, 255, 0.5);
     }
     .result {

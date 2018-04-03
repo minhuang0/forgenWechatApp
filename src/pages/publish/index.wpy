@@ -98,6 +98,10 @@
 </script>
 
 <style lang="scss" scoped>
+    page {
+        height: 100%;
+        width: 100%;
+    }
     .content {
         height: 100%;
         width: 100%;
@@ -114,6 +118,7 @@
         border-radius: 75rpx;
         background: rgba(0, 0, 0, 0.2);
         color:rgba(255, 255, 255, 0.5);
+        z-index: 1;
     }
     .album {
         position: absolute;
@@ -125,6 +130,7 @@
         right: 10%;
         bottom: 10%;
         background: red;
+        z-index: 1;
     }
     .result {
         position: absolute;

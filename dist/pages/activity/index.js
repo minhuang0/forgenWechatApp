@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-
+exports.default = undefined;
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
@@ -55,7 +55,5 @@ var Index = function (_wepy$page) {
     return Index;
 }(_wepy2.default.page);
 
-
-Page(require('./../../npm/wepy/lib/wepy.js').default.$createPage(Index , 'pages/activity/index'));
-
+exports.default = Index;
 //# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbImluZGV4LmpzIl0sIm5hbWVzIjpbIkluZGV4IiwiZGF0YSIsIml0ZW0iLCJpY29ucyIsIm1ldGhvZHMiLCJ3eFBhcnNlIiwiaHRtbCIsInBhZ2UiXSwibWFwcGluZ3MiOiI7Ozs7Ozs7OztBQUNJOzs7O0FBQ0E7O0FBQ0E7Ozs7Ozs7Ozs7OztJQUVxQkEsSzs7Ozs7Ozs7Ozs7Ozs7d0xBQ2pCQyxJLEdBQU87QUFDSEMsMkNBREc7QUFFSEM7QUFGRyxTLFFBS1BDLE8sR0FBVSxFOzs7OztpQ0FFRDtBQUNMLDhCQUFRQyxPQUFSLENBQWdCLFVBQWhCLEVBQTRCLE1BQTVCLEVBQW9DLEtBQUtILElBQUwsQ0FBVUksSUFBOUMsRUFBb0QsSUFBcEQsRUFBMEQsQ0FBMUQ7QUFDSDs7OztFQVY4QixlQUFLQyxJOztrQkFBbkJQLEsiLCJmaWxlIjoiaW5kZXguanMiLCJzb3VyY2VzQ29udGVudCI6WyJcbiAgICBpbXBvcnQgd2VweSBmcm9tICd3ZXB5J1xuICAgIGltcG9ydCB7IGFjdGl2aXR5RGV0YWlscywgaWNvbnMgfSBmcm9tICdAL21vZHVsZXMvbW9ja0RhdGEnXG4gICAgaW1wb3J0IFd4UGFyc2UgZnJvbSAnLi4vLi4vbGlicy93eFBhcnNlL3d4UGFyc2UuanMnXG5cbiAgICBleHBvcnQgZGVmYXVsdCBjbGFzcyBJbmRleCBleHRlbmRzIHdlcHkucGFnZSB7XG4gICAgICAgIGRhdGEgPSB7XG4gICAgICAgICAgICBpdGVtOiBhY3Rpdml0eURldGFpbHMsXG4gICAgICAgICAgICBpY29uc1xuICAgICAgICB9XG5cbiAgICAgICAgbWV0aG9kcyA9IHtcbiAgICAgICAgfVxuICAgICAgICBvbkxvYWQoKSB7XG4gICAgICAgICAgICBXeFBhcnNlLnd4UGFyc2UoJ2FjdGl2aXR5JywgJ2h0bWwnLCB0aGlzLml0ZW0uaHRtbCwgdGhpcywgMClcbiAgICAgICAgfVxuICAgIH1cbiJdfQ==

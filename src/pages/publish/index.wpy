@@ -1,7 +1,8 @@
 <template>
     <view class="content">
         <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 100%;"></camera>
-        <view class="btn" bindtap="takePhoto">识别</view>
+        <view class="take-photo" bindtap="takePhoto">识别</view>
+        <view class="album" bindtap="getImageFromAlbum">相册</view>
         <view wx:if="{{showResult}}" class="result">
             <image class="img" src="{{image}}" mode="aspectFill" lazy-load="true"></image>
             <view class="list">
@@ -19,11 +20,13 @@
 
 <script>
     import wepy from 'wepy'
-    import { uploadFile } from '@/modules/common/fetch'
+    import { uploadFile, chooseImage } from '@/modules/common/fetch'
 
     export default class Index extends wepy.page {
         data = {
-            cctx: {},
+            cctx: {
+                takePhoto () {}
+            },
             image: '',
             showResult: false,
             result: []
@@ -39,7 +42,7 @@
             }
         }
         async onReady (res) {
-            await this.$parent.getUserInfo()
+            // await this.$parent.getUserInfo()
             if (wepy.createCameraContext()) {
                 this.cctx = wepy.createCameraContext('myCamera')
             } else { // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
@@ -62,33 +65,34 @@
                 quality: 'high',
                 success: (res) => {
                     wepy.showLoading({ title: '加载中', mask: true })
-                    this.image = res.tempImagePath
                     this.checktPlant(res.tempImagePath)
                 }
             })
         }
         async checktPlant (imageFilePath) {
-            uploadFile('/user/leafSnap', imageFilePath).then(res => {
-                const rsp = JSON.parse(res)
-                const result = rsp.res.result
-                console.log(typeof result, result)
-                this.result = Array.isArray(result) ? result : result ? [result] : []
-                this.showResult = true
-                wepy.hideLoading()
-                this.$apply()
-            })
+            this.image = imageFilePath
+            uploadFile('/user/leafSnap', imageFilePath).then(res => this.parseLeafSnapResponse(res))
         }
-        alert (text) {
-            wepy.showModal({
-                content: '牵牛花',
-                showCancel: false,
-                success (res) {
-                    console.log('点击确认')
-                }
+        async getImageFromAlbum (e) {
+            const imageFilePath = await chooseImage().then(res => {
+                return res.tempFilePaths[0]
             })
+            wepy.showLoading({ title: '加载中', mask: true })
+            this.checktPlant(imageFilePath)
+        }
+        parseLeafSnapResponse (rsp = '{}') {
+            const res = JSON.parse(rsp)
+            const result = res.res && res.res.result
+            this.result = Array.isArray(result) ? result : result ? [result] : []
+            this.showResult = true
+            wepy.hideLoading()
+            this.$apply()
         }
         error(e) {
-            console.log(e.detail)
+            wepy.showModal({
+                title: '提示',
+                content: e.detail
+            })
         }
     }
 </script>
@@ -98,18 +102,29 @@
         height: 100%;
         width: 100%;
     }
-    .btn {
+    .take-photo {
         position: absolute;
         text-align: center;
         line-height: 150rpx;
+        width: 150rpx;
+        height: 150rpx;
         bottom: 10%;
         left: 50%;
         margin-left: -75rpx;
-        width: 150rpx;
-        height: 150rpx;
         border-radius: 75rpx;
         background: rgba(0, 0, 0, 0.2);
         color:rgba(255, 255, 255, 0.5);
+    }
+    .album {
+        position: absolute;
+        height: 60rpx;
+        width: 100rpx;
+        line-height: 60rpx;
+        text-align: center;
+        padding: 20rpx;
+        right: 10%;
+        bottom: 10%;
+        background: red;
     }
     .result {
         position: absolute;

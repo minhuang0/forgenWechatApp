@@ -79,7 +79,9 @@
         }
         async checktPlant (imageFilePath) {
             this.image = imageFilePath
-            uploadFile('/user/leafSnap', imageFilePath).then(res => this.parseLeafSnapResponse(res))
+            uploadFile('/user/leafSnap', imageFilePath).then(res => this.parseLeafSnapResponse(res)).catch(e => {
+                this.error(e)
+            })
         }
         async getImageFromAlbum (e) {
             const imageFilePath = await chooseImage().then(res => {
@@ -97,6 +99,7 @@
             this.$apply()
         }
         error(e) {
+            wepy.hideLoading()
             wepy.showModal({
                 title: '提示',
                 content: e.detail

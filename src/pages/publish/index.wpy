@@ -85,7 +85,7 @@
             const imageFilePath = await chooseImage().then(res => {
                 return res.tempFilePaths[0]
             })
-            wepy.showLoading({ title: '加载中', mask: true })
+            wepy.showLoading({ title: '识别中', mask: true })
             this.checktPlant(imageFilePath)
         }
         parseLeafSnapResponse (rsp = '{}') {
@@ -121,7 +121,7 @@
     }
     .options {
         position: absolute;
-        bottom: 0;
+        bottom: -2px;
         height: 16%;
         width: 100%;
         background: black;

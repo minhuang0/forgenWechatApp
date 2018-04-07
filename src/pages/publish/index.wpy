@@ -24,8 +24,8 @@
                 <cover-view class="list">
                     <block wx:for="{{formatResult}}" wx:key="{{index}}">
                         <cover-view class="item">
-                            <cover-view class="prefect">{{item.score}}</cover-view>
                             <cover-view>{{item.name}}</cover-view>
+                            <cover-view class="prefect">{{item.score}}</cover-view>
                         </cover-view>
                     </block>
                 </cover-view>
@@ -37,7 +37,7 @@
 
 <script>
     import wepy from 'wepy'
-    import { uploadFile, chooseImage } from '@/modules/common/fetch'
+    import { uploadFile, chooseImage, getFetch } from '@/modules/common/fetch'
 
     export default class Index extends wepy.page {
         config = {
@@ -49,23 +49,17 @@
             },
             image: '',
             fileImage: '',
+            shareImage: '',
+            shareId: '',
             showResult: false,
-            result: [{
-                name: '非植物',
-                score: 0.56553107500076
-            }, {
-                name: '非植物',
-                score: 0.56553107500076
-            }, {
-                name: '非植物',
-                score: 0.56553107500076
-            }, {
-                name: '非植物',
-                score: 0.56553107500076
-            }, {
-                name: '非植物',
-                score: 0.56553107500076
-            }]
+            result: []
+        }
+        onShareAppMessage () {
+            return {
+                title: `${(this.formatResult[0] && this.formatResult[0].name) || ''} (${(this.formatResult[0] && this.formatResult[0].score)})`,
+                path: `pages/publish/index?id=${this.shareId}`,
+                imageUrl: this.shareImage
+            }
         }
         computed = {
             formatResult () {
@@ -78,7 +72,7 @@
             }
         }
         async onReady (res) {
-            // await this.$parent.getUserInfo()
+            wepy.hideShareMenu()
             if (wepy.createCameraContext()) {
                 this.cctx = wepy.createCameraContext('myCamera')
             } else { // 如果希望用户在最新版本的客户端上体验您的小程序，可以这样子提示
@@ -90,8 +84,11 @@
         }
         methods = {
             cancle () {
+                wepy.hideShareMenu()
                 this.image = ''
                 this.fileImage = ''
+                this.shareImage = ''
+                this.shareId = ''
                 this.result = []
                 this.showResult = false
                 this.$apply()
@@ -124,13 +121,29 @@
         }
         parseLeafSnapResponse (rsp = '{}') {
             const res = JSON.parse(rsp)
+            this.shareImage = res.imgUrl
+            this.shareId = res.res && res.res.log_id
             const result = res.res && res.res.result
             this.result = Array.isArray(result) ? result : result ? [result] : []
             this.showResult = true
             wepy.hideLoading()
+            wepy.showShareMenu({
+                withShareTicket: true
+            })
             this.$apply()
         }
-        error(e) {
+        onLoad (options) {
+            if (options.id) {
+                this.getShareDate(options.id)
+            }
+        }
+        async getShareDate (id) {
+            const res = await getFetch(`/user/shareRes/${id}`, {
+                noAjax: true
+            })
+            this.parseLeafSnapResponse(res)
+        }
+        error (e) {
             wepy.hideLoading()
             wepy.showToast({
                 title: '网络异常',

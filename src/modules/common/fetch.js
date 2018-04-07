@@ -45,14 +45,14 @@ export const uploadFile = (url, filePath) => {
     })
 }
 
-export const chooseImage = () => {
+export const chooseImage = (options) => {
     return new Promise((resolve, reject) => {
-        wepy.chooseImage({
+        wepy.chooseImage(Object.assign({
             sizeType: ['original', 'compressed'], // 可以指定是原图还是压缩图，默认二者都有
             sourceType: ['album', 'camera'], // 可以指定来源是相册还是相机，默认二者都有
             success: resolve,
             fail: reject
-        })
+        }, options))
     })
 }
 

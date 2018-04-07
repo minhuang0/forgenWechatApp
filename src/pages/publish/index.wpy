@@ -140,6 +140,7 @@
             }
         }
         async getShareDate (id) {
+            wepy.showLoading({ title: '数据加载中', mask: true })
             const res = await getFetch(`/user/shareRes/${id}`, {
                 noAjax: true
             })

@@ -123,6 +123,7 @@
             const res = JSON.parse(rsp)
             this.shareImage = res.imgUrl
             this.image = this.image || res.imgUrl
+            this.fileImage = this.image || res.fileImage
             this.shareId = res.id
             const result = res.res && res.res.result
             this.result = Array.isArray(result) ? result : result ? [result] : []

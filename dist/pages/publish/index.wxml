@@ -24,8 +24,8 @@
                 <cover-view class="list _ea5f74e">
                     <block wx:for="{{formatResult}}" wx:key="{{index}}" class="_ea5f74e">
                         <cover-view class="item _ea5f74e">
-                            <cover-view class="_ea5f74e">{{item.name}}</cover-view>
-                            <cover-view class="prefect _ea5f74e">{{item.score}}</cover-view>
+                            <cover-view class="name _ea5f74e">{{item.name}}</cover-view>
+                            <cover-view class="_ea5f74e">{{item.score}}</cover-view>
                         </cover-view>
                     </block>
                 </cover-view>

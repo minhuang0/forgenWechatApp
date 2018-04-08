@@ -32,6 +32,8 @@
                 <!-- <cover-view class="cancle icon iconfont icon-cancel"></cover-view> -->
             </cover-view>
         </camera>
+        <canvas canvas-id="canvas" style="width: 400px; height: 400px;"></canvas>
+        <image bindload="loadimage" src="{{image}}"></image>
     </view>
 </template>
 
@@ -103,11 +105,9 @@
                 }
             })
         }
-        async checktPlant (imageFilePath) {
+        checktPlant (imageFilePath) {
             this.image = imageFilePath
-            uploadFile('/user/leafSnap', imageFilePath).then(res => this.parseLeafSnapResponse(res)).catch(e => {
-                this.error(e)
-            })
+            this.$apply()
         }
         async getImageFromAlbum (e) {
             const imageFilePath = await chooseImage({
@@ -118,6 +118,30 @@
             wepy.showLoading({ title: '识别中', mask: true })
             this.fileImage = imageFilePath
             this.checktPlant(imageFilePath)
+        }
+        async loadimage (e) {
+            const ctx = wepy.createCanvasContext('canvas')
+            ctx.drawImage(this.image, 0, 0, e.detail.width, e.detail.height, 0, 0, 400, 400)
+            ctx.draw()
+            const minImage = await this.compressImage()
+            uploadFile('/user/leafSnap', minImage).then(res => this.parseLeafSnapResponse(res)).catch(e => {
+                this.error(e)
+            })
+        }
+        async compressImage () {
+            return new Promise((resolve, reject) => {
+                setTimeout(() => {
+                    wepy.canvasToTempFilePath({
+                        canvasId: 'canvas',
+                        success (res) {
+                            resolve(res.tempFilePath)
+                        },
+                        fail (e) {
+                            reject(e)
+                        }
+                    })
+                }, 1000)
+            })
         }
         parseLeafSnapResponse (rsp = '{}') {
             const res = JSON.parse(rsp)
@@ -146,6 +170,7 @@
             })
             const shareRes = res.leafsnapRes || {}
             shareRes.res = JSON.parse(shareRes.res)
+            // this.fileImage = shareRes.imgUrl
             this.parseLeafSnapResponse(JSON.stringify(shareRes))
         }
         error (e) {

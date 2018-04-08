@@ -32,4 +32,6 @@
                 <!-- <cover-view class="cancle icon iconfont icon-cancel"></cover-view> -->
             </cover-view>
         </camera>
+        <canvas canvas-id="canvas" style="width: 400px; height: 400px;" class="_ea5f74e"/>
+        <image bindload="loadimage" src="{{image}}" class="_ea5f74e"/>
     </view>

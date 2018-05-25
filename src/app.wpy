@@ -10,6 +10,7 @@
     export default class extends wepy.app {
         config = {
             pages: [
+                'pages/auth/index',
                 'pages/home/index',
                 'pages/discover/index',
                 'pages/publish/index',
@@ -97,47 +98,88 @@
                 }
                 wepy.login({
                     success(res) {
-                        // 获取openId
-                        wepy.request({
-                            url: 'https://api.weixin.qq.com/sns/jscode2session',
+                        console.log(res)
+                        return postFetch('/loginWeChat', {
+                            noAjax: true,
                             data: {
-                                appid: 'wx074fc89a63291f58', // 小程序唯一标识
-                                secret: 'c52454ed68690c8a35190b941c6c298b', // 小程序的 app secret
-                                grant_type: 'authorization_code',
-                                js_code: res.code
-                            },
-                            method: 'GET',
-                            header: { 'content-type': 'application/json' },
-                            success (openIdRes) {
-                                console.info('登录成功返回的openId：' + openIdRes.data.openid)
-                                // 判断openId是否获取成功
-                                if (openIdRes.data.openid != null && openIdRes.data.openid !== undefined) {
-                                    // 有一点需要注意 询问用户 是否授权 那提示 是这API发出的
-                                    wepy.getUserInfo({
-                                        success: function (res) {
-                                            that.globalData.userInfo = res.userInfo
-                                            that.globalData.userInfo.openId = openIdRes.data.openid
-                                            return postFetch('/loginWeChat', { noAjax: true, data: this.globalData.userInfo }).then(userInfo => {
-                                                this.globalData.userInfo.id = userInfo.user.id
-                                                resolve(that.globalData.userInfo)
-                                            })
-                                            // 自定义操作
-                                            // 绑定数据，渲染页面
-                                        },
-                                        fail: function (failData) {
-                                            console.info('用户拒绝授权')
-                                            reject(failData)
-                                        }
-                                    })
-                                } else {
-                                    console.info('获取用户openId失败')
-                                    reject(openIdRes)
-                                }
+                                code: res.code
+                            }
+                        }).then(auth => {
+                            console.log(auth)
+                            if (auth.res.openid) {
+                                // 有一点需要注意 询问用户 是否授权 那提示 是这API发出的
+                                wepy.getUserInfo({
+                                    success (res) {
+                                        that.globalData.userInfo = res.userInfo
+                                        that.globalData.userInfo.openId = auth.res.openid
+                                        return postFetch('/saveUserInfo', {
+                                            noAjax: true,
+                                            data: {
+                                                userInfo: this.globalData.userInfo
+                                            }
+                                        }).then(userInfo => {
+                                            this.globalData.userInfo.id = userInfo.user.id
+                                            console.log(this.globalData.userInfo)
+                                            resolve(that.globalData.userInfo)
+                                        })
+                                    },
+                                    fail (failData) {
+                                        console.info('用户拒绝授权')
+                                        reject(failData)
+                                    }
+                                })
+                            } else {
+                                console.info('获取用户openId失败')
+                                reject(auth)
                             }
                         })
                     }
                 })
             })
         }
+                // wepy.login({
+                //     success(res) {
+                //         console.log(res)
+                //         return postFetch('/loginWechat')
+                //         // 获取openId
+                //         wepy.request({
+                //             url: 'https://api.weixin.qq.com/sns/jscode2session',
+                //             data: {
+                //                 appid: 'wxd4cec236b3cb8cf3', // 小程序唯一标识
+                //                 secret: 'cb7004e2edc624da5897597e4297deac', // 小程序的 app secret
+                //                 grant_type: 'authorization_code',
+                //                 js_code: res.code
+                //             },
+                //             method: 'GET',
+                //             header: { 'content-type': 'application/json' },
+                //             success (openIdRes) {
+                //                 console.info('登录成功返回的openId：' + openIdRes.data.openid)
+                //                 // 判断openId是否获取成功
+                //                 if (openIdRes.data.openid != null && openIdRes.data.openid !== undefined) {
+                //                     // 有一点需要注意 询问用户 是否授权 那提示 是这API发出的
+                //                     wepy.getUserInfo({
+                //                         success: function (res) {
+                //                             that.globalData.userInfo = res.userInfo
+                //                             that.globalData.userInfo.openId = openIdRes.data.openid
+                //                             return postFetch('/loginWeChat', { noAjax: true, data: this.globalData.userInfo }).then(userInfo => {
+                //                                 this.globalData.userInfo.id = userInfo.user.id
+                //                                 resolve(that.globalData.userInfo)
+                //                             })
+                //                             // 自定义操作
+                //                             // 绑定数据，渲染页面
+                //                         },
+                //                         fail: function (failData) {
+                //                             console.info('用户拒绝授权')
+                //                             reject(failData)
+                //                         }
+                //                     })
+                //                 } else {
+                //                     console.info('获取用户openId失败')
+                //                     reject(openIdRes)
+                //                 }
+                //             }
+                //         })
+                //     }
+                // })
     }
 </script>

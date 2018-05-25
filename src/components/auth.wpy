@@ -1,0 +1,65 @@
+<template>
+    <view class="auth" wx:if="{{showModal}}">
+        <!-- 需要使用 button 来授权登录 -->
+        <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
+        <view wx:else>请升级微信版本</view>
+    </view>
+</template>
+
+<script>
+    import wepy from 'wepy'
+
+    export default class Index extends wepy.component {
+        props = {
+            inputValue: {
+                type: String,
+                default: '',
+                twoWay: true
+            }
+        }
+        data = {
+            showModal: true,
+            /* 顶部分类 */
+            canIUse: wepy.canIUse('button.open-type.getUserInfo')
+        }
+        methods = {
+            bindGetUserInfo (e) {
+                console.log(wepy)
+                console.log(this)
+                this.$parent.$parent.getUserInfo()
+                this.showModal = false
+                console.log(e.detail.userInfo)
+            }
+        }
+        onLoad () {
+            const that = this
+            // 查看是否授权
+            wepy.getSetting({
+                success (res) {
+                    console.log(res)
+                    if (res.authSetting['scope.userInfo']) {
+                        // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+                        console.log(this.showModal)
+                        that.showModal = false
+                        that.$apply()
+                    }
+                }
+            })
+        }
+    }
+</script>
+
+<style lang="scss" scoped>
+    .auth {
+        position: fixed;
+        background: #fff;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: 501;
+        button {
+
+        }
+    }
+</style>

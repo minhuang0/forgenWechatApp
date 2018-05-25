@@ -4,11 +4,13 @@
         <v-recommend :class='{ hidden: activeIndex !== 0}' :homeData.sync="homeData"></v-recommend>
         <v-forgen :class='{ hidden: activeIndex !== 1}' :forgenData.sync="forgenData"></v-forgen>
         <v-activities :class='{ hidden: activeIndex !== 2}' :activityData.sync="activityData"></v-activities>
+        <v-auth></v-auth>
     </view>
 </template>
 
 <script>
     import wepy from 'wepy'
+    import authComponent from '@/components/auth'
     import navbarComponent from '@/components/navbar'
     import { getFetch } from '@/modules/common/fetch'
     import recommendComponent from './recommend'
@@ -21,6 +23,7 @@
         }
 
         components = {
+            'v-auth': authComponent,
             'v-navbar': navbarComponent,
             'v-recommend': recommendComponent,
             'v-activities': activitiesComponent,
@@ -74,9 +77,21 @@
                 this.activeIndex = parseInt(activeIndex)
             }
         }
+        // async getAuth () {
+        //     wepy.getSetting({
+        //         success (res) {
+        //             console.log(res)
+        //             if (res.authSetting['scope.userInfo']) {
+        //                 console.log('是否已经授权')
+        //                 // 已经授权，可以直接调用 getUserInfo 获取头像昵称
+        //             }
+        //         }
+        //     })
+        // }
 
         async onShow() {
-            await this.$parent.getUserInfo()
+            // await this.getAuth()
+            // await this.$parent.getUserInfo()
             await this.updateHomeData()
             await this.updateActivity()
             await this.updateSenJiuTang()

@@ -98,14 +98,12 @@
                 }
                 wepy.login({
                     success(res) {
-                        console.log(res)
                         return postFetch('/loginWeChat', {
                             noAjax: true,
                             data: {
                                 code: res.code
                             }
                         }).then(auth => {
-                            console.log(auth)
                             if (auth.res.openid) {
                                 // 有一点需要注意 询问用户 是否授权 那提示 是这API发出的
                                 wepy.getUserInfo({
@@ -119,7 +117,6 @@
                                             }
                                         }).then(userInfo => {
                                             this.globalData.userInfo.id = userInfo.user.id
-                                            console.log(this.globalData.userInfo)
                                             resolve(that.globalData.userInfo)
                                         })
                                     },

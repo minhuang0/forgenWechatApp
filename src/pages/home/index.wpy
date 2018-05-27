@@ -75,11 +75,17 @@
                 this.activeIndex = parseInt(activeIndex)
             }
         }
+        onLoad () {
+            wepy.showLoading({
+                title: '加载中'
+            })
+        }
         async onShow() {
             await this.$parent.getUserInfo()
             await this.updateHomeData()
             await this.updateActivity()
             await this.updateSenJiuTang()
+            wepy.hideLoading()
             this.$apply()
         }
     }

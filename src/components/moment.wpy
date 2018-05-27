@@ -1,5 +1,5 @@
 <template>
-    <view class="moment" @tap.stop="goMomentDetail">
+    <view class="moment" @tap.stop="goMomentDetail" data-momentid="{{moment.id}}">
         <view class="monent-header" @tap="goUserInfo" data-userid="{{moment.user_id}}">
             <view class="avatar">
                 <image src="{{moment.avatar}}"></image>
@@ -21,12 +21,12 @@
             </view>
         </repeat>
         <view class="buttons">
-            <view @tap.stop="toggleMoments">
+            <view @tap.stop="toggleMoments" data-momentid="{{moment.id}}">
                 <image class="icon" src="{{icons.message}}"></image>
                 <text>{{moment.commentsNum}}</text>
             </view>
-            <view @tap.stop="toggleUpvote">
-                <image class="icon" style="margin-left: 40rpx;" src="{{icons.upvote}}"></image>
+            <view @tap.stop="toggleUpvote" data-momentid="{{moment.id}}">
+                <image class="icon" style="margin-left: 40rpx;" src="{{moment.upvoteIcon}}" />
                 <text>{{moment.upvoteNum}}</text>
             </view>
         </view>
@@ -40,19 +40,27 @@
         props = {
             moment: Object
         }
+        computed = {
+            upvoteIcon () {
+                return this.moment && this.moment.hasZan ? '../../modules/images/praise_fill.png' : '../../modules/images/praise.png'
+            }
+        }
         methods = {
             goMomentDetail() {
                 if (this.moment && this.moment.id) {
                     wepy.navigateTo({
-                        url: `../../pages/detail/moment?id=${this.moment.id}`
+                        url: `../../pages/detail/moment?id=${this.moment.id}`,
+                        fail (e) {
+                            console.log(e)
+                        }
                     })
                 }
             },
             toggleMoments (e) {
-                this.$emit('toggleMoments')
+                this.$emit('toggleMoments', e)
             },
-            toggleUpvote () {
-                this.$emit('toggleUpvote')
+            toggleUpvote (e) {
+                this.$emit('toggleUpvote', e)
             },
             goUserInfo (e) {
                 wepy.navigateTo({

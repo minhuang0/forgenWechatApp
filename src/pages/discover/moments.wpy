@@ -1,7 +1,7 @@
 <template>
     <view class="moments">
         <repeat for="{{moments}}" key="index" index="index" item="item">
-            <v-moment :moment.sync="item" :id="index"></v-moment>
+            <v-moment :moment.sync="item" :id="index" @toggleUpvote.user="goMomentDetail" @toggleMoments.user="goMomentDetail"></v-moment>
         </repeat>
     </view>
 </template>
@@ -32,36 +32,25 @@
                         images: paddingImg(m.circle_imgs.map(i => i.imgUrl)),
                         createTime: timeTransform(m.created_at),
                         upvoteNum: m.targets_count,
-                        commentsNum: m.comments_count
+                        commentsNum: m.comments_count,
+                        hasZan: m.hasZan,
+                        upvoteIcon: m.hasZan ? '../../modules/images/praise_fill.png' : '../../modules/images/praise.png'
                     }
                 })
             }
         }
-
-        data = {
-            /* 顶部分类 */
-            // tabs: [{
-            //     title: '最新'
-            // }, {
-            //     title: '花艺'
-            // }, {
-            //     title: '园艺'
-            // }, {
-            //     title: '家居'
-            // }, {
-            //     title: '婚嫁'
-            // }, {
-            //     title: '生活'
-            // }, {
-            //     title: '杂物'
-            // }],
-            // activeIndex: 0
-        }
-
         methods = {
-            // changeActiveIndex(e) {
-            //     this.activeIndex = parseInt(e.currentTarget.dataset.id)
-            // }
+            goMomentDetail(e) {
+                const id = e.currentTarget.dataset.momentid
+                if (id) {
+                    wepy.navigateTo({
+                        url: `../../pages/detail/moment?id=${id}`,
+                        fail (e) {
+                            console.log(e)
+                        }
+                    })
+                }
+            }
         }
     }
 </script>

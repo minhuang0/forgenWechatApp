@@ -37,7 +37,9 @@
                     images: paddingImg(this.moment.circle_imgs.map(i => i.imgUrl)),
                     createTime: this.moment.created_at || '无返回时间',
                     upvoteNum: this.moment.upvoteNum,
-                    commentsNum: this.moment.commentsNum
+                    commentsNum: this.moment.commentsNum,
+                    hasZan: this.moment.hasZan,
+                    upvoteIcon: this.moment.hasZan ? '../../modules/images/praise_fill.png' : '../../modules/images/praise.png'
                 }
             }
         }
@@ -106,7 +108,7 @@
         async onLoad (options) {
             const rsp = await getFetch(`/circles/${options.id || 1}`)
             this.moment = rsp.circle
-            this.moment.hasZan = rsp.hasZan
+            // this.moment.hasZan = rsp.hasZan
             this.moment.upvoteNum = rsp.circle.targets.length
             this.moment.commentsNum = rsp.circle.comments.length
             this.$apply()

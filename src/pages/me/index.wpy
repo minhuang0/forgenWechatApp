@@ -57,7 +57,10 @@
         methods = {
         }
         async fetchData () {
-            const userInfo = await this.$parent.getUserInfo()
+            let userInfo = await this.$parent.getUserInfo()
+            if (!userInfo.id) {
+                userInfo = await this.$parent.getUserInfo()
+            }
             const response = await getFetch(`/user/${userInfo.id}`)
             this.moments = response.circles
             this.user = response.user

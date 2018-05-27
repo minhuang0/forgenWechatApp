@@ -1,9 +1,12 @@
 <template>
-    <view>
+    <view class="content" wx:if="{{show}}">
+        <view class="title">欢迎来到山趣</view>
+        <image class="cover" src="../../modules/images/icon.jpeg" />
         <!-- 需要使用 button 来授权登录 -->
-        <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">授权登录</button>
-        <view wx:else>请升级微信版本</view>
-        <button @tap="goHome">Go Home</button>
+        <view class="btn-view">
+            <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">去体验</button>
+            <button wx:else>请升级微信版本</button>
+        </view>
     </view>
 </template>
 
@@ -12,38 +15,36 @@ import wepy from 'wepy'
 
 export default class Index extends wepy.page {
     config = {
-        navigationBarTitleText: '森林风'
+        navigationBarTitleText: ''
     }
     data = {
+        show: false,
         /* 顶部分类 */
         canIUse: wepy.canIUse('button.open-type.getUserInfo')
     }
     methods = {
         goHome () {
-            console.log('go')
-            console.log(wepy)
             wepy.switchTab({
-                url: '../../pages/home/index',
-                fail (e) {
-                    console.log(e)
-                }
+                url: '../../pages/home/index'
             })
         },
         bindGetUserInfo (e) {
-            console.log(e.detail.userInfo)
+            if (e.detail.userInfo) {
+                this.methods.goHome()
+            }
         }
     }
     onLoad () {
         // 查看是否授权
         const that = this
-        console.log(this)
         wepy.getSetting({
             success (res) {
-                console.log(res)
                 if (res.authSetting['scope.userInfo']) {
                     // 已经授权，可以直接调用 getUserInfo 获取头像昵称
-                    console.log('跳转..')
                     that.methods.goHome()
+                } else {
+                    that.show = true
+                    that.$apply()
                 }
             }
         })
@@ -52,7 +53,33 @@ export default class Index extends wepy.page {
 </script>
 
 <style lang="scss" scoped>
-    .hidden {
-      display: none;
+    .content {
+        text-align: center;
+        height:100%;
+        overflow:hidden;
+
+        .title {
+            margin-top: 100rpx;
+            text-align: center;
+            color: #333;
+        }
+        .cover {
+            margin-top: 100rpx;
+            height: 600rpx;
+            width: 600rpx;
+        }
+        .btn-view {
+            position: absolute;
+            left: 50%;
+            margin-left: -150rpx;
+            width: 300rpx;
+            // overflow: hidden;
+            bottom: 100rpx;
+            button {
+                background-color: transparent;
+                border: 1px solid #333;
+                border-radius: 100rpx;
+            }
+        }
     }
 </style>

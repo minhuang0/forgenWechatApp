@@ -113,7 +113,6 @@
                 })
             },
             selectDiscuss(e) {
-                console.log(e.currentTarget.dataset)
                 wepy.navigateTo({
                     url: `../../pages/discuss/index?id=${e.currentTarget.dataset.id}&text=${e.currentTarget.dataset.text || ''}`
                 })

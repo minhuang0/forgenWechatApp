@@ -99,7 +99,7 @@
                         nickName: userInfo.nickName
                     },
                     created_at: new Date(),
-                    user_id: userInfo.nickName
+                    user_id: userInfo.id
                 })
                 this.inputValue = ''
                 this.$apply()

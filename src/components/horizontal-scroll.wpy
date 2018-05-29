@@ -1,8 +1,8 @@
 <template>
     <view class="list">
         <block wx:for="{{alldata}}" wx:key="{{index}}">
-            <view class="item" data-id="{{item.id}}" @tap="tap">
-                <image class="cover" src="{{item.cover}}" mode="aspectFill"></image>
+            <view class="item" data-id="{{item.id}}" data-title="{{item.title}}" @tap="tap">
+                <image class="cover" src="{{item.cover}}" mode="aspectFill" />
                 <text class="title">{{item.title}}</text>
             </view>
         </block>
@@ -19,6 +19,7 @@
 
         methods = {
             tap(e) {
+                console.log(e)
                 this.$emit('click', e)
             }
         }

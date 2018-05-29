@@ -1,7 +1,7 @@
 <template>
     <view>
         <v-title :title.sync='title'></v-title>
-        <v-list class="list" :list='list' @itemClick.user="selectList"></v-list>
+        <v-list class="list" :list.sync='list' @itemClick.user="selectList"></v-list>
     </view>
 </template>
 
@@ -9,11 +9,11 @@
     import wepy from 'wepy'
     import titleComponent from '@/components/title'
     import listComponent from '@/components/list'
-    import { category, recommendList } from '@/modules/mockData'
+    import { getFetch } from '@/modules/common/fetch'
 
     export default class Index extends wepy.page {
         data = {
-            list: recommendList,
+            list: [],
             title: ''
         }
 
@@ -29,11 +29,18 @@
                 })
             }
         }
-        onLoad(options) {
-            const currentCategory = category.filter((item) => {
-                return item.id === parseInt(options.id)
+        async onLoad(options) {
+            const response = await getFetch(`/topic/index/${options.id}`)
+            this.list = response.posts.map(item => {
+                return {
+                    id: item.id,
+                    tag: options.title,
+                    cover: item.imgUrl,
+                    title: item.title
+                }
             })
-            this.title = currentCategory[0].title
+            this.title = options.title
+            this.$apply()
             wepy.setNavigationBarTitle({
                 title: this.title
             })

@@ -72,7 +72,7 @@
             },
             selectCategory(e) {
                 wepy.navigateTo({
-                    url: `../../pages/list/index?id=${e.currentTarget.dataset.id}`
+                    url: `../../pages/list/index?id=${e.currentTarget.dataset.id}&title=${e.currentTarget.dataset.title}`
                 })
             }
         }

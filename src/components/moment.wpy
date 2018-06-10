@@ -16,7 +16,7 @@
         <repeat for="{{moment.images}}" key="index" index="index" item="item">
             <view class="images">
                 <repeat for="{{item}}" key="i" index="i" item="img">
-                    <image class="img" src="{{img}}" mode="aspectFill"></image>
+                    <image class="img" src="{{img}}" mode="aspectFill" @tap.stop="touchImage" data-url="{{img}}"></image>
                 </repeat>
             </view>
         </repeat>
@@ -61,6 +61,9 @@
             },
             toggleUpvote (e) {
                 this.$emit('toggleUpvote', e)
+            },
+            touchImage (e) {
+                this.$emit('touchImage', e)
             },
             goUserInfo (e) {
                 wepy.navigateTo({

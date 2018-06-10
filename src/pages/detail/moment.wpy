@@ -1,6 +1,6 @@
 <template>
     <view class="me">
-        <v-moment :moment.sync="momentData" @toggleUpvote.user="toggleUpvote" @toggleMoments.user="toggleMoments"></v-moment>
+        <v-moment :moment.sync="momentData" @toggleUpvote.user="toggleUpvote" @toggleMoments.user="toggleMoments" @touchImage.user="touchImage"></v-moment>
         <v-comments :comments.sync="comments"></v-comments>
         <v-editor @click.user="comment" :inputValue.sync="inputValue"></v-editor>
     </view>
@@ -94,6 +94,12 @@
             },
             comment (data) {
                 this.addComment(data)
+            },
+            touchImage (e) {
+                console.log(e)
+                wepy.navigateTo({
+                    url: `../../pages/show/image-zoom?url=${e.currentTarget.dataset.url}`
+                })
             }
         }
         async requestUpvote (isUpVote) {

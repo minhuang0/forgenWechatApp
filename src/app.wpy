@@ -21,6 +21,7 @@
                 'pages/me/index',
                 'pages/me/user',
                 'pages/show/index',
+                'pages/show/image-zoom',
                 'pages/discuss/index',
                 'pages/index'
             ],

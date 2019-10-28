@@ -33,7 +33,7 @@
 
         events = {
             'index-broadcast': (...args) => {
-                let $event = args[args.length - 1]
+                // let $event = args[args.length - 1]
             }
         }
 

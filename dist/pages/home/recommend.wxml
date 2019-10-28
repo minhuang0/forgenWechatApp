@@ -14,7 +14,7 @@
         
     <view class="list _ae96fef categories _b70c249">
         <block  wx:for="{{$vHScroll$alldata}}" wx:key="{{index}}" class="_ae96fef">
-            <view class="item _ae96fef" data-id="{{item.id}}" bindtap="$vHScroll$tap">
+            <view class="item _ae96fef" data-id="{{item.id}}" data-title="{{item.title}}" bindtap="$vHScroll$tap">
                 <image class="cover _ae96fef" src="{{item.cover}}" mode="aspectFill"/>
                 <text class="title _ae96fef">{{item.title}}</text>
             </view>

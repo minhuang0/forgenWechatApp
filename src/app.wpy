@@ -99,6 +99,7 @@
                 }
                 wepy.login({
                     success(res) {
+                        console.log(res)
                         return postFetch('/loginWeChat', {
                             noAjax: true,
                             data: {

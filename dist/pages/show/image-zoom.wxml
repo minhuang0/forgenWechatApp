@@ -1,0 +1,6 @@
+
+    <view class="content _f2e7fc4">
+        <view class="img _f2e7fc4" bindtouchstart="touchstartCallback" catchtouchmove="touchmoveCallback" catchtouchend="touchendCallback" style="height: {{scaleHeight}}px; width: {{scaleWidth}}px;">
+            <image style="transform:translate({{stv.offsetX}}px, {{stv.offsetY}}px) scale({{stv.scale}});" src="{{url}}" bindtap="back" class="_f2e7fc4"/>
+        </view>
+    </view>

@@ -3,3 +3,4 @@
     <block  wx:for="{{htmlParserTpl.nodes}}" wx:key="{{index}}">
         <template is="wxParse" data="{{item}}"/>
     </block>
+    <official-account/>

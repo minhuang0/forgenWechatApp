@@ -5,14 +5,16 @@
     <view class="activity _0ca24fa _5a62c46" data-id="{{item.id}}" bindtap="$vActivity$tap" data-com-index="{{index}}">
         <image class="cover _0ca24fa" src="{{item.cover}}" mode="aspectFill"/>
         <view class="content-view _0ca24fa">
-            <text class="title _0ca24fa">{{item.title}}</text>
+            <text class="title ellipsis _0ca24fa">{{item.title}}</text>
             <text class="description _0ca24fa">{{item.description}}</text>
             <!-- <text class="time">{{item.time}}</text>
             <text class="address">{{item.address}}</text> -->
-            <view class="last _0ca24fa">
-                <!-- <text class="money">{{item.money > 0 ? item.money : '免费'}}</text> -->
-                <text class="join _0ca24fa" type="default">报名</text>
+            <!--
+            <view class="last">
+                <text class="money">{{item.money > 0 ? item.money : '免费'}}</text>
+                <text class="join" type="default">报名</text>
             </view>
+            -->
         </view>
     </view>
         </block>

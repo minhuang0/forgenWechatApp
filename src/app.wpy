@@ -35,7 +35,7 @@
                 color: '#000',
                 selectedColor: '#00b600',
                 backgroundColor: '#fff',
-                borderStyle: '#eee',
+                borderStyle: 'black',
                 list: [
                     {
                         pagePath: 'pages/home/index',

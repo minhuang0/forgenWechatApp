@@ -1,35 +1,35 @@
 
     <!--logs.wxml-->
-    <view class="container _ea5f74e">
-        <view class="page__bd _ea5f74e">
-            <view class="weui-toptips weui-toptips_warn _ea5f74e"  wx:if="{{tips.show}}">{{tips.text}}</view>
-            <view class="weui-cells weui-cells_after-title _ea5f74e">
-                <view class="weui-cell _ea5f74e">
-                    <view class="weui-cell__bd _ea5f74e">
-                        <textarea class="weui-textarea _ea5f74e" placeholder="您想说的话!" style="height: 3.3em" bindinput="bindCommentInput" value="{{content}}"/>
+    <view class="container _1f23569">
+        <view class="page__bd _1f23569">
+            <view class="weui-toptips weui-toptips_warn _1f23569"  wx:if="{{tips.show}}">{{tips.text}}</view>
+            <view class="weui-cells weui-cells_after-title _1f23569">
+                <view class="weui-cell _1f23569">
+                    <view class="weui-cell__bd _1f23569">
+                        <textarea class="weui-textarea _1f23569" placeholder="您想说的话!" style="height: 3.3em" bindinput="bindCommentInput" value="{{content}}"/>
                     </view>
                 </view>
-                <view class="weui-cell _ea5f74e">
-                    <view class="weui-cell__bd _ea5f74e">
-                        <view class="weui-uploader _ea5f74e">
-                            <view class="weui-uploader__bd _ea5f74e">
-                                <view class="weui-uploader__files _ea5f74e" id="uploaderFiles">
-                                    <block class="_ea5f74e" wx:for="{{files}}" wx:for-index="index" wx:for-item="item" wx:key="index">
-                                        <view class="weui-uploader__file _ea5f74e" bindtap="previewImage" id="{{item}}">
-                                            <image class="weui-uploader__img _ea5f74e" src="{{item}}" mode="aspectFill"/>
+                <view class="weui-cell _1f23569">
+                    <view class="weui-cell__bd _1f23569">
+                        <view class="weui-uploader _1f23569">
+                            <view class="weui-uploader__bd _1f23569">
+                                <view class="weui-uploader__files _1f23569" id="uploaderFiles">
+                                    <block class="_1f23569" wx:for="{{files}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+                                        <view class="weui-uploader__file _1f23569" bindtap="previewImage" id="{{item}}">
+                                            <image class="weui-uploader__img _1f23569" src="{{item}}" mode="aspectFill"/>
                                         </view>
                                     </block>
                                 </view>
-                                <view class="weui-uploader__input-box _ea5f74e">
-                                    <view class="weui-uploader__input _ea5f74e" bindtap="chooseMomentImage"/>
+                                <view class="weui-uploader__input-box _1f23569">
+                                    <view class="weui-uploader__input _1f23569" bindtap="chooseMomentImage"/>
                                 </view>
                             </view>
                         </view>
                     </view>
                 </view>
             </view>
-            <view class="weui-btn-area _ea5f74e">
-                <button class="weui-btn _ea5f74e" type="primary" bindtap="confirmMoment">发表</button>
+            <view class="weui-btn-area _1f23569">
+                <button class="weui-btn _1f23569" type="primary" bindtap="confirmMoment">发表</button>
             </view>
         </view>
     </view>

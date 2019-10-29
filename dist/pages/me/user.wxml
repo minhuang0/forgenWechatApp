@@ -1,46 +1,46 @@
 
-    <view class="me _eb25229">
-        <view class="header _eb25229">
-            <view class="cover _eb25229">
-                <image src="http://www.90houqq.com/data/attachment/forum/201611/08/100416m0763pt026p33axz.jpg" class="_eb25229"/>
+    <view class="me _894e18e">
+        <view class="header _894e18e">
+            <view class="cover _894e18e">
+                <image src="http://www.90houqq.com/data/attachment/forum/201611/08/100416m0763pt026p33axz.jpg" class="_894e18e"/>
             </view>
-            <view class="header-content _eb25229">
-                <text class="name _eb25229">{{user.nickName}}</text>
-                <image class="img-head _eb25229" src="{{user.avatarUrl}}"/>
+            <view class="header-content _894e18e">
+                <text class="name _894e18e">{{user.nickName}}</text>
+                <image class="img-head _894e18e" src="{{user.avatarUrl}}"/>
             </view>
         </view>
-        <view class="moments _eb25229">
-            <block class="_eb25229" wx:for="{{adapterMoments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+        <view class="moments _894e18e">
+            <block class="_894e18e" wx:for="{{adapterMoments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
                 
-    <view class="moment _04ee5ab _eb25229" catchtap="$vMoment$goMomentDetail" data-momentid="{{item.id}}" data-com-index="{{index}}">
-        <view class="monent-header _04ee5ab" bindtap="$vMoment$goUserInfo" data-userid="{{item.user_id}}" data-com-index="{{index}}">
-            <view class="avatar _04ee5ab">
-                <image src="{{item.avatar}}" class="_04ee5ab"/>
+    <view class="moment _f65ca8a _894e18e" catchtap="$vMoment$goMomentDetail" data-momentid="{{item.id}}" data-com-index="{{index}}">
+        <view class="monent-header _f65ca8a" bindtap="$vMoment$goUserInfo" data-userid="{{item.user_id}}" data-com-index="{{index}}">
+            <view class="avatar _f65ca8a">
+                <image src="{{item.avatar}}" class="_f65ca8a"/>
             </view>
-            <view class="content-view _04ee5ab">
-                <view class="name-view _04ee5ab">
-                    <text class="name _04ee5ab">{{item.name}}</text>
-                    <text class="create-time _04ee5ab">{{item.createTime}}</text>
+            <view class="content-view _f65ca8a">
+                <view class="name-view _f65ca8a">
+                    <text class="name _f65ca8a">{{item.name}}</text>
+                    <text class="create-time _f65ca8a">{{item.createTime}}</text>
                 </view>
                 <!-- <text class="description">该用户没有个性签名</text> -->
             </view>
         </view>
-        <text class="comment-content _04ee5ab"  wx:if="{{item.content}}">{{item.content}}</text>
-        <block class="_04ee5ab" wx:for="{{item.images}}" wx:for-index="$vMoment$index" wx:for-item="$vMoment$item" wx:key="$vMoment$index">
-            <view class="images _04ee5ab">
-                <block class="_04ee5ab" wx:for="{{$vMoment$item}}" wx:for-index="$vMoment$i" wx:for-item="$vMoment$img" wx:key="$vMoment$i">
-                    <image class="img _04ee5ab" src="{{$vMoment$img}}" mode="aspectFill" catchtap="$vMoment$touchImage" data-url="{{$vMoment$img}}" data-com-index="{{index}}"/>
+        <text class="comment-content _f65ca8a"  wx:if="{{item.content}}">{{item.content}}</text>
+        <block class="_f65ca8a" wx:for="{{item.images}}" wx:for-index="$vMoment$index" wx:for-item="$vMoment$item" wx:key="$vMoment$index">
+            <view class="images _f65ca8a">
+                <block class="_f65ca8a" wx:for="{{$vMoment$item}}" wx:for-index="$vMoment$i" wx:for-item="$vMoment$img" wx:key="$vMoment$i">
+                    <image class="img _f65ca8a" src="{{$vMoment$img}}" mode="aspectFill" catchtap="$vMoment$touchImage" data-url="{{$vMoment$img}}" data-com-index="{{index}}"/>
                 </block>
             </view>
         </block>
-        <view class="buttons _04ee5ab">
-            <view catchtap="$vMoment$toggleMoments" data-momentid="{{item.id}}" class="_04ee5ab" data-com-index="{{index}}">
-                <image class="icon _04ee5ab" src="{{$vMoment$icons.message}}"/>
-                <text class="_04ee5ab">{{item.commentsNum}}</text>
+        <view class="buttons _f65ca8a">
+            <view catchtap="$vMoment$toggleMoments" data-momentid="{{item.id}}" class="_f65ca8a" data-com-index="{{index}}">
+                <image class="icon _f65ca8a" src="{{$vMoment$icons.message}}"/>
+                <text class="_f65ca8a">{{item.commentsNum}}</text>
             </view>
-            <view catchtap="$vMoment$toggleUpvote" data-momentid="{{item.id}}" class="_04ee5ab" data-com-index="{{index}}">
-                <image class="icon _04ee5ab" style="margin-left: 40rpx;" src="{{item.upvoteIcon}}"/>
-                <text class="_04ee5ab">{{item.upvoteNum}}</text>
+            <view catchtap="$vMoment$toggleUpvote" data-momentid="{{item.id}}" class="_f65ca8a" data-com-index="{{index}}">
+                <image class="icon _f65ca8a" style="margin-left: 40rpx;" src="{{item.upvoteIcon}}"/>
+                <text class="_f65ca8a">{{item.upvoteNum}}</text>
             </view>
         </view>
     </view>

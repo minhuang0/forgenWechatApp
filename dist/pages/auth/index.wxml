@@ -1,10 +1,10 @@
 
-    <view class="content _2a99330"  wx:if="{{show}}">
-        <view class="title _2a99330">欢迎来到山趣</view>
-        <image class="cover _2a99330" src="../../modules/images/icon.jpeg"/>
+    <view class="content _aebc150"  wx:if="{{show}}">
+        <view class="title _aebc150">欢迎来到山趣</view>
+        <image class="cover _aebc150" src="../../modules/images/icon.jpeg"/>
         <!-- 需要使用 button 来授权登录 -->
-        <view class="btn-view _2a99330">
-            <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="_2a99330">去体验</button>
-            <button wx:else class="_2a99330">请升级微信版本</button>
+        <view class="btn-view _aebc150">
+            <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo" class="_aebc150">去体验</button>
+            <button wx:else class="_aebc150">请升级微信版本</button>
         </view>
     </view>

@@ -1,12 +1,12 @@
 
-    <view class="activities _5a62c46">
-        <block class="_5a62c46" wx:for="{{activities}}" wx:for-index="index" wx:for-item="item" wx:key="index">
+    <view class="activities _2294554">
+        <block class="_2294554" wx:for="{{activities}}" wx:for-index="index" wx:for-item="item" wx:key="index">
             
-    <view class="activity _0ca24fa _5a62c46" data-id="{{item.id}}" bindtap="$vActivity$tap" data-com-index="{{index}}">
-        <image class="cover _0ca24fa" src="{{item.cover}}" mode="aspectFill"/>
-        <view class="content-view _0ca24fa">
-            <text class="title ellipsis _0ca24fa">{{item.title}}</text>
-            <text class="description _0ca24fa">{{item.description}}</text>
+    <view class="activity _be153ec _2294554" data-id="{{item.id}}" bindtap="$vActivity$tap" data-com-index="{{index}}">
+        <image class="cover _be153ec" src="{{item.cover}}" mode="aspectFill"/>
+        <view class="content-view _be153ec">
+            <text class="title ellipsis _be153ec">{{item.title}}</text>
+            <text class="description _be153ec">{{item.description}}</text>
             <!-- <text class="time">{{item.time}}</text>
             <text class="address">{{item.address}}</text> -->
             <!--

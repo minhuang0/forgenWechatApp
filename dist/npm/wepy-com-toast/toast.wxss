@@ -30,8 +30,7 @@
         top: 140px;
         left: 50%;
         padding: 15px;
-        -webkit-box-sizing: border-box;
-                box-sizing: border-box;
+        box-sizing: border-box;
         -webkit-transform: translateX(-50%);
                 transform: translateX(-50%);
         background: rgba(40, 40, 40, 0.75);

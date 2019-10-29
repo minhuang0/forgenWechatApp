@@ -144,8 +144,6 @@ var _class = function () {
                 hideKeyboard: true,
                 stopPullDownRefresh: true,
 
-                reportAnalytics: true,
-
                 arrayBufferToBase64: true,
                 base64ToArrayBuffer: true
             };

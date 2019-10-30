@@ -4,7 +4,7 @@
         <view>
             <v-baseTitle leftText="热门话题" rightText="更多热门话题"  @click.user='selectDiscuss' data-id="{{0}}"></v-baseTitle>
             <repeat for="{{hotTopic}}" key="index" index="index" item="item">
-                <v-text :text="item.name" data-id="{{item.id}}" @click.user='selectDiscuss'></v-text>
+                <v-text :item.sync="item" @click.user='selectDiscuss'></v-text>
             </repeat>
         </view>
         <v-title title="热门精选"></v-title>
@@ -46,7 +46,7 @@
                 return this.choiceData.hotTopic.map(i => {
                     return {
                         id: i.id,
-                        name: i.name
+                        text: i.name
                     }
                 })
             },

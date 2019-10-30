@@ -2501,9 +2501,10 @@ wepy-plugin-autoprefixer@^1.5.9:
     autoprefixer "^7.1.2"
     postcss "^6.0.9"
 
-wepy@^1.6.0:
+wepy@^1.7.2:
   version "1.7.2"
-  resolved "http://r.npm.sankuai.com/wepy/download/wepy-1.7.2.tgz#679052401f2b1f4818644bc44f88b72975491a64"
+  resolved "https://registry.yarnpkg.com/wepy/-/wepy-1.7.2.tgz#679052401f2b1f4818644bc44f88b72975491a64"
+  integrity sha512-22Q338OY2wV1kuINAtQQmO6V9r00wNTgLPOOOASZe8tdq0lGxv9FnFWxA7SqJihQJEeWXERFd/gN7GKQQ1CU1w==
 
 weui-wxss@^1.1.1:
   version "1.1.1"

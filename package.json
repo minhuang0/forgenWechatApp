@@ -14,7 +14,7 @@
     "@wepy/compiler-less": "^2.0.6",
     "date-fns": "^1.29.0",
     "less": "^3.10.3",
-    "wepy": "^1.6.0",
+    "wepy": "^1.7.2",
     "wepy-async-function": "^1.4.4",
     "wepy-com-toast": "^1.0.2",
     "weui-wxss": "^1.1.1",

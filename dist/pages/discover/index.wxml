@@ -24,7 +24,7 @@
     </view>
             <block class="_141034e" wx:for="{{$vChoice$hotTopic}}" wx:for-index="$vChoice$index" wx:for-item="$vChoice$item" wx:key="$vChoice$index">
                 
-    <view class="text _cac26d0 _141034e" bindtap="$vChoice$vText$tap" data-text="{{$vChoice$item.name}}" data-com-index="{{$vChoice$index}}">{{$vChoice$item.name}}</view>
+    <view class="text _cac26d0 _141034e" bindtap="$vChoice$vText$tap" data-com-index="{{$vChoice$index}}">{{$vChoice$item.name}}</view>
             </block>
         </view>
         

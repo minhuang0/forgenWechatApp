@@ -19,7 +19,7 @@
     </view>
             <block class="_141034e" wx:for="{{hotTopic}}" wx:for-index="index" wx:for-item="item" wx:key="index">
                 
-    <view class="text _cac26d0 _141034e" bindtap="$vText$tap" data-text="{{item.name}}" data-com-index="{{index}}">{{item.name}}</view>
+    <view class="text _cac26d0 _141034e" bindtap="$vText$tap" data-com-index="{{index}}">{{item.name}}</view>
             </block>
         </view>
         

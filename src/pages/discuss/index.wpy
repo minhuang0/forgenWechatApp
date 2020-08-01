@@ -53,10 +53,12 @@
             await this.fetchData(options.id)
             this.$apply()
         }
-        selectList (e) {
-            wepy.navigateTo({
-                url: `../../pages/recommend/index?id=${e.currentTarget.dataset.id}`
-            })
+        methods = {
+            selectList (e) {
+                wepy.navigateTo({
+                    url: `../../pages/recommend/index?id=${e.currentTarget.dataset.id}`
+                })
+            }
         }
     }
 </script>

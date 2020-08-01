@@ -4,7 +4,7 @@
         <view>
             <v-baseTitle leftText="热门话题" rightText="更多热门话题"  @click.user='selectDiscuss' data-id="{{0}}"></v-baseTitle>
             <repeat for="{{hotTopic}}" key="index" index="index" item="item">
-                <v-text :text="item.name" data-id="{{item.id}}" @click.user='selectDiscuss'></v-text>
+                <v-text :item.sync="item" @click.user='selectDiscuss'></v-text>
             </repeat>
         </view>
         <v-title title="热门精选"></v-title>
@@ -114,7 +114,7 @@
             },
             selectDiscuss(e) {
                 wepy.navigateTo({
-                    url: `../../pages/discuss/index?id=${e.currentTarget.dataset.id}&text=${e.currentTarget.dataset.text || ''}`
+                    url: `../../pages/discuss/index?id=${e.id}&text=${e.name || ''}`
                 })
             }
         }

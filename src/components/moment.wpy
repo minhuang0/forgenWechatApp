@@ -1,6 +1,6 @@
 <template>
     <view class="moment" @tap.stop="goMomentDetail" data-momentid="{{moment.id}}">
-        <view class="monent-header" @tap="goUserInfo" data-userid="{{moment.user_id}}">
+        <view class="monent-header" @tap="goUserInfo" data-userid="{{moment.id}}">
             <view class="avatar">
                 <image src="{{moment.avatar}}"></image>
             </view>
@@ -42,6 +42,7 @@
         }
         computed = {
             upvoteIcon () {
+                console.log(this.moment)
                 return this.moment && this.moment.hasZan ? '../../modules/images/praise_fill.png' : '../../modules/images/praise.png'
             }
         }
@@ -66,6 +67,7 @@
                 this.$emit('touchImage', e)
             },
             goUserInfo (e) {
+                console.log(e)
                 wepy.navigateTo({
                     url: `../me/user?id=${e.currentTarget.dataset.userid}`
                 })

@@ -46,7 +46,7 @@
                 return this.choiceData.hotTopic.map(i => {
                     return {
                         id: i.id,
-                        name: i.name
+                        text: i.name
                     }
                 })
             },

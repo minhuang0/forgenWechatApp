@@ -2,7 +2,7 @@
     <view class="me _178eff6">
         
     <view class="moment _04ee5ab _178eff6" catchtap="$vMoment$goMomentDetail" data-momentid="{{$vMoment$moment.id}}">
-        <view class="monent-header _04ee5ab" bindtap="$vMoment$goUserInfo" data-userid="{{$vMoment$moment.user_id}}">
+        <view class="monent-header _04ee5ab" bindtap="$vMoment$goUserInfo" data-userid="{{$vMoment$moment.id}}">
             <view class="avatar _04ee5ab">
                 <image src="{{$vMoment$moment.avatar}}" class="_04ee5ab"/>
             </view>

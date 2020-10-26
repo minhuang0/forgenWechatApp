@@ -5,7 +5,7 @@
         <block class="_0eb65ca" wx:for="{{$vMoments$moments}}" wx:for-index="$vMoments$index" wx:for-item="$vMoments$item" wx:key="$vMoments$index">
             
     <view class="moment _04ee5ab _0eb65ca" catchtap="$vMoments$vMoment$goMomentDetail" data-momentid="{{$vMoments$item.id}}" data-com-index="{{$vMoments$index}}">
-        <view class="monent-header _04ee5ab" bindtap="$vMoments$vMoment$goUserInfo" data-userid="{{$vMoments$item.user_id}}" data-com-index="{{$vMoments$index}}">
+        <view class="monent-header _04ee5ab" bindtap="$vMoments$vMoment$goUserInfo" data-userid="{{$vMoments$item.id}}" data-com-index="{{$vMoments$index}}">
             <view class="avatar _04ee5ab">
                 <image src="{{$vMoments$item.avatar}}" class="_04ee5ab"/>
             </view>

@@ -1,5 +1,5 @@
 <template>
-    <view class="text" @tap="tap">{{item.name}}</view>
+    <view class="text" @tap="tap" data-id="{{item.id}}" data-text="{{item.text}}">{{item.text}}</view>
 </template>
 
 <script>
@@ -7,7 +7,7 @@
 
     export default class Index extends wepy.component {
         props = {
-            item: Object,
+            item: {}
         }
         methods = {
             tap(e) {

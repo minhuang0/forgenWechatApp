@@ -13,7 +13,7 @@
             <block class="_44d4dd0" wx:for="{{adapterMoments}}" wx:for-index="index" wx:for-item="item" wx:key="index">
                 
     <view class="moment _04ee5ab _44d4dd0" catchtap="$vMoment$goMomentDetail" data-momentid="{{item.id}}" data-com-index="{{index}}">
-        <view class="monent-header _04ee5ab" bindtap="$vMoment$goUserInfo" data-userid="{{item.user_id}}" data-com-index="{{index}}">
+        <view class="monent-header _04ee5ab" bindtap="$vMoment$goUserInfo" data-userid="{{item.id}}" data-com-index="{{index}}">
             <view class="avatar _04ee5ab">
                 <image src="{{item.avatar}}" class="_04ee5ab"/>
             </view>

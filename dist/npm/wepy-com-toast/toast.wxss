@@ -15,11 +15,8 @@
     }
     .wetoast__bd {
         opacity: 0;
-        display: -webkit-box;
         display: -webkit-flex;
         display: flex;
-        -webkit-box-orient: vertical;
-        -webkit-box-direction: normal;
         -webkit-flex-direction: column;
                 flex-direction: column;
         position: fixed;
@@ -30,8 +27,7 @@
         top: 140px;
         left: 50%;
         padding: 15px;
-        -webkit-box-sizing: border-box;
-                box-sizing: border-box;
+        box-sizing: border-box;
         -webkit-transform: translateX(-50%);
                 transform: translateX(-50%);
         background: rgba(40, 40, 40, 0.75);
@@ -39,7 +35,6 @@
         color: #FFFFFF;
         word-wrap: break-word;
         word-break: break-all;
-        -webkit-box-align: center;
         -webkit-align-items: center;
                 align-items: center;
         -webkit-justify-content: space-around;
